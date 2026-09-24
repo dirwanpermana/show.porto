@@ -33,9 +33,12 @@ Landing page satu halaman (bahasa Indonesia) untuk brand **Karyaloka** + backend
 - [x] 6 template dengan 6 gaya desain berbeda (referensi styles.refero.design): Lumina "Warm cream editorial", Amplify "Deep moss with lime voltage", Blueprint "Midnight atelier serif" (mengikuti file upload: serif Fraunces, nomor bab, tabel penghargaan, giant footer name), Aperture "White gallery wall", Deploy "Typeset terminal on black paper", Etalase "Warm parchment atelier"
 - [x] Klik "Lihat Detail" menampilkan pratinjau hasil desain penuh per template (hero, profil+quote+statistik, filosofi, proyek, layanan, penghargaan, testimoni, kontak + giant footer) di dalam frame browser yang bisa di-scroll
 - [x] Toggle bahasa ID/EN di nav & footer (persist localStorage) — seluruh copy, data demo, pratinjau template, form, dan toast diterjemahkan
+- [x] Konten pratinjau tiap template diperkaya jadi contoh realistis sesuai bidang (persona + karya + metrik + klien + pemberi penghargaan yang masuk akal, dwibahasa)
+- [x] Tombol layar penuh (fullscreen/exit) pada pratinjau template — pratinjau memenuhi viewport saat diaktifkan, ikon berubah Minimize, reset saat modal ditutup
 
 ## Catatan Konten
-- Harga paket, nama brand, nomor WA (6281234567890), dan konten demo (Dapur Nusantara, Raka Pratama) adalah PLACEHOLDER/CONTOH yang perlu diganti pemilik.
+- Persona & karya di pratinjau template (Sasha Mahendra, Bella Kusuma, Aris Wicaksono, Danu Rahardjo, Rizky Ananda, Ibu Sari Wulandari/Dapur Nusantara) adalah CONTOH REALISTIS, bukan orang nyata — ganti dengan data klien asli saat digunakan jualan.
+- Harga paket, nomor WA (6281234567890), dan konten LiveDemo (Raka Pratama, Dapur Nusantara) tetap PLACEHOLDER/CONTOH.
 
 ## Backlog / Next
 - P0: Ganti harga & nomor WhatsApp asli; domain produksi

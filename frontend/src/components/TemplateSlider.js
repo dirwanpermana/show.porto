@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Maximize2, Minimize2, X } from "lucide-react";
 import { Reveal, SectionTag } from "@/components/Reveal";
 import TemplatePreview from "@/components/TemplatePreview";
 import { useLang, SITE } from "@/i18n";
@@ -12,6 +12,7 @@ const TemplateSlider = () => {
     const S = SITE.tpl;
     const trackRef = useRef(null);
     const [active, setActive] = useState(null);
+    const [full, setFull] = useState(false);
 
     const scrollBy = (dir) => {
         const el = trackRef.current;
@@ -22,8 +23,12 @@ const TemplateSlider = () => {
     };
 
     useEffect(() => {
-        if (active) window.__lenis?.stop();
-        else window.__lenis?.start();
+        if (active) {
+            window.__lenis?.stop();
+        } else {
+            window.__lenis?.start();
+            setFull(false);
+        }
         return () => window.__lenis?.start();
     }, [active]);
 
@@ -128,7 +133,9 @@ const TemplateSlider = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[70] flex items-center justify-center bg-void/85 p-3 backdrop-blur-sm md:p-8"
+                        className={`fixed inset-0 z-[70] flex items-center justify-center bg-void/85 backdrop-blur-sm ${
+                            full ? "p-0" : "p-3 md:p-8"
+                        }`}
                         data-testid="template-detail-modal"
                         onClick={() => setActive(null)}
                     >
@@ -138,7 +145,11 @@ const TemplateSlider = () => {
                             exit={{ opacity: 0, y: 24, scale: 0.97 }}
                             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                             onClick={(e) => e.stopPropagation()}
-                            className="relative flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border hairline bg-ink"
+                            className={`relative flex flex-col overflow-hidden bg-ink ${
+                                full
+                                    ? "h-full w-full max-w-none max-h-none rounded-none"
+                                    : "max-h-[92vh] w-full max-w-4xl rounded-2xl border hairline"
+                            }`}
                         >
                             <div className="flex items-center justify-between gap-3 border-b hairline bg-white/[0.04] px-5 py-3">
                                 <div className="flex min-w-0 items-center gap-3">
@@ -151,14 +162,28 @@ const TemplateSlider = () => {
                                         {active.domain} — {active.name} · {active.styleName[lang]}
                                     </span>
                                 </div>
-                                <button
-                                    data-testid="template-modal-close"
-                                    onClick={() => setActive(null)}
-                                    aria-label="Tutup"
-                                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/5 text-bone transition-colors hover:bg-iris"
-                                >
-                                    <X className="h-4 w-4" />
-                                </button>
+                                <div className="flex shrink-0 items-center gap-2">
+                                    <button
+                                        data-testid="template-modal-fullscreen"
+                                        onClick={() => setFull(!full)}
+                                        aria-label={full ? "Keluar layar penuh" : "Layar penuh"}
+                                        className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-bone transition-colors hover:bg-iris"
+                                    >
+                                        {full ? (
+                                            <Minimize2 className="h-4 w-4" />
+                                        ) : (
+                                            <Maximize2 className="h-4 w-4" />
+                                        )}
+                                    </button>
+                                    <button
+                                        data-testid="template-modal-close"
+                                        onClick={() => setActive(null)}
+                                        aria-label="Tutup"
+                                        className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-bone transition-colors hover:bg-iris"
+                                    >
+                                        <X className="h-4 w-4" />
+                                    </button>
+                                </div>
                             </div>
 
                             <div
@@ -166,12 +191,6 @@ const TemplateSlider = () => {
                                 data-testid="template-preview"
                             >
                                 <TemplatePreview tpl={active} />
-                                <p
-                                    className="px-6 pb-6 text-center text-[11px] font-light"
-                                    style={{ color: "#8a8a8a" }}
-                                >
-                                    {S.note[lang]}
-                                </p>
                             </div>
 
                             <div className="border-t hairline bg-ink px-5 py-4">
