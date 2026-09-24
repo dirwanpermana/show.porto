@@ -30,6 +30,9 @@ Landing page satu halaman (bahasa Indonesia) untuk brand **Karyaloka** + backend
 - [x] POST/GET /api/leads terverifikasi curl + form e2e (toast sukses, data masuk DB)
 - [x] Modal detail template & proyek berfungsi
 - [x] Lenis smooth scroll + scroll-reveals + particle canvas + parallax 3D pratinjau
+- [x] 6 template dengan 6 gaya desain berbeda (referensi styles.refero.design): Lumina "Warm cream editorial", Amplify "Deep moss with lime voltage", Blueprint "Midnight atelier serif" (mengikuti file upload: serif Fraunces, nomor bab, tabel penghargaan, giant footer name), Aperture "White gallery wall", Deploy "Typeset terminal on black paper", Etalase "Warm parchment atelier"
+- [x] Klik "Lihat Detail" menampilkan pratinjau hasil desain penuh per template (hero, profil+quote+statistik, filosofi, proyek, layanan, penghargaan, testimoni, kontak + giant footer) di dalam frame browser yang bisa di-scroll
+- [x] Toggle bahasa ID/EN di nav & footer (persist localStorage) — seluruh copy, data demo, pratinjau template, form, dan toast diterjemahkan
 
 ## Catatan Konten
 - Harga paket, nama brand, nomor WA (6281234567890), dan konten demo (Dapur Nusantara, Raka Pratama) adalah PLACEHOLDER/CONTOH yang perlu diganti pemilik.

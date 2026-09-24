@@ -10,24 +10,27 @@ import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
 import LeadSection from "@/components/LeadSection";
 import Footer from "@/components/Footer";
+import { LangProvider } from "@/i18n";
 
 const Landing = () => (
-    <div className="bg-void text-bone">
-        <Nav />
-        <main>
-            <Hero />
-            <Marquee />
-            <Audiences />
-            <TemplateSlider />
-            <LiveDemo />
-            <Features />
-            <Process />
-            <Pricing />
-            <Faq />
-            <LeadSection />
-        </main>
-        <Footer />
-    </div>
+    <LangProvider>
+        <div className="bg-void text-bone">
+            <Nav />
+            <main>
+                <Hero />
+                <Marquee />
+                <Audiences />
+                <TemplateSlider />
+                <LiveDemo />
+                <Features />
+                <Process />
+                <Pricing />
+                <Faq />
+                <LeadSection />
+            </main>
+            <Footer />
+        </div>
+    </LangProvider>
 );
 
 export default Landing;

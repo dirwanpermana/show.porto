@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import ParticleField from "@/components/ParticleField";
+import { useLang, SITE } from "@/i18n";
 import { scrollToSection } from "@/lib/scroll";
 import { TEMPLATES } from "@/data/templates";
 
@@ -48,119 +49,121 @@ const FloatCard = ({ img, label, className, tilt, delay }) => (
     </motion.div>
 );
 
-const Hero = () => (
-    <section
-        id="beranda"
-        className="relative flex min-h-screen items-center overflow-hidden"
-    >
-        <div className="absolute inset-0" data-testid="hero-particle-field">
-            <ParticleField className="h-full w-full" />
-        </div>
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#000_92%)]" />
+const Hero = () => {
+    const { lang } = useLang();
+    const S = SITE.hero;
 
-        <div className="relative z-10 mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center gap-10 px-6 pb-24 pt-32 lg:grid-cols-12 lg:pb-32 lg:pt-24">
-            <div className="lg:col-span-8">
-                <motion.p
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
-                    className="mb-6 inline-flex items-center gap-2.5 rounded-full border hairline px-4 py-2 text-[11px] font-medium uppercase tracking-[0.22em] text-mist glass"
-                >
-                    <span className="h-1.5 w-1.5 rounded-full bg-saffron" />
-                    Jasa website portofolio & UMKM
-                </motion.p>
-
-                <h1 className="font-display text-[13vw] font-light leading-[0.92] tracking-[-0.02em] text-bone sm:text-7xl lg:text-[6.5rem]">
-                    <HeroLine delay={0.2}>Biarkan karyamu</HeroLine>
-                    <HeroLine delay={0.32}>
-                        <span className="text-gradient-iris">bicara.</span>
-                    </HeroLine>
-                </h1>
-
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.65, ease: EASE }}
-                    className="mt-7 max-w-xl text-base font-light leading-relaxed text-ash md:text-lg"
-                >
-                    Kami membangun website portofolio untuk pencari kerja dan
-                    landing page katalog untuk UMKM — pengalaman, pendidikan,
-                    proyek, sampai produk, tampil dalam satu halaman yang
-                    memukau.
-                </motion.p>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.8, ease: EASE }}
-                    className="mt-10 flex flex-wrap items-center gap-4"
-                >
-                    <button
-                        data-testid="hero-cta-primary"
-                        onClick={() => scrollToSection("kontak")}
-                        className="group inline-flex items-center gap-2 rounded-full bg-iris px-7 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:bg-[#9069ff] hover:shadow-[0_0_36px_rgba(128,82,255,0.5)]"
-                    >
-                        Mulai dari Rp499rb
-                        <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </button>
-                    <button
-                        data-testid="hero-cta-secondary"
-                        onClick={() => scrollToSection("template")}
-                        className="group inline-flex items-center gap-2 rounded-full border hairline px-7 py-3.5 text-sm font-light text-bone transition-all duration-300 hover:border-white/30 hover:bg-white/5"
-                    >
-                        Lihat Template
-                        <ArrowDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" />
-                    </button>
-                </motion.div>
-
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 1.05 }}
-                    className="mt-12 text-xs font-light tracking-wide text-ash"
-                >
-                    100% Responsif · SEO dasar · Serah terima 5-10 hari
-                </motion.p>
-            </div>
-
-            <div className="relative hidden h-[420px] lg:col-span-4 lg:block">
-                <FloatCard
-                    img={TEMPLATES[0].img}
-                    label="lumina.karyaloka.id"
-                    className="right-0 top-2 z-10"
-                    tilt={4}
-                    delay={0.9}
-                />
-                <FloatCard
-                    img={TEMPLATES[5].img}
-                    label="etalase.karyaloka.id"
-                    className="left-0 top-44"
-                    tilt={-3}
-                    delay={1.15}
-                />
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.7, delay: 1.35, ease: EASE }}
-                    className="absolute bottom-2 right-8 rounded-full bg-saffron px-4 py-2 text-xs font-medium text-void"
-                >
-                    Detail: PDF · Video · GitHub
-                </motion.div>
-            </div>
-        </div>
-
-        <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.4, duration: 0.8 }}
-            onClick={() => scrollToSection("untuk")}
-            data-testid="hero-scroll-cue"
-            className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-ash transition-colors hover:text-bone"
-            aria-label="Gulir ke bawah"
+    return (
+        <section
+            id="beranda"
+            className="relative flex min-h-screen items-center overflow-hidden"
         >
-            <ArrowDown className="h-5 w-5 animate-scroll-cue" />
-        </motion.button>
-    </section>
-);
+            <div className="absolute inset-0" data-testid="hero-particle-field">
+                <ParticleField className="h-full w-full" />
+            </div>
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#000_92%)]" />
+
+            <div className="relative z-10 mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center gap-10 px-6 pb-24 pt-32 lg:grid-cols-12 lg:pb-32 lg:pt-24">
+                <div className="lg:col-span-8">
+                    <motion.p
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
+                        className="mb-6 inline-flex items-center gap-2.5 rounded-full border hairline px-4 py-2 text-[11px] font-medium uppercase tracking-[0.22em] text-mist glass"
+                    >
+                        <span className="h-1.5 w-1.5 rounded-full bg-saffron" />
+                        {S.badge[lang]}
+                    </motion.p>
+
+                    <h1 className="font-display text-[13vw] font-light leading-[0.92] tracking-[-0.02em] text-bone sm:text-7xl lg:text-[6.5rem]">
+                        <HeroLine delay={0.2}>{S.l1[lang]}</HeroLine>
+                        <HeroLine delay={0.32}>
+                            <span className="text-gradient-iris">{S.l2[lang]}</span>
+                        </HeroLine>
+                    </h1>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.65, ease: EASE }}
+                        className="mt-7 max-w-xl text-base font-light leading-relaxed text-ash md:text-lg"
+                    >
+                        {S.sub[lang]}
+                    </motion.p>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.8, ease: EASE }}
+                        className="mt-10 flex flex-wrap items-center gap-4"
+                    >
+                        <button
+                            data-testid="hero-cta-primary"
+                            onClick={() => scrollToSection("kontak")}
+                            className="group inline-flex items-center gap-2 rounded-full bg-iris px-7 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:bg-[#9069ff] hover:shadow-[0_0_36px_rgba(128,82,255,0.5)]"
+                        >
+                            {S.cta1[lang]}
+                            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </button>
+                        <button
+                            data-testid="hero-cta-secondary"
+                            onClick={() => scrollToSection("template")}
+                            className="group inline-flex items-center gap-2 rounded-full border hairline px-7 py-3.5 text-sm font-light text-bone transition-all duration-300 hover:border-white/30 hover:bg-white/5"
+                        >
+                            {S.cta2[lang]}
+                            <ArrowDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" />
+                        </button>
+                    </motion.div>
+
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 1.05 }}
+                        className="mt-12 text-xs font-light tracking-wide text-ash"
+                    >
+                        {S.specs[lang]}
+                    </motion.p>
+                </div>
+
+                <div className="relative hidden h-[420px] lg:col-span-4 lg:block">
+                    <FloatCard
+                        img={TEMPLATES[0].img}
+                        label="lumina.karyaloka.id"
+                        className="right-0 top-2 z-10"
+                        tilt={4}
+                        delay={0.9}
+                    />
+                    <FloatCard
+                        img={TEMPLATES[5].img}
+                        label="etalase.karyaloka.id"
+                        className="left-0 top-44"
+                        tilt={-3}
+                        delay={1.15}
+                    />
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.7, delay: 1.35, ease: EASE }}
+                        className="absolute bottom-2 right-8 rounded-full bg-saffron px-4 py-2 text-xs font-medium text-void"
+                    >
+                        {S.chip[lang]}
+                    </motion.div>
+                </div>
+            </div>
+
+            <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.4, duration: 0.8 }}
+                onClick={() => scrollToSection("untuk")}
+                data-testid="hero-scroll-cue"
+                className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-ash transition-colors hover:text-bone"
+                aria-label="Gulir ke bawah"
+            >
+                <ArrowDown className="h-5 w-5 animate-scroll-cue" />
+            </motion.button>
+        </section>
+    );
+};
 
 export default Hero;

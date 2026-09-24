@@ -2,18 +2,13 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import Logo from "@/components/Logo";
+import LangToggle from "@/components/LangToggle";
+import { useLang, SITE } from "@/i18n";
 import { scrollToSection } from "@/lib/scroll";
 
-const LINKS = [
-    { id: "template", label: "Template" },
-    { id: "pratinjau", label: "Pratinjau" },
-    { id: "fitur", label: "Fitur" },
-    { id: "proses", label: "Proses" },
-    { id: "harga", label: "Harga" },
-    { id: "faq", label: "FAQ" },
-];
-
 const Nav = () => {
+    const { lang } = useLang();
+    const S = SITE.nav;
     const [scrolled, setScrolled] = useState(false);
     const [open, setOpen] = useState(false);
 
@@ -22,6 +17,15 @@ const Nav = () => {
         window.addEventListener("scroll", onScroll, { passive: true });
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
+
+    const LINKS = [
+        { id: "template", label: S.template },
+        { id: "pratinjau", label: S.pratinjau },
+        { id: "fitur", label: S.fitur },
+        { id: "proses", label: S.proses },
+        { id: "harga", label: S.harga },
+        { id: "faq", label: S.faq },
+    ];
 
     const go = (id) => {
         setOpen(false);
@@ -60,19 +64,20 @@ const Nav = () => {
                                 }}
                                 className="text-sm font-light text-ash transition-colors duration-300 hover:text-bone"
                             >
-                                {l.label}
+                                {l.label[lang]}
                             </a>
                         </li>
                     ))}
                 </ul>
 
                 <div className="flex items-center gap-3">
+                    <LangToggle />
                     <button
                         data-testid="nav-cta-button"
                         onClick={() => go("kontak")}
                         className="hidden items-center gap-1.5 rounded-full bg-iris px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-[#9069ff] hover:shadow-[0_0_28px_rgba(128,82,255,0.45)] sm:inline-flex"
                     >
-                        Mulai Sekarang
+                        {S.cta[lang]}
                         <ArrowUpRight className="h-4 w-4" />
                     </button>
                     <button
@@ -107,7 +112,7 @@ const Nav = () => {
                                         }}
                                         className="font-display text-2xl font-light text-bone"
                                     >
-                                        {l.label}
+                                        {l.label[lang]}
                                     </a>
                                 </li>
                             ))}
@@ -117,7 +122,7 @@ const Nav = () => {
                                     onClick={() => go("kontak")}
                                     className="mt-2 w-full rounded-full bg-iris px-6 py-3.5 text-sm font-medium text-white"
                                 >
-                                    Mulai Sekarang
+                                    {S.cta[lang]}
                                 </button>
                             </li>
                         </ul>
