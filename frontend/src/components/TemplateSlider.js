@@ -11,6 +11,7 @@ const TemplateSlider = () => {
     const { lang } = useLang();
     const S = SITE.tpl;
     const trackRef = useRef(null);
+    const scrollRef = useRef(null);
     const [active, setActive] = useState(null);
     const [full, setFull] = useState(false);
 
@@ -25,6 +26,7 @@ const TemplateSlider = () => {
     useEffect(() => {
         if (active) {
             window.__lenis?.stop();
+            scrollRef.current?.scrollTo({ top: 0 });
         } else {
             window.__lenis?.start();
             setFull(false);
@@ -187,10 +189,11 @@ const TemplateSlider = () => {
                             </div>
 
                             <div
+                                ref={scrollRef}
                                 className="flex-1 overflow-y-auto"
                                 data-testid="template-preview"
                             >
-                                <TemplatePreview tpl={active} />
+                                <TemplatePreview tpl={active} scrollRef={scrollRef} />
                             </div>
 
                             <div className="border-t hairline bg-ink px-5 py-4">

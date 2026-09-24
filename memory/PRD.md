@@ -35,9 +35,12 @@ Landing page satu halaman (bahasa Indonesia) untuk brand **Karyaloka** + backend
 - [x] Toggle bahasa ID/EN di nav & footer (persist localStorage) — seluruh copy, data demo, pratinjau template, form, dan toast diterjemahkan
 - [x] Konten pratinjau tiap template diperkaya jadi contoh realistis sesuai bidang (persona + karya + metrik + klien + pemberi penghargaan yang masuk akal, dwibahasa)
 - [x] Tombol layar penuh (fullscreen/exit) pada pratinjau template — pratinjau memenuhi viewport saat diaktifkan, ikon berubah Minimize, reset saat modal ditutup
+- [x] Pratinjau template kini portofolio MULTI-HALAMAN ala dokumen PDF (sheet berpisah + label halaman "03 / 07"): Cover (dengan tombol Unduh CV utk template karier; tombol Pesan utk UMKM) → Tentang (profil+statistik+filosofi) → Pendidikan & Kursus (timeline + kartu sertifikat) → Pengalaman Kerja (baris bernomor) → Proyek (grid dgn hover) → Penghargaan & Testimoni → Kontak (FORM aktif-look: nama/email/pesan/kirim + giant name). UMKM: 5 halaman tanpa CV/sekolah. Animasi reveal per halaman (viewport root = container scroll modal), hover zoom gambar proyek, klik tombol → toast penjelasan
+- [x] Konten pendidikan/kursus/pengalaman per bidang: DKV ISI Yogyakarta + Type Design Intensive; UI + Google Ads/Meta Blueprint; UGM + BNSP K3/SAP2000; ISI Fotografi + Lens Culture workshop; ITB + AWS/Scrum — semua dwibahasa
 
 ## Catatan Konten
 - Persona & karya di pratinjau template (Sasha Mahendra, Bella Kusuma, Aris Wicaksono, Danu Rahardjo, Rizky Ananda, Ibu Sari Wulandari/Dapur Nusantara) adalah CONTOH REALISTIS, bukan orang nyata — ganti dengan data klien asli saat digunakan jualan.
+- Tombol Unduh CV & Kirim Pesan di pratinjau bersifat pratinjau (menampilkan toast); CV PDF asli menyusul saat klien kirim filenya.
 - Harga paket, nomor WA (6281234567890), dan konten LiveDemo (Raka Pratama, Dapur Nusantara) tetap PLACEHOLDER/CONTOH.
 
 ## Backlog / Next

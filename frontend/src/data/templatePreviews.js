@@ -1,6 +1,9 @@
 // Konten contoh per template (bilingual) — persona & karya realistis sesuai bidang.
+// Struktur halaman ala PDF: Cover → Tentang → Pendidikan & Kursus → Pengalaman → Proyek → Penghargaan → Kontak.
+// Template UMKM (etalase) memakai alur bisnis: Cover → Tentang → Menu → Layanan → Kepercayaan → Kontak.
 export const PREVIEWS = {
     lumina: {
+        cv: true,
         profile: {
             name: "Sasha Mahendra",
             role: { id: "Desainer Grafis", en: "Graphic Designer" },
@@ -13,6 +16,66 @@ export const PREVIEWS = {
                 { n: "8+", l: { id: "Tahun Berkarya", en: "Years of Practice" } },
                 { n: "120+", l: { id: "Proyek Selesai", en: "Projects Done" } },
                 { n: "6", l: { id: "Penghargaan", en: "Awards" } },
+            ],
+        },
+        education: {
+            label: { id: "Pendidikan", en: "Education" },
+            items: [
+                {
+                    degree: {
+                        id: "S1 Desain Komunikasi Visual",
+                        en: "B.A. Visual Communication Design",
+                    },
+                    school: { id: "Institut Seni Indonesia Yogyakarta", en: "Indonesia Institute of the Arts, Yogyakarta" },
+                    period: "2015 — 2019",
+                    note: { id: "Skripsi: sistem tipografi untuk UMKM", en: "Thesis: typography systems for small businesses" },
+                },
+                {
+                    degree: { id: "SMA Negeri 5 Yogyakarta — IPS", en: "SMA Negeri 5 Yogyakarta — Social Sciences" },
+                    school: { id: "Kelas peminatan ekonomi", en: "Economics track" },
+                    period: "2012 — 2015",
+                    note: { id: "Ketua Divisi Desain OSIS", en: "Head of Student Council Design Division" },
+                },
+            ],
+        },
+        courses: {
+            label: { id: "Kursus & Sertifikasi", en: "Courses & Certificates" },
+            items: [
+                { name: { id: "Type Design Intensive", en: "Type Design Intensive" }, issuer: "Letterform Workshop", year: "2022" },
+                { name: { id: "Advanced Packaging Design", en: "Advanced Packaging Design" }, issuer: "Packraft Academy", year: "2021" },
+                { name: { id: "Design Systems Masterclass", en: "Design Systems Masterclass" }, issuer: "DesignUp Academy", year: "2020" },
+            ],
+        },
+        experience: {
+            label: { id: "Pengalaman Kerja", en: "Work Experience" },
+            items: [
+                {
+                    role: { id: "Senior Graphic Designer", en: "Senior Graphic Designer" },
+                    company: { id: "Studio Sayap, Yogyakarta", en: "Studio Sayap, Yogyakarta" },
+                    period: { id: "2021 — Sekarang", en: "2021 — Present" },
+                    desc: {
+                        id: "Memimpin tim 4 desainer untuk 30+ brand F&B dan fashion; membangun sistem desain internal.",
+                        en: "Leading a team of 4 designers for 30+ F&B and fashion brands; built the internal design system.",
+                    },
+                },
+                {
+                    role: { id: "Graphic Designer", en: "Graphic Designer" },
+                    company: { id: "Kreavi Studio, Jakarta (remote)", en: "Kreavi Studio, Jakarta (remote)" },
+                    period: "2019 — 2021",
+                    desc: {
+                        id: "Desain kemasan dan kampanye untuk 20+ UMKM yang naik kelas.",
+                        en: "Packaging and campaigns for 20+ growing small businesses.",
+                    },
+                },
+                {
+                    role: { id: "Freelance Designer", en: "Freelance Designer" },
+                    company: { id: "Mandiri", en: "Self-employed" },
+                    period: "2017 — 2019",
+                    desc: {
+                        id: "Identitas visual untuk kedai kopi, buku, dan festival seni lokal.",
+                        en: "Visual identities for local coffee shops, books, and art festivals.",
+                    },
+                },
             ],
         },
         principles: {
@@ -148,6 +211,7 @@ export const PREVIEWS = {
     },
 
     amplify: {
+        cv: true,
         profile: {
             name: "Bella Kusuma",
             role: { id: "Growth Marketing", en: "Growth Marketing" },
@@ -160,6 +224,63 @@ export const PREVIEWS = {
                 { n: "3.2x", l: { id: "ROAS Rata-rata", en: "Avg. ROAS" } },
                 { n: "40+", l: { id: "Kampanye", en: "Campaigns" } },
                 { n: "Rp8M+", l: { id: "Ad Spend Dikelola", en: "Ad Spend Managed" } },
+            ],
+        },
+        education: {
+            label: { id: "Pendidikan", en: "Education" },
+            items: [
+                {
+                    degree: { id: "S1 Manajemen", en: "B.A. Management" },
+                    school: { id: "Universitas Indonesia", en: "University of Indonesia" },
+                    period: "2014 — 2018",
+                    note: { id: "Minor psikologi konsumen", en: "Minor in consumer psychology" },
+                },
+                {
+                    degree: { id: "SMA Negeri 3 Jakarta — IPS", en: "SMA Negeri 3 Jakarta — Social Sciences" },
+                    school: { id: "Lulus dengan penghargaan", en: "Graduated with honors" },
+                    period: "2011 — 2014",
+                    note: { id: "Ketua OSIS, divisi acara", en: "Student council president, events division" },
+                },
+            ],
+        },
+        courses: {
+            label: { id: "Kursus & Sertifikasi", en: "Courses & Certificates" },
+            items: [
+                { name: { id: "Google Ads Certification", en: "Google Ads Certification" }, issuer: "Google Skillshop", year: "2024" },
+                { name: { id: "Meta Blueprint Certified", en: "Meta Blueprint Certified" }, issuer: "Meta", year: "2023" },
+                { name: { id: "Data Analytics for Marketers", en: "Data Analytics for Marketers" }, issuer: "RevoU", year: "2022" },
+            ],
+        },
+        experience: {
+            label: { id: "Pengalaman Kerja", en: "Work Experience" },
+            items: [
+                {
+                    role: { id: "Growth Lead", en: "Growth Lead" },
+                    company: { id: "Glowlab (skincare)", en: "Glowlab (skincare)" },
+                    period: { id: "2022 — Sekarang", en: "2022 — Present" },
+                    desc: {
+                        id: "Skala kanal dari 3 ke 7 kota; ROAS stabil di atas 3x dengan tim konten internal.",
+                        en: "Scaled channels from 3 to 7 cities; ROAS steady above 3x with an in-house content team.",
+                    },
+                },
+                {
+                    role: { id: "Performance Marketing Specialist", en: "Performance Marketing Specialist" },
+                    company: { id: "KirimAja (B2B logistics)", en: "KirimAja (B2B logistics)" },
+                    period: "2020 — 2022",
+                    desc: {
+                        id: "Mengelola anggaran iklan Rp2M+/tahun dan funnel lead-to-signup B2B.",
+                        en: "Managed Rp2B+/year ad budget and the B2B lead-to-signup funnel.",
+                    },
+                },
+                {
+                    role: { id: "Digital Marketing Executive", en: "Digital Marketing Executive" },
+                    company: { id: "Hotel Sagara Group", en: "Hotel Sagara Group" },
+                    period: "2018 — 2020",
+                    desc: {
+                        id: "Konten OTA, kampanye liburan, dan program loyalitas member.",
+                        en: "OTA content, holiday campaigns, and the member loyalty program.",
+                    },
+                },
             ],
         },
         principles: {
@@ -295,6 +416,7 @@ export const PREVIEWS = {
     },
 
     blueprint: {
+        cv: true,
         profile: {
             name: "Aris Wicaksono",
             role: {
@@ -310,6 +432,63 @@ export const PREVIEWS = {
                 { n: "12+", l: { id: "Penghargaan", en: "Awards" } },
                 { n: "40+", l: { id: "Proyek", en: "Projects" } },
                 { n: "15+", l: { id: "Tahun Pengalaman", en: "Years of Experience" } },
+            ],
+        },
+        education: {
+            label: { id: "Pendidikan", en: "Education" },
+            items: [
+                {
+                    degree: { id: "S1 Teknik Sipil", en: "B.Eng Civil Engineering" },
+                    school: { id: "Universitas Gadjah Mada", en: "Gadjah Mada University" },
+                    period: "2006 — 2010",
+                    note: { id: "IPK 3,68 · Skripsi struktur kayu", en: "GPA 3.68 · Timber structure thesis" },
+                },
+                {
+                    degree: { id: "SMK Negeri 2 Bangunan Yogyakarta", en: "SMK Negeri 2 Bangunan Yogyakarta" },
+                    school: { id: "Teknik Konstruksi Bangunan", en: "Building Construction Engineering" },
+                    period: "2003 — 2006",
+                    note: { id: "Lulus terbaik angkatan", en: "Best graduate of the cohort" },
+                },
+            ],
+        },
+        courses: {
+            label: { id: "Kursus & Sertifikasi", en: "Courses & Certificates" },
+            items: [
+                { name: { id: "Ahli K3 Konstruksi", en: "Construction Safety (K3) Expert" }, issuer: "BNSP", year: "2023" },
+                { name: { id: "Pushover Analysis Workshop", en: "Pushover Analysis Workshop" }, issuer: "Persatuan Insinyur Indonesia", year: "2021" },
+                { name: { id: "SAP2000 & ETABS Advanced", en: "SAP2000 & ETABS Advanced" }, issuer: "StrukLab Course", year: "2019" },
+            ],
+        },
+        experience: {
+            label: { id: "Pengalaman Kerja", en: "Work Experience" },
+            items: [
+                {
+                    role: { id: "Principal Structural Engineer", en: "Principal Structural Engineer" },
+                    company: { id: "Aris W Studio, Yogyakarta", en: "Aris W Studio, Yogyakarta" },
+                    period: { id: "2018 — Sekarang", en: "2018 — Present" },
+                    desc: {
+                        id: "40+ proyek gedung, jembatan, dan retrofit bangunan warisan di Jawa & Bali.",
+                        en: "40+ building, bridge, and heritage retrofit projects across Java & Bali.",
+                    },
+                },
+                {
+                    role: { id: "Senior Structural Engineer", en: "Senior Structural Engineer" },
+                    company: { id: "PT Wijaya Konstruksi", en: "PT Wijaya Konstruksi" },
+                    period: "2013 — 2018",
+                    desc: {
+                        id: "Perencanaan struktur gedung 8 lantai dan jembatan rangka baja.",
+                        en: "Structural design for an 8-story building and steel truss bridges.",
+                    },
+                },
+                {
+                    role: { id: "Site Engineer", en: "Site Engineer" },
+                    company: { id: "Konsultan Sigma", en: "Sigma Consultants" },
+                    period: "2010 — 2013",
+                    desc: {
+                        id: "Supervisi lapangan 12 proyek rumah sakit dan sekolah.",
+                        en: "Field supervision of 12 hospital and school projects.",
+                    },
+                },
             ],
         },
         principles: {
@@ -448,6 +627,7 @@ export const PREVIEWS = {
     },
 
     aperture: {
+        cv: true,
         profile: {
             name: "Danu Rahardjo",
             role: { id: "Fotografer", en: "Photographer" },
@@ -460,6 +640,63 @@ export const PREVIEWS = {
                 { n: "10", l: { id: "Tahun di Balik Lensa", en: "Years Behind the Lens" } },
                 { n: "300+", l: { id: "Sesi Foto", en: "Sessions" } },
                 { n: "18", l: { id: "Publikasi", en: "Publications" } },
+            ],
+        },
+        education: {
+            label: { id: "Pendidikan", en: "Education" },
+            items: [
+                {
+                    degree: { id: "S1 Fotografi", en: "B.A. Photography" },
+                    school: { id: "Institut Seni Indonesia Yogyakarta", en: "Indonesia Institute of the Arts, Yogyakarta" },
+                    period: "2011 — 2015",
+                    note: { id: "Pameran bersama tahunan sejak 2012", en: "Annual group exhibitions since 2012" },
+                },
+                {
+                    degree: { id: "SMK Multimedia Negeri 2 Yogyakarta", en: "SMK Multimedia Negeri 2 Yogyakarta" },
+                    school: { id: "Teknik audio-visual", en: "Audio-visual engineering" },
+                    period: "2008 — 2011",
+                    note: { id: "Juara 1 lomba foto pelajar DIY", en: "1st winner, regional student photo contest" },
+                },
+            ],
+        },
+        courses: {
+            label: { id: "Kursus & Sertifikasi", en: "Courses & Certificates" },
+            items: [
+                { name: { id: "Documentary Photography Masterclass", en: "Documentary Photography Masterclass" }, issuer: "Pannaphan Workshop", year: "2023" },
+                { name: { id: "Studio Lighting Advanced", en: "Studio Lighting Advanced" }, issuer: "Kelas Kamera ID", year: "2021" },
+                { name: { id: "Color Grading for Photographers", en: "Color Grading for Photographers" }, issuer: "Ruang Rawat", year: "2020" },
+            ],
+        },
+        experience: {
+            label: { id: "Pengalaman Kerja", en: "Work Experience" },
+            items: [
+                {
+                    role: { id: "Fotografer Lepas", en: "Freelance Photographer" },
+                    company: { id: "Editorial & komersial", en: "Editorial & commercial" },
+                    period: { id: "2018 — Sekarang", en: "2018 — Present" },
+                    desc: {
+                        id: "Klien: Jurnal Rupa, Hotel Anantara, dan 12 brand lokal lainnya.",
+                        en: "Clients: Jurnal Rupa, Hotel Anantara, and 12 other local brands.",
+                    },
+                },
+                {
+                    role: { id: "Staff Photographer", en: "Staff Photographer" },
+                    company: { id: "Jurnal Rupa", en: "Jurnal Rupa" },
+                    period: "2015 — 2018",
+                    desc: {
+                        id: "18 edisi cover story; spesialis potret manusia dan kota.",
+                        en: "18 cover stories; specialist in human and city portraits.",
+                    },
+                },
+                {
+                    role: { id: "Assistant Photographer", en: "Assistant Photographer" },
+                    company: { id: "Studio Loka, Bali", en: "Studio Loka, Bali" },
+                    period: "2014 — 2015",
+                    desc: {
+                        id: "Set katalog produk dan wedding destination.",
+                        en: "Product catalog sets and destination weddings.",
+                    },
+                },
             ],
         },
         principles: {
@@ -589,6 +826,7 @@ export const PREVIEWS = {
     },
 
     deploy: {
+        cv: true,
         profile: {
             name: "Rizky Ananda",
             role: { id: "Web Developer", en: "Web Developer" },
@@ -601,6 +839,63 @@ export const PREVIEWS = {
                 { n: "24", l: { id: "Repo Publik", en: "Public Repos" } },
                 { n: "9", l: { id: "Produk Diluncurkan", en: "Products Shipped" } },
                 { n: "99,9%", l: { id: "Uptime Terjaga", en: "Uptime Maintained" } },
+            ],
+        },
+        education: {
+            label: { id: "Pendidikan", en: "Education" },
+            items: [
+                {
+                    degree: { id: "S1 Informatika", en: "B.Sc. Informatics" },
+                    school: { id: "Institut Teknologi Bandung", en: "Bandung Institute of Technology" },
+                    period: "2015 — 2019",
+                    note: { id: "Skripsi: sistem antrian real-time", en: "Thesis: real-time queueing systems" },
+                },
+                {
+                    degree: { id: "SMA Negeri 1 Bandung — MIPA", en: "SMA Negeri 1 Bandung — Science Major" },
+                    school: { id: "Kelas unggulan", en: "Accelerated class" },
+                    period: "2012 — 2015",
+                    note: { id: "Medali emas OSN Komputer", en: "Gold medal, national computer olympiad" },
+                },
+            ],
+        },
+        courses: {
+            label: { id: "Kursus & Sertifikasi", en: "Courses & Certificates" },
+            items: [
+                { name: { id: "Certified Solutions Architect", en: "Certified Solutions Architect" }, issuer: "Amazon Web Services", year: "2022" },
+                { name: { id: "Professional Scrum Master I", en: "Professional Scrum Master I" }, issuer: "Scrum.org", year: "2021" },
+                { name: { id: "Advanced React Patterns", en: "Advanced React Patterns" }, issuer: "ReactMastery Bootcamp", year: "2020" },
+            ],
+        },
+        experience: {
+            label: { id: "Pengalaman Kerja", en: "Work Experience" },
+            items: [
+                {
+                    role: { id: "Senior Frontend Engineer", en: "Senior Frontend Engineer" },
+                    company: { id: "Fintech Cuan, Jakarta (hybrid)", en: "Fintech Cuan, Jakarta (hybrid)" },
+                    period: { id: "2021 — Sekarang", en: "2021 — Present" },
+                    desc: {
+                        id: "Memimpin migrasi design system; bundle turun 41%, conversion naik 12%.",
+                        en: "Led design system migration; bundle down 41%, conversion up 12%.",
+                    },
+                },
+                {
+                    role: { id: "Fullstack Developer", en: "Fullstack Developer" },
+                    company: { id: "Agensi Pixel, Bandung", en: "Agensi Pixel, Bandung" },
+                    period: "2019 — 2021",
+                    desc: {
+                        id: "Meluncurkan 6 situs klien dengan LCP di bawah 2 detik.",
+                        en: "Shipped 6 client sites with LCP under 2 seconds.",
+                    },
+                },
+                {
+                    role: { id: "Software Engineer Intern", en: "Software Engineer Intern" },
+                    company: { id: "Startup DataKita", en: "DataKita (startup)" },
+                    period: "2019",
+                    desc: {
+                        id: "Pipeline ETL data terbuka untuk dashboard publik.",
+                        en: "Open-data ETL pipeline for a public dashboard.",
+                    },
+                },
             ],
         },
         principles: {
@@ -736,6 +1031,7 @@ export const PREVIEWS = {
     },
 
     etalase: {
+        cv: false,
         profile: {
             name: "Dapur Nusantara",
             role: {
