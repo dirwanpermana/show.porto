@@ -476,9 +476,9 @@ export const PRICING_GROUPS = [
                 },
                 features: [
                     { id: "Semua yang ada di PORTO", en: "Everything in PORTO" },
-                    { id: "Full source code (React) milik kamu", en: "Full source code (React) is yours" },
-                    { id: "Manual book update mandiri (PDF + video)", en: "Self-update manual book (PDF + video)" },
-                    { id: "Bebas hosting: GitHub Pages / Vercel / hosting sendiri", en: "Host anywhere: GitHub Pages / Vercel / your own" },
+                    { id: "Full source code milik kamu", en: "Full source code is yours" },
+                    { id: "Manual book update mandiri", en: "Self-update manual book" },
+                    { id: "Hosting + subdomain show.porto", en: "Hosting + show.porto subdomain" },
                     { id: "Bantuan pasang domain sendiri", en: "Help setting up your own domain" },
                     { id: "Revisi 3x · prioritas antrean", en: "3 revisions · priority queue" },
                 ],

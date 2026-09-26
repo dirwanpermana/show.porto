@@ -108,8 +108,8 @@ export const SITE = {
         moreUmkmCta: { id: "Buka koleksi UMKM", en: "Open UMKM collection" },
         detail: { id: "Lihat Detail", en: "View Details" },
         custom: {
-            id: "Semua template bisa di-custom suka-suka: warna, font, susunan section, sampai fitur tambahan — sesuai kebutuhanmu.",
-            en: "Every template is fully customizable: colors, fonts, section order, even extra features — tailored to your needs.",
+            id: "Semua template bisa di-custom: warna, font, susunan section - sesuai kebutuhanmu.",
+            en: "Every template is fully customizable: colors, fonts, section order — tailored to your needs.",
         },
         customTag: { id: "Bisa custom", en: "Customizable" },
         style: { id: "Gaya", en: "Style" },
@@ -152,8 +152,8 @@ export const SITE = {
             en: "Don't just read it — try it yourself.",
         },
         sub: {
-            id: "Ganti mode pencari kerja atau UMKM, buka detail proyek, klik tombol pesan. Santai, ini konten demo.",
-            en: "Switch between job seeker or small business, open project details, hit the order button. Relax, it's demo content.",
+            id: "Ganti mode pencari kerja atau UMKM, buka detail proyek, klik tombol pesan.",
+            en: "Switch between job seeker or small business, open project details, hit the order button.",
         },
         tabKerja: { id: "Pencari Kerja", en: "Job Seeker" },
         tabUmkm: { id: "Landing Page UMKM", en: "UMKM Landing" },
@@ -194,7 +194,7 @@ export const SITE = {
     },
     price: {
         tag: { id: "Harga", en: "Pricing" },
-        title: { id: "Dua jalur. Sekali bayar. Nggak ada biaya siluman.", en: "Two paths. Pay once. No ghost fees." },
+        title: { id: "Dua jalur. Sekali bayar dan pas di kantong.", en: "Two paths. Pay once, Budget-friendly." },
         sub: {
             id: "Mau cepet punya web? Ambil paket web jadi — kami yang hosting. Mau pegang kodenya sendiri dan bebas hosting di mana aja? Ambil paket Source Code — lengkap dengan manual book update mandiri.",
             en: "Want a site fast? Take a ready-website plan — we host it. Want to own the code and host anywhere? Take a Source Code plan — complete with a self-update manual book.",
