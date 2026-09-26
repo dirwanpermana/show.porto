@@ -5,7 +5,7 @@ const LangCtx = createContext({ lang: "id", setLang: () => {} });
 export const LangProvider = ({ children }) => {
     const [lang, setLang] = useState(() => {
         try {
-            return localStorage.getItem("show.porto-lang") || "id";
+            return localStorage.getItem("karyaloka-lang") || "id";
         } catch {
             return "id";
         }
@@ -13,7 +13,7 @@ export const LangProvider = ({ children }) => {
 
     useEffect(() => {
         try {
-            localStorage.setItem("show.porto-lang", lang);
+            localStorage.setItem("karyaloka-lang", lang);
         } catch {}
         document.documentElement.lang = lang === "en" ? "en" : "id";
     }, [lang]);
@@ -39,14 +39,14 @@ export const SITE = {
     },
     hero: {
         badge: {
-            id: "Jasa website portofolio & UMKM",
-            en: "Portfolio & UMKM website studio",
+            id: "Don't just tell. Show it.",
+            en: "Don't just tell. Show it.",
         },
         l1: { id: "Biarkan karyamu", en: "Let your work" },
         l2: { id: "bicara.", en: "speak." },
         sub: {
-            id: "Kami membangun website portofolio untuk pencari kerja dan landing page katalog untuk UMKM — pengalaman, pendidikan, proyek, sampai produk, tampil dalam satu halaman yang memukau.",
-            en: "We build portfolio websites for job seekers and catalog landing pages for small businesses — experience, education, projects, and products, all in one stunning page.",
+            id: "CV PDF itu udah gitu-gitu aja. Rekruter cuma scroll 7 detik, UMKM butuh etalase yang jualan 24/7. Di sini pengalaman, pendidikan, proyek, sampai produk kamu tampil full — auto dilirik, auto laku.",
+            en: "PDF CVs are so last season. Recruiters scroll for 7 seconds, small businesses need a storefront that sells 24/7. Here, your experience, education, projects, and products get the spotlight — instant attention, instant sales.",
         },
         cta1: { id: "Mulai dari Rp499rb", en: "Start from Rp499k" },
         cta2: { id: "Lihat Template", en: "Browse Templates" },
@@ -60,21 +60,21 @@ export const SITE = {
         },
     },
     aud: {
-        tag: { id: "Dibuat untuk siapa", en: "Built for whom" },
+        tag: { id: "Buat siapa sih?", en: "Who's this for?" },
         title: {
-            id: "Dua masalah, satu rumah digital.",
-            en: "Two problems, one digital home.",
+            id: "CV datar, katalog sepi? Waktunya naik level.",
+            en: "Flat CV, empty catalog? Time to level up.",
         },
         jobT: { id: "Pencari Kerja", en: "Job Seekers" },
         jobD: {
-            id: "Pengalaman kerja, riwayat pendidikan, dan proyek yang pernah dibangun — tersusun rapi, jauh lebih hidup daripada file CV.",
-            en: "Work experience, education history, and the projects you have built — neatly arranged, far more alive than a CV file.",
+            id: "Masih andelin CV PDF yang isinya teks doang? Rekruter nggak bakal bacain semua. Di sini pengalaman kerja, pendidikan, dan proyekmu kepack dalam satu halaman yang bikin mereka berhenti scroll.",
+            en: "Still leaning on a plain PDF CV? Recruiters won't read all that. Here, your experience, education, and projects hit different — one page that makes them stop scrolling.",
         },
         jobCta: { id: "Lihat paket PORTO", en: "See the PORTO plan" },
         umkmT: { id: "UMKM", en: "Small Business" },
         umkmD: {
-            id: "Daftar produk bergaya e-commerce: foto, harga, dan tombol pesan yang langsung menghubungkan pelanggan ke WhatsApp-mu.",
-            en: "An e-commerce style product list: photos, prices, and an order button that connects customers straight to your WhatsApp.",
+            id: "Nggak perlu bikin aplikasi yang mahal. Katalog produk rapi + foto cakep + tombol pesan langsung nempel ke WhatsApp kamu. Pelanggan klik, kamu tinggal nonek. Beres.",
+            en: "No need for an expensive app. A tidy catalog + pretty photos + an order button wired straight to your WhatsApp. Customers tap, you just pack and ship. Done.",
         },
         umkmCta: { id: "Lihat paket UMKM", en: "See the UMKM plan" },
         chips: [
@@ -86,15 +86,15 @@ export const SITE = {
             { id: "Mobile-first", en: "Mobile-first" },
             { id: "SEO dasar", en: "Basic SEO" },
             { id: "Serah terima cepat", en: "Fast delivery" },
-            { id: "Panduan update mandiri", en: "Self-serve update guide" },
+            { id: "Proses anti ribet", en: "Zero-hassle process" },
         ],
     },
     tpl: {
         tag: { id: "Koleksi template", en: "Template collection" },
         title: { id: "Satu untuk setiap bidang.", en: "One for every field." },
         sub: {
-            id: "Setiap template punya gaya desainnya sendiri — dari editorial hangat sampai terminal mono. Klik detail untuk melihat hasil desain penuhnya.",
-            en: "Each template carries its own design style — from warm editorial to mono terminal. Click details to view the full design result.",
+            id: "Enam template, enam gaya — masing-masing udah diracik sesuai bidangnya. Klik detail, terus scroll santai aja.",
+            en: "Six templates, six vibes — each crafted for its own field. Click details, then scroll around.",
         },
         detail: { id: "Lihat Detail", en: "View Details" },
         style: { id: "Gaya", en: "Style" },
@@ -132,12 +132,12 @@ export const SITE = {
     demo: {
         tag: { id: "Pratinjau langsung", en: "Live preview" },
         title: {
-            id: "Beginilah nanti karyamu tampil.",
-            en: "This is how your work will look.",
+            id: "Jangan cuma dibaca — cobain sendiri.",
+            en: "Don't just read it — try it yourself.",
         },
         sub: {
-            id: "Coba sendiri: pilih mode pencari kerja atau UMKM, buka detail proyek, klik tombol pesan. Konten demo.",
-            en: "Try it yourself: pick the job seeker or small business mode, open project details, click order. Demo content.",
+            id: "Ganti mode pencari kerja atau UMKM, buka detail proyek, klik tombol pesan. Santai, ini konten demo.",
+            en: "Switch between job seeker or small business, open project details, hit the order button. Relax, it's demo content.",
         },
         tabKerja: { id: "Pencari Kerja", en: "Job Seeker" },
         tabUmkm: { id: "UMKM", en: "Business" },
@@ -162,35 +162,26 @@ export const SITE = {
     },
     feat: {
         tag: { id: "Fitur", en: "Features" },
-        title: {
-            id: "Semua yang dibutuhkan untuk tampil profesional.",
-            en: "Everything you need to look professional.",
-        },
+        title: { id: "Fiturnya komplit, dramanya nol.", en: "Full features, zero drama." },
         sub: {
-            id: "Struktur teruji untuk CV hidup dan etalase digital — tanpa kamu perlu menyentuh kode.",
-            en: "A proven structure for a living CV and digital storefront — no code needed on your side.",
+            id: "Semua yang bikin karyamu kelihatan mahal — tanpa kamu pegang kode sedetik pun.",
+            en: "Everything that makes your work look premium — without touching a line of code.",
         },
     },
     proc: {
         tag: { id: "Proses", en: "Process" },
-        title: {
-            id: "Empat langkah, website siap tayang.",
-            en: "Four steps, a launch-ready website.",
-        },
+        title: { id: "Alurnya? Empat langkah, beres.", en: "The flow? Four steps, done." },
         sub: {
-            id: "Kami yang mengerjakan teknisnya — kamu cukup bercerita dan menyetujui.",
-            en: "We handle the technical work — you just tell your story and approve.",
+            id: "Nggak ada istilah teknis yang bikin mumet. Kamu cerita, kami yang kerjain.",
+            en: "No jargon that makes your head spin. You tell the story, we do the work.",
         },
     },
     price: {
         tag: { id: "Harga", en: "Pricing" },
-        title: {
-            id: "Sekali bayar, karya tampil selamanya.",
-            en: "Pay once, your work shines forever.",
-        },
+        title: { id: "Sekali bayar. Nggak ada biaya siluman.", en: "Pay once. No ghost fees." },
         sub: {
-            id: "Tidak ada biaya bulanan tersembunyi. Pilih titik awal, upgrade kapan saja.",
-            en: "No hidden monthly fees. Pick a starting point, upgrade anytime.",
+            id: "Harga jujur di depan. Mau mulai kecil dulu? Santai, upgrade bisa kapan aja.",
+            en: "Honest pricing up front. Starting small? Chill, upgrade anytime.",
         },
         period: { id: "sekali bayar", en: "one-time" },
         popular: { id: "Paling laris", en: "Most popular" },
@@ -203,12 +194,12 @@ export const SITE = {
     faq: {
         tag: { id: "FAQ", en: "FAQ" },
         title: {
-            id: "Pertanyaan yang sering muncul.",
-            en: "Frequently asked questions.",
+            id: "Yang biasanya ditanyakan.",
+            en: "What people usually ask.",
         },
         sub: {
-            id: "Tidak menemukan jawabanmu? Kirim pertanyaan lewat formulir di bawah.",
-            en: "Didn't find your answer? Send it via the form below.",
+            id: "Masih ada yang ngetik di kepala? Tanya langsung lewat formulir di bawah.",
+            en: "Still got questions floating in your head? Drop them in the form below.",
         },
     },
     lead: {
@@ -216,8 +207,8 @@ export const SITE = {
         t1: { id: "Siap tampil", en: "Ready to stand" },
         grad: { id: "beda?", en: "out?" },
         sub: {
-            id: "Konsultasi gratis, tanpa komitmen. Ceritakan karya atau usahamu — kami balas dengan rencana website yang konkret.",
-            en: "Free consultation, no commitment. Tell us about your work or business — we reply with a concrete website plan.",
+            id: "Konsultasi gratis, nggak pake ribet, nggak pake jualan-tekanan. Ceritain mau jadi apa — kita balas dengan rencana yang jelas.",
+            en: "Free consult, zero hassle, zero pushy sales. Tell us what you want to become — we reply with a clear plan.",
         },
         wa: { id: "Chat langsung via WhatsApp", en: "Chat directly via WhatsApp" },
         name: { id: "Nama", en: "Name" },
@@ -231,14 +222,14 @@ export const SITE = {
             en: "Example: I am a graphic designer with 8 projects to showcase…",
         },
         submit: {
-            id: "Kirim & Dapatkan Konsultasi Gratis",
-            en: "Send & Get a Free Consultation",
+            id: "Kirim & Konsultasi Gratis",
+            en: "Send & Chat for Free",
         },
         sending: { id: "Mengirim…", en: "Sending…" },
         toastOk: { id: "Pesan terkirim!", en: "Message sent!" },
         toastOkDesc: {
-            id: "Terima kasih! Tim show.porto akan menghubungimu maksimal 1x24 jam.",
-            en: "Thank you! The show.porto team will reach out within 24 hours.",
+            id: "Mantap! Tim show.porto bales maksimal 1x24 jam. Siap-siap tampil beda.",
+            en: "Awesome! The show.porto team replies within 24 hours. Get ready to stand out.",
         },
         toastErr: { id: "Gagal mengirim", en: "Failed to send" },
         toastErrDesc: {
@@ -248,8 +239,8 @@ export const SITE = {
     },
     footer: {
         tagline: {
-            id: "Don't just tell. Show it. — Website portofolio untuk pencari kerja & etalase digital untuk UMKM Indonesia.",
-            en: "Don't just tell. Show it. — Portfolio websites for job seekers & digital storefronts for Indonesian small businesses.",
+            id: "Don't just tell. Show it. — Rumah buat karya & jualanmu tampil maksimal.",
+            en: "Don't just tell. Show it. — Where your work and business get seen.",
         },
         services: { id: "Layanan", en: "Services" },
         info: { id: "Informasi", en: "Information" },

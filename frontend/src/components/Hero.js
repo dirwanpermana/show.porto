@@ -128,14 +128,14 @@ const Hero = () => {
                 <div className="relative hidden h-[420px] lg:col-span-4 lg:block">
                     <FloatCard
                         img={TEMPLATES[0].img}
-                        label="lumina.show.porto.id"
+                        label="lumina.show.porto"
                         className="right-0 top-2 z-10"
                         tilt={4}
                         delay={0.9}
                     />
                     <FloatCard
                         img={TEMPLATES[5].img}
-                        label="etalase.show.porto.id"
+                        label="etalase.show.porto"
                         className="left-0 top-44"
                         tilt={-3}
                         delay={1.15}

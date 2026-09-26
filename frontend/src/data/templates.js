@@ -1,7 +1,7 @@
 export const BRAND = {
     name: "show.porto",
-    tagline: "Rumah karya digitalmu",
-    domain: "show.porto.id",
+    tagline: "Don't just tell. Show it.",
+    domain: "show.porto",
     wa: "https://wa.me/6281234567890",
 };
 
@@ -20,7 +20,7 @@ export const TEMPLATES = [
     {
         id: "lumina",
         name: "Lumina",
-        domain: "lumina.show.porto.id",
+        domain: "lumina.show.porto",
         field: { id: "Desainer Grafis", en: "Graphic Designer" },
         styleName: { id: "Warm cream editorial", en: "Warm cream editorial" },
         desc: {
@@ -51,7 +51,7 @@ export const TEMPLATES = [
     {
         id: "amplify",
         name: "Amplify",
-        domain: "amplify.show.porto.id",
+        domain: "amplify.show.porto",
         field: { id: "Marketing", en: "Marketing" },
         styleName: { id: "Deep moss with lime voltage", en: "Deep moss with lime voltage" },
         desc: {
@@ -82,7 +82,7 @@ export const TEMPLATES = [
     {
         id: "blueprint",
         name: "Blueprint",
-        domain: "blueprint.show.porto.id",
+        domain: "blueprint.show.porto",
         field: { id: "Teknik Sipil", en: "Civil Engineering" },
         styleName: { id: "Midnight atelier serif", en: "Midnight atelier serif" },
         desc: {
@@ -113,7 +113,7 @@ export const TEMPLATES = [
     {
         id: "aperture",
         name: "Aperture",
-        domain: "aperture.show.porto.id",
+        domain: "aperture.show.porto",
         field: { id: "Fotografer", en: "Photographer" },
         styleName: { id: "White gallery wall", en: "White gallery wall" },
         desc: {
@@ -145,7 +145,7 @@ export const TEMPLATES = [
     {
         id: "deploy",
         name: "Deploy",
-        domain: "deploy.show.porto.id",
+        domain: "deploy.show.porto",
         field: { id: "Web Developer", en: "Web Developer" },
         styleName: { id: "Typeset terminal on black paper", en: "Typeset terminal on black paper" },
         desc: {
@@ -176,7 +176,7 @@ export const TEMPLATES = [
     {
         id: "etalase",
         name: "Etalase",
-        domain: "etalase.show.porto.id",
+        domain: "etalase.show.porto",
         field: { id: "UMKM Kuliner", en: "Food Business" },
         styleName: { id: "Warm parchment atelier", en: "Warm parchment atelier" },
         desc: {
@@ -370,8 +370,8 @@ export const FEATURES = [
             en: "Experience & Education",
         },
         desc: {
-            id: "Riwayat kerja dan pendidikan tampil terstruktur seperti CV premium, mudah dipindai rekruter.",
-            en: "Work and education history presented like a premium CV, easy for recruiters to scan.",
+            id: "Riwayat kerja & sekolah kepack rapi. Rekruter paham dalam 10 detik pertama, nggak perlu mikir.",
+            en: "Work & education history, perfectly packed. Recruiters get it in the first 10 seconds.",
         },
     },
     {
@@ -381,40 +381,40 @@ export const FEATURES = [
             en: "Project Gallery + Details Button",
         },
         desc: {
-            id: "Card slider dengan thumbnail. Tombol detail membuka gambar, PDF, PowerPoint, video, atau link GitHub.",
-            en: "A card slider with thumbnails. The details button opens images, PDF, PowerPoint, video, or GitHub links.",
+            id: "Card slider dengan thumbnail kece. Klik detail langsung buka gambar, PDF, PPT, video, atau GitHub — flexing di tempat.",
+            en: "A slick card slider with thumbnails. The details button opens images, PDF, PPT, video, or GitHub — flex in place.",
         },
     },
     {
         icon: "ShoppingBag",
         title: { id: "Katalog Produk UMKM", en: "Small Business Catalog" },
         desc: {
-            id: "Daftar produk bergaya e-commerce dengan harga, foto, dan tombol pesan langsung ke WhatsApp.",
-            en: "An e-commerce style product list with prices, photos, and an order button straight to WhatsApp.",
+            id: "Katalog produk rasa e-commerce: foto, harga, dan tombol pesan yang langsung nempel ke WhatsApp kamu.",
+            en: "An e-commerce style catalog: photos, prices, and an order button wired to your WhatsApp.",
         },
     },
     {
         icon: "Smartphone",
         title: { id: "Responsif Mobile-First", en: "Mobile-First Responsive" },
         desc: {
-            id: "Tampil sempurna di HP tempat 80% rekruter dan pelanggan membuka websitemu.",
-            en: "Looks perfect on the phones where 80% of recruiters and customers open your website.",
+            id: "80% orang buka dari HP. Tenang, websitemu tetap cakep di layar sekecil apa pun.",
+            en: "80% of people browse on phones. Relax, your site stays pretty on any screen.",
         },
     },
     {
         icon: "TrendingUp",
         title: { id: "SEO Dasar + Analytics", en: "Basic SEO + Analytics" },
         desc: {
-            id: "Struktur ramah Google dan statistik pengunjung supaya kamu tahu siapa yang melihat karyamu.",
-            en: "Google-friendly structure and visitor stats so you know who is viewing your work.",
+            id: "Struktur yang Google suka + statistik pengunjung. Kamu tahu siapa aja yang lagi ngintip karyamu.",
+            en: "Google-friendly structure + visitor stats. You'll know who's checking out your work.",
         },
     },
     {
         icon: "Globe",
         title: { id: "Domain & Hosting", en: "Domain & Hosting" },
         desc: {
-            id: "Hosting termasuk, domain custom tersedia di paket PRO supaya nama brands makin melekat.",
-            en: "Hosting included, custom domain available on the PRO plan so your name sticks.",
+            id: "Hosting udah termasuk semua paket. Mau pakai domain sendiri? Ada di PRO, biar makin bersinar.",
+            en: "Hosting included in every plan. Want your own domain? It's on PRO — for maximum shine.",
         },
     },
 ];
@@ -424,32 +424,32 @@ export const STEPS = [
         num: "01",
         title: { id: "Konsultasi & Brief", en: "Consultation & Brief" },
         desc: {
-            id: "Ceritakan targetmu — kerja, klien, atau jualan. Kami susun struktur halaman yang tepat.",
-            en: "Tell us your goal — a job, clients, or sales. We structure the right page plan.",
+            id: "Cerita dulu: mau cari kerja, kejar klien, atau jualan? Kami susun rencana yang pas buatmu.",
+            en: "Story time: job hunting, chasing clients, or selling? We build the right plan for you.",
         },
     },
     {
         num: "02",
         title: { id: "Pilih Template", en: "Pick a Template" },
         desc: {
-            id: "Tentukan satu dari koleksi template sesuai bidangmu. Lihat langsung contoh live-nya.",
-            en: "Choose one from the template collection matching your field. See live examples.",
+            id: "Scroll koleksinya pelan-pelan, pilih yang paling 'ini dia'. Semua ada contoh live-nya.",
+            en: "Scroll the collection slowly, pick the one that feels right. Every one has a live example.",
         },
     },
     {
         num: "03",
         title: { id: "Isi Konten", en: "Fill the Content" },
         desc: {
-            id: "Kirim CV, foto, dokumen proyek, atau daftar produk. Tim kami yang merapikan & mengisi.",
-            en: "Send your CV, photos, project documents, or product list. Our team arranges everything.",
+            id: "Kirim CV, foto, file proyek, atau daftar produk. Kalau berantakan, kami yang rapihin.",
+            en: "Send your CV, photos, project files, or product list. Messy? We'll tidy it up.",
         },
     },
     {
         num: "04",
         title: { id: "Launch", en: "Launch" },
         desc: {
-            id: "Website serah terima dalam hitungan hari, lengkap dengan panduan update mandiri.",
-            en: "Your website is handed over in days, complete with a self-serve update guide.",
+            id: "Website serah terima lengkap dengan panduan update. Tinggal pamer, deh.",
+            en: "Website handed over with an update guide. Time to show off.",
         },
     },
 ];
@@ -460,8 +460,8 @@ export const PRICING = [
         name: "PORTO",
         price: "Rp499rb",
         desc: {
-            id: "Portofolio satu halaman yang rapi dan cepat jadi.",
-            en: "A tidy one-page portfolio, fast to launch.",
+            id: "Buat kamu yang mau cepat kerja: portofolio satu halaman, rapi, langsung tayang.",
+            en: "For fast movers: a tidy one-page portfolio, live in days.",
         },
         features: [
             { id: "1 halaman portofolio", en: "1 portfolio page" },
@@ -473,7 +473,7 @@ export const PRICING = [
                 id: "Galeri 6 proyek + tombol detail",
                 en: "6-project gallery + details button",
             },
-            { id: "Subdomain show.porto.id", en: "show.porto.id subdomain" },
+            { id: "Subdomain show.porto", en: "show.porto subdomain" },
             { id: "Mobile responsive", en: "Mobile responsive" },
             { id: "Revisi 2x · selesai 5-7 hari", en: "2 revisions · done in 5-7 days" },
         ],
@@ -484,8 +484,8 @@ export const PRICING = [
         name: "UMKM",
         price: "Rp999rb",
         desc: {
-            id: "Etalase digital untuk jualan lebih hari ini.",
-            en: "A digital storefront to sell more today.",
+            id: "Etalase digital yang jualan buat kamu 24/7. Fokus produksi, urusan pameran biar kami.",
+            en: "A digital storefront that sells for you 24/7. You focus on the product.",
         },
         features: [
             {
@@ -504,7 +504,7 @@ export const PRICING = [
                 id: "Google Maps + jam operasional",
                 en: "Google Maps + opening hours",
             },
-            { id: "Subdomain show.porto.id", en: "show.porto.id subdomain" },
+            { id: "Subdomain show.porto", en: "show.porto subdomain" },
             { id: "Revisi 3x · selesai 7-10 hari", en: "3 revisions · done in 7-10 days" },
         ],
         highlight: false,
@@ -514,8 +514,8 @@ export const PRICING = [
         name: "PRO",
         price: "Rp1,4jt",
         desc: {
-            id: "Kredibilitas maksimal untuk karier & bisnis.",
-            en: "Maximum credibility for career & business.",
+            id: "Full package buat karier & bisnis yang serius mau naik kelas.",
+            en: "The full package for careers & businesses leveling up.",
         },
         features: [
             {
@@ -543,50 +543,50 @@ export const PRICING = [
 
 export const FAQS = [
     {
-        q: { id: "Berapa lama website jadi?", en: "How long does it take?" },
+        q: { id: "Berapa lama website-nya jadi?", en: "How long does it take?" },
         a: {
-            id: "Paket PORTO selesai 5-7 hari kerja, UMKM 7-10 hari, dan PRO menyesuaikan kelengkapan konten. Hitungan hari sejak materi konten lengkap kami terima.",
-            en: "PORTO finishes in 5-7 working days, UMKM in 7-10, and PRO depends on content completeness — counted from when we receive complete materials.",
+            id: "PORTO 5-7 hari kerja, UMKM 7-10 hari, PRO menyesuaikan kelengkapan konten. Cepat kan? Hitungannya mulai pas materi kamu lengkap kami terima.",
+            en: "PORTO takes 5-7 working days, UMKM 7-10, and PRO depends on content completeness. Quick, right? The clock starts once your materials are complete.",
         },
     },
     {
         q: {
-            id: "Apakah saya bisa update sendiri isinya?",
-            en: "Can I update the content myself?",
+            id: "Bisa update sendiri nggak?",
+            en: "Can I update it myself?",
         },
         a: {
-            id: "Bisa. Konten seperti pengalaman, pendidikan, proyek, dan produk dikelola lewat panduan update mandiri yang kami serahkan saat serah terima. Kamu juga bisa minta kami update kapan pun.",
-            en: "Yes. Content like experience, education, projects, and products is managed via the self-serve update guide we hand over at launch. You can also ask us to update anytime.",
+            id: "Bisa banget. Ada panduan update mandiri saat serah terima — pengalaman, proyek, dan produk bisa kamu kelola sendiri. Mager? Ping kami, kami yang update.",
+            en: "Absolutely. You get a self-serve update guide at handover — experience, projects, and products are all yours to manage. Feeling lazy? Ping us and we'll do it.",
         },
     },
     {
         q: {
-            id: "Tombol detail proyek bisa membuka format apa saja?",
-            en: "What formats can the project details button open?",
+            id: "Tombol detail bisa buka format apa aja?",
+            en: "What formats can the details button open?",
         },
         a: {
-            id: "Gambar (JPG/PNG), dokumen PDF, presentasi PowerPoint, video (YouTube/Vimeo), dan link GitHub atau Behance. Setiap kartu proyek bisa memuat kombinasi link sesuai kebutuhanmu.",
-            en: "Images (JPG/PNG), PDF documents, PowerPoint presentations, video (YouTube/Vimeo), and GitHub or Behance links. Each project card can hold any mix of links you need.",
+            id: "Gambar (JPG/PNG), dokumen PDF, presentasi PowerPoint, video (YouTube/Vimeo), sampai link GitHub & Behance. Campur sesukamu per proyek.",
+            en: "Images (JPG/PNG), PDF documents, PowerPoint slides, video (YouTube/Vimeo), even GitHub & Behance links. Mix and match per project.",
         },
     },
     {
         q: {
-            id: "Untuk UMKM, bagaimana pelanggan memesan?",
-            en: "How do customers order on the UMKM site?",
+            id: "Pelanggan pesannya lewat mana?",
+            en: "How do customers order?",
         },
         a: {
-            id: "Setiap produk di katalog punya tombol Pesan yang langsung membuka WhatsApp dengan pesan otomatis berisi nama produk. Pelanggan tinggal kirim, kamu langsung menerima order.",
-            en: "Every product in the catalog has an Order button that opens WhatsApp with a pre-filled message containing the product name. Customers just hit send, and the order lands with you.",
+            id: "Lewat tombol Pesan di tiap produk — langsung buka WhatsApp dengan pesan otomatis berisi nama produk. Tinggal send, order langsung masuk.",
+            en: "Via the Order button on each product — it opens WhatsApp with a pre-filled message containing the product name. One tap, order received.",
         },
     },
     {
         q: {
-            id: "Apakah harga sudah termasuk hosting & domain?",
+            id: "Harganya udah termasuk hosting & domain?",
             en: "Does the price include hosting & domain?",
         },
         a: {
-            id: "Semua paket sudah termasuk hosting. Paket PORTO dan UMKM memakai subdomain show.porto.id; domain custom tersedia di paket PRO dengan biaya domain terpisah sesuai harga resmi registrar.",
-            en: "All plans include hosting. PORTO and UMKM use a show.porto.id subdomain; a custom domain is available on PRO with the domain fee charged at the registrar's official price.",
+            id: "Hosting udah termasuk semua paket. PORTO & UMKM pakai subdomain show.porto; domain sendiri tersedia di paket PRO (biaya domain ngikutin harga resmi registrar).",
+            en: "Hosting is included in every plan. PORTO & UMKM use a show.porto subdomain; your own domain is available on PRO (domain fee follows the registrar's official price).",
         },
     },
 ];

@@ -49,3 +49,8 @@ Landing page satu halaman (bahasa Indonesia) untuk brand **show.porto** + backen
 - P0: Ganti harga & nomor WhatsApp asli; domain produksi
 - P1: Halaman admin sederhana untuk membaca leads; testimoni asli
 - P2: Mini-CMS update mandiri untuk klien; pembayaran (Stripe/Xendit)
+
+## Iterasi 2026-09-26 (Rebrand & Copy)
+- [x] Logo menjadi wordmark murni "show.porto" (".porto" berwarna iris) — ikon spark dihapus dari nav & footer; favicon spark tetap dipakai di tab browser
+- [x] Storytelling seluruh situs ditulis ulang dengan bahasa manusiawi Gen-Z (ID + EN) untuk target pencari kerja & UMKM: hero ("CV PDF itu udah gitu-gitu aja..."), audiences ("CV datar, katalog sepi? Waktunya naik level."), fitur ("Fiturnya komplit, dramanya nol."), proses, harga ("Sekali bayar. Nggak ada biaya siluman."), FAQ, form konsultasi, toast, dan footer tagline "Don't just tell. Show it."
+- [x] Badge hero kini menampilkan tagline "Don't just tell. Show it."
