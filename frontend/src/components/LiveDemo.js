@@ -6,6 +6,8 @@ import {
     GraduationCap,
     Lock,
     MessageCircle,
+    Sparkles,
+    Star,
     X,
 } from "lucide-react";
 import { Reveal, SectionTag } from "@/components/Reveal";
@@ -31,22 +33,27 @@ const MiniSlider = ({ onDetail }) => {
         <div className="relative">
             <div
                 ref={ref}
+                data-lenis-prevent
                 className="no-scrollbar flex gap-4 overflow-x-auto pb-1"
             >
-                {DEMO_PROJECTS.map((p) => (
+                {DEMO_PROJECTS.map((p, i) => (
                     <div
                         key={p.id}
-                        className="w-52 shrink-0 overflow-hidden rounded-lg border hairline bg-white/[0.03]"
+                        className="group w-52 shrink-0 overflow-hidden rounded-xl border hairline bg-white/[0.03] transition-all duration-500 hover:border-iris/50 hover:bg-white/[0.05]"
                     >
-                        <div className="relative">
+                        <div className="relative overflow-hidden">
                             <img
                                 src={p.img}
                                 alt={p.title[lang]}
                                 loading="lazy"
-                                className="h-28 w-full object-cover"
+                                className="h-28 w-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
-                            <span className="absolute bottom-2 left-2 rounded bg-void/70 px-2 py-0.5 text-[9px] uppercase tracking-wider text-mist backdrop-blur-sm">
+                            <div className="absolute inset-0 bg-gradient-to-t from-void/60 via-transparent to-transparent" />
+                            <span className="absolute bottom-2 left-2 rounded-full bg-void/70 px-2.5 py-1 text-[9px] font-medium uppercase tracking-wider text-mist backdrop-blur-sm">
                                 {p.meta[lang]}
+                            </span>
+                            <span className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-iris/90 text-[10px] font-medium text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                {String(i + 1).padStart(2, "0")}
                             </span>
                         </div>
                         <div className="p-3">
@@ -55,10 +62,11 @@ const MiniSlider = ({ onDetail }) => {
                             </p>
                             <button
                                 onClick={() => onDetail(p)}
-                                className="mt-2.5 inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-iris/90 px-3 py-1.5 text-[11px] font-medium text-white transition-colors hover:bg-iris"
+                                data-testid={`demo-detail-button-${p.id}`}
+                                className="group/btn mt-2.5 inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-iris/90 px-3 py-2 text-[11px] font-medium text-white transition-all duration-300 hover:bg-iris"
                             >
                                 {S.detailBtn[lang]}
-                                <ArrowUpRight className="h-3 w-3" />
+                                <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                             </button>
                         </div>
                     </div>
@@ -68,14 +76,14 @@ const MiniSlider = ({ onDetail }) => {
                 <button
                     onClick={() => scroll(-1)}
                     aria-label="Geser kiri"
-                    className="h-7 w-7 rounded-full border hairline text-xs text-mist transition-colors hover:text-bone"
+                    className="inline-flex h-7 w-7 items-center justify-center rounded-full border hairline text-xs text-mist transition-colors hover:border-iris hover:text-bone"
                 >
                     ‹
                 </button>
                 <button
                     onClick={() => scroll(1)}
                     aria-label="Geser kanan"
-                    className="h-7 w-7 rounded-full border hairline text-xs text-mist transition-colors hover:text-bone"
+                    className="inline-flex h-7 w-7 items-center justify-center rounded-full border hairline text-xs text-mist transition-colors hover:border-iris hover:text-bone"
                 >
                     ›
                 </button>
@@ -92,7 +100,7 @@ const DemoBrowser = () => {
 
     return (
         <>
-            <div className="overflow-hidden rounded-2xl border hairline bg-ink shadow-[0_40px_100px_rgba(0,0,0,0.7)]">
+            <div className="overflow-hidden rounded-2xl border hairline bg-[#0b0b0d] shadow-[0_40px_100px_rgba(0,0,0,0.7),0_0_80px_rgba(128,82,255,0.08)] ring-1 ring-white/[0.06]">
                 <div className="flex items-center justify-between border-b hairline bg-white/[0.04] px-5 py-3">
                     <div className="flex items-center gap-2">
                         <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
@@ -107,7 +115,7 @@ const DemoBrowser = () => {
                     </span>
                 </div>
 
-                <div className="flex gap-2 border-b hairline px-5 py-3">
+                <div className="flex items-center gap-2 border-b hairline bg-white/[0.02] px-5 py-3">
                     {[
                         { id: "kerja", label: S.tabKerja },
                         { id: "umkm", label: S.tabUmkm },
@@ -116,51 +124,69 @@ const DemoBrowser = () => {
                             key={t.id}
                             data-testid={`demo-tab-${t.id}`}
                             onClick={() => setTab(t.id)}
-                            className={`rounded-full px-4 py-2 text-xs font-medium transition-all duration-300 ${
+                            className={`relative rounded-full px-4 py-2 text-xs font-medium transition-all duration-300 ${
                                 tab === t.id
-                                    ? "bg-iris text-white"
+                                    ? "bg-iris text-white shadow-[0_0_20px_rgba(128,82,255,0.4)]"
                                     : "border hairline text-ash hover:text-bone"
                             }`}
                         >
                             {t.label[lang]}
                         </button>
                     ))}
+                    <span className="ml-auto hidden items-center gap-1.5 text-[10px] font-light text-ash sm:flex">
+                        <Sparkles className="h-3 w-3 text-saffron" />
+                        {lang === "id" ? "Konten demo" : "Demo content"}
+                    </span>
                 </div>
 
                 <div className="p-6 md:p-8" data-testid="demo-content">
                     {tab === "kerja" ? (
-                        <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
+                        <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
                             <div className="lg:col-span-2">
-                                <div className="flex items-center gap-4">
-                                    <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-iris to-[#4b2aa6] font-display text-lg font-medium text-white">
-                                        RP
-                                    </span>
-                                    <div>
-                                        <p className="font-display text-xl font-light text-bone">
-                                            {DEMO_PROFILE.name}
-                                        </p>
-                                        <p className="text-xs font-light text-ash">
-                                            {DEMO_PROFILE.role[lang]}
-                                        </p>
+                                <div className="rounded-xl border hairline bg-white/[0.03] p-5">
+                                    <div className="flex items-center gap-4">
+                                        <span className="relative flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-iris to-[#4b2aa6] font-display text-lg font-medium text-white ring-2 ring-iris/30">
+                                            RP
+                                            <span className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-[#0b0b0d] bg-verdant" />
+                                        </span>
+                                        <div>
+                                            <p className="font-display text-xl font-light text-bone">
+                                                {DEMO_PROFILE.name}
+                                            </p>
+                                            <p className="text-xs font-light text-ash">
+                                                {DEMO_PROFILE.role[lang]}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="mt-4 flex flex-wrap gap-1.5">
+                                        {["AutoCAD", "ETABS", "MS Project"].map((s) => (
+                                            <span
+                                                key={s}
+                                                className="rounded-full border hairline bg-white/[0.03] px-2.5 py-1 text-[10px] font-light text-mist"
+                                            >
+                                                {s}
+                                            </span>
+                                        ))}
                                     </div>
                                 </div>
-                                <div className="mt-6">
-                                    <p className="mb-3 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-mist">
+
+                                <div className="mt-5 rounded-xl border hairline bg-white/[0.03] p-5">
+                                    <p className="mb-4 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-mist">
                                         <Briefcase className="h-3.5 w-3.5 text-iris" />
                                         {S.exp[lang]}
                                     </p>
-                                    <div className="space-y-4 border-l border-white/10 pl-4">
+                                    <div className="space-y-5 border-l border-white/10 pl-4">
                                         {DEMO_EXPERIENCE.map((e) => (
                                             <div key={e.role} className="relative">
-                                                <span className="absolute -left-[21px] top-1.5 h-2 w-2 rounded-full bg-iris" />
+                                                <span className="absolute -left-[21px] top-1.5 h-2 w-2 rounded-full bg-iris shadow-[0_0_10px_rgba(128,82,255,0.7)]" />
                                                 <p className="text-sm font-medium text-bone">
-                                                    {e.role} ·{" "}
-                                                    <span className="font-light text-ash">
-                                                        {e.company[lang]}
-                                                    </span>
+                                                    {e.role}
                                                 </p>
-                                                <p className="text-[11px] font-light text-iris">
-                                                    {e.period[lang]}
+                                                <p className="text-xs font-light text-ash">
+                                                    {e.company[lang]} ·{" "}
+                                                    <span className="text-iris">
+                                                        {e.period[lang]}
+                                                    </span>
                                                 </p>
                                                 <p className="mt-1 text-xs font-light leading-relaxed text-ash">
                                                     {e.note[lang]}
@@ -169,70 +195,100 @@ const DemoBrowser = () => {
                                         ))}
                                     </div>
                                 </div>
-                                <div className="mt-6">
-                                    <p className="mb-3 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-mist">
-                                        <GraduationCap className="h-3.5 w-3.5 text-saffron" />
-                                        {S.edu[lang]}
+                            </div>
+
+                            <div className="lg:col-span-3">
+                                <div className="rounded-xl border hairline bg-white/[0.03] p-5">
+                                    <p className="mb-4 flex items-center justify-between text-[11px] font-medium uppercase tracking-[0.18em] text-mist">
+                                        <span className="flex items-center gap-2">
+                                            <GraduationCap className="h-3.5 w-3.5 text-saffron" />
+                                            {S.edu[lang]}
+                                        </span>
+                                        <span className="font-light normal-case tracking-normal text-ash">
+                                            {S.works[lang]}
+                                        </span>
                                     </p>
-                                    <div className="space-y-3">
+                                    <div className="mb-5 space-y-2.5">
                                         {DEMO_EDUCATION.map((d) => (
                                             <div
                                                 key={d.degree.en}
-                                                className="rounded-lg border hairline bg-white/[0.03] px-4 py-3"
+                                                className="flex items-center justify-between rounded-lg border-l-2 border-saffron/60 bg-white/[0.03] px-4 py-3"
                                             >
-                                                <p className="text-sm font-medium text-bone">
-                                                    {d.degree[lang]}
-                                                </p>
-                                                <p className="text-xs font-light text-ash">
-                                                    {d.school[lang]} · {d.period}
-                                                </p>
-                                                <p className="mt-0.5 text-[11px] font-light text-verdant">
-                                                    {d.note[lang]}
-                                                </p>
+                                                <div>
+                                                    <p className="text-sm font-medium text-bone">
+                                                        {d.degree[lang]}
+                                                    </p>
+                                                    <p className="text-xs font-light text-ash">
+                                                        {d.school[lang]}
+                                                    </p>
+                                                </div>
+                                                <span className="text-[11px] font-light text-ash">
+                                                    {d.period}
+                                                </span>
                                             </div>
                                         ))}
                                     </div>
+                                    <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-mist">
+                                        {S.works[lang]}
+                                    </p>
+                                    <MiniSlider onDetail={setDetail} />
+                                    <p className="mt-4 text-[11px] font-light leading-relaxed text-ash">
+                                        {S.worksNote[lang]}
+                                    </p>
                                 </div>
-                            </div>
-                            <div className="lg:col-span-3">
-                                <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-mist">
-                                    {S.works[lang]}
-                                </p>
-                                <MiniSlider onDetail={setDetail} />
-                                <p className="mt-4 text-[11px] font-light leading-relaxed text-ash">
-                                    {S.worksNote[lang]}
-                                </p>
                             </div>
                         </div>
                     ) : (
                         <div>
-                            <div className="mb-5 flex items-center justify-between">
-                                <div>
-                                    <p className="font-display text-xl font-light text-bone">
-                                        Dapur Nusantara
-                                    </p>
-                                    <p className="text-xs font-light text-ash">
-                                        {lang === "id"
-                                            ? "Katering & frozen food · Buka 08.00-20.00"
-                                            : "Catering & frozen food · Open 08.00-20.00"}
-                                    </p>
+                            <div className="relative mb-5 overflow-hidden rounded-xl border hairline bg-gradient-to-r from-verdant/15 via-white/[0.03] to-saffron/10 p-5">
+                                <div className="flex items-center justify-between gap-4">
+                                    <div className="flex items-center gap-4">
+                                        <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-verdant to-[#0e5a4b] font-display text-lg font-medium text-white">
+                                            DN
+                                        </span>
+                                        <div>
+                                            <p className="font-display text-xl font-light text-bone">
+                                                Dapur Nusantara
+                                            </p>
+                                            <p className="text-xs font-light text-ash">
+                                                {lang === "id"
+                                                    ? "Katering & frozen food"
+                                                    : "Catering & frozen food"}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="hidden items-center gap-2 sm:flex">
+                                        <span className="flex items-center gap-1 rounded-full bg-white/[0.05] px-3 py-1.5 text-[11px] font-medium text-saffron">
+                                            <Star className="h-3 w-3 fill-saffron" />
+                                            4,9
+                                            <span className="font-light text-ash">(1,2rb)</span>
+                                        </span>
+                                        <span className="rounded-full bg-verdant/20 px-3 py-1.5 text-[11px] font-medium text-[#3fbfa4]">
+                                            {S.ongkir[lang]}
+                                        </span>
+                                    </div>
                                 </div>
-                                <span className="rounded-full bg-verdant/20 px-3 py-1.5 text-[11px] font-medium text-[#3fbfa4]">
-                                    {S.ongkir[lang]}
-                                </span>
                             </div>
                             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-                                {DEMO_PRODUCTS.map((p) => (
+                                {DEMO_PRODUCTS.map((p, i) => (
                                     <div
                                         key={p.price}
-                                        className="overflow-hidden rounded-lg border hairline bg-white/[0.03]"
+                                        data-testid={`demo-product-card-${i}`}
+                                        className="group overflow-hidden rounded-xl border hairline bg-white/[0.03] transition-all duration-500 hover:-translate-y-1 hover:border-verdant/40"
                                     >
-                                        <img
-                                            src={p.img}
-                                            alt={p.name[lang]}
-                                            loading="lazy"
-                                            className="h-24 w-full object-cover sm:h-28"
-                                        />
+                                        <div className="relative overflow-hidden">
+                                            <img
+                                                src={p.img}
+                                                alt={p.name[lang]}
+                                                loading="lazy"
+                                                className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                            />
+                                            {i === 0 && (
+                                                <span className="absolute left-2 top-2 rounded-full bg-saffron px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-void">
+                                                    Best
+                                                </span>
+                                            )}
+                                        </div>
                                         <div className="p-3">
                                             <p className="truncate text-xs font-medium text-bone">
                                                 {p.name[lang]}
@@ -245,7 +301,7 @@ const DemoBrowser = () => {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 data-testid={`demo-order-button-${p.price.replace(/\D/g, "")}`}
-                                                className="mt-2.5 inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-verdant px-3 py-1.5 text-[11px] font-medium text-white transition-colors hover:bg-[#1aa48a]"
+                                                className="mt-2.5 inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-verdant px-3 py-2 text-[11px] font-medium text-white transition-all duration-300 hover:bg-[#1aa48a] hover:shadow-[0_0_16px_rgba(21,132,110,0.5)]"
                                             >
                                                 <MessageCircle className="h-3 w-3" />
                                                 {S.order[lang]}
@@ -278,6 +334,7 @@ const DemoBrowser = () => {
                             exit={{ opacity: 0, y: 20, scale: 0.97 }}
                             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                             onClick={(e) => e.stopPropagation()}
+                            data-lenis-prevent
                             className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border hairline bg-ink"
                         >
                             <div className="relative">
@@ -349,10 +406,11 @@ const LiveDemo = () => {
         <section
             id="pratinjau"
             ref={ref}
-            className="scroll-mt-24 border-t hairline py-24 md:py-32"
+            className="relative scroll-mt-24 overflow-hidden border-t hairline py-24 md:py-32"
             style={{ perspective: 1400 }}
         >
-            <div className="mx-auto max-w-[1280px] px-6">
+            <div className="pointer-events-none absolute left-1/2 top-1/3 h-[420px] w-[760px] -translate-x-1/2 rounded-full bg-iris/10 blur-[140px]" />
+            <div className="relative mx-auto max-w-[1280px] px-6">
                 <div className="text-center">
                     <Reveal className="inline-block">
                         <SectionTag>{S.tag[lang]}</SectionTag>

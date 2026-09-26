@@ -1,9 +1,11 @@
 // Konten contoh per template (bilingual) — persona & karya realistis sesuai bidang.
-// Struktur halaman ala PDF: Cover → Tentang → Pendidikan & Kursus → Pengalaman → Proyek → Penghargaan → Kontak.
-// Template UMKM (etalase) memakai alur bisnis: Cover → Tentang → Menu → Layanan → Kepercayaan → Kontak.
+// Setiap template punya alur section (flow), varian cover, dan layout proyek sendiri.
 export const PREVIEWS = {
     lumina: {
         cv: true,
+        cover: "editorial",
+        projectLayout: "masonry",
+        flow: ["about", "works", "edu", "exp", "trust", "contact"],
         profile: {
             name: "Sasha Mahendra",
             role: { id: "Desainer Grafis", en: "Graphic Designer" },
@@ -129,6 +131,12 @@ export const PREVIEWS = {
                     year: "2024",
                     img: "https://images.pexels.com/photos/30349399/pexels-photo-30349399.jpeg?auto=compress&cs=tinysrgb&w=1200",
                 },
+                {
+                    title: { id: "Annual Report Bank Nusa", en: "Bank Nusa Annual Report" },
+                    meta: { id: "Editorial · 64 halaman", en: "Editorial · 64 pages" },
+                    year: "2023",
+                    img: "https://images.unsplash.com/photo-1519217651866-847339e674d4?q=80&w=1200&auto=format&fit=crop",
+                },
             ],
         },
         services: {
@@ -212,6 +220,9 @@ export const PREVIEWS = {
 
     amplify: {
         cv: true,
+        cover: "bento",
+        projectLayout: "slider",
+        flow: ["about", "works", "exp", "edu", "trust", "contact"],
         profile: {
             name: "Bella Kusuma",
             role: { id: "Growth Marketing", en: "Growth Marketing" },
@@ -312,8 +323,8 @@ export const PREVIEWS = {
         works: {
             label: { id: "Studi Kasus", en: "Case Studies" },
             sub: {
-                id: "Kampanye pilihan beserta hasil terukurnya — angka, bukan janji.",
-                en: "Selected campaigns with measurable results — numbers, not promises.",
+                id: "Geser kartu — kampanye pilihan beserta hasil terukurnya.",
+                en: "Swipe the cards — selected campaigns with measurable results.",
             },
             items: [
                 {
@@ -339,6 +350,12 @@ export const PREVIEWS = {
                     meta: { id: "Konversi +68%", en: "Conversions +68%" },
                     year: "2024",
                     img: "https://images.pexels.com/photos/39205102/pexels-photo-39205102.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                },
+                {
+                    title: { id: "Konten Komunitas Kreatif", en: "Creative Community Content" },
+                    meta: { id: "10rb pengikut baru", en: "10k new followers" },
+                    year: "2024",
+                    img: "https://images.pexels.com/photos/15543037/pexels-photo-15543037.jpeg?auto=compress&cs=tinysrgb&w=1200",
                 },
             ],
         },
@@ -417,6 +434,9 @@ export const PREVIEWS = {
 
     blueprint: {
         cv: true,
+        cover: "media",
+        projectLayout: "grid",
+        flow: ["about", "works", "exp", "edu", "trust", "contact"],
         profile: {
             name: "Aris Wicaksono",
             role: {
@@ -495,7 +515,7 @@ export const PREVIEWS = {
             label: { id: "Filosofi Rancang", en: "Design Philosophy" },
             items: [
                 {
-                    t: { id: "Kejujuran Struktur", en: "Structural Honesty" },
+                    t: { id: "Kejuhuran Struktur", en: "Structural Honesty" },
                     d: {
                         id: "Beban harus mengalir jujur; material tampil apa adanya.",
                         en: "Loads must flow honestly; materials show as they are.",
@@ -628,6 +648,9 @@ export const PREVIEWS = {
 
     aperture: {
         cv: true,
+        cover: "gallery",
+        projectLayout: "gallery",
+        flow: ["works", "about", "exp", "trust", "contact"],
         profile: {
             name: "Danu Rahardjo",
             role: { id: "Fotografer", en: "Photographer" },
@@ -728,27 +751,39 @@ export const PREVIEWS = {
         works: {
             label: { id: "Galeri Terpilih", en: "Selected Gallery" },
             sub: {
-                id: "Potret, komersial, dan momen di antaranya — cetak & digital.",
-                en: "Portraits, commercial work, and the moments between — print & digital.",
+                id: "Arahkan kursor untuk melihat judul — potret, komersial, dan di antaranya.",
+                en: "Hover to reveal titles — portraits, commercial work, and the moments between.",
             },
             items: [
                 {
                     title: { id: "Serial 'Tukang Kayu'", en: "'The Woodworkers' Series" },
-                    meta: { id: "Potret Dokumenter · 24 foto", en: "Documentary Portraits · 24 frames" },
+                    meta: { id: "Potret Dokumenter", en: "Documentary Portrait" },
                     year: "2024",
-                    img: "https://images.pexels.com/photos/16135635/pexels-photo-16135635.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                    img: "https://images.pexels.com/photos/16135635/pexels-photo-16135635.jpeg?auto=compress&cs=tinysrgb&w=1000",
                 },
                 {
                     title: { id: "Editorial 'Pasar Buku'", en: "'Book Market' Editorial" },
-                    meta: { id: "Jurnal Rupa · 8 halaman", en: "Jurnal Rupa · 8 pages" },
+                    meta: { id: "Editorial", en: "Editorial" },
                     year: "2023",
-                    img: "https://images.unsplash.com/photo-1621024994278-e409544f4085?q=80&w=1200&auto=format&fit=crop",
+                    img: "https://images.unsplash.com/photo-1621024994278-e409544f4085?q=80&w=1000&auto=format&fit=crop",
                 },
                 {
                     title: { id: "Kampanye Hotel Anantara", en: "Anantara Hotel Campaign" },
-                    meta: { id: "Komersial · Lobi & Suite", en: "Commercial · Lobby & Suites" },
+                    meta: { id: "Komersial", en: "Commercial" },
                     year: "2024",
-                    img: "https://images.unsplash.com/photo-1648662199460-34b7597ba771?q=80&w=1200&auto=format&fit=crop",
+                    img: "https://images.unsplash.com/photo-1648662199460-34b7597ba771?q=80&w=1000&auto=format&fit=crop",
+                },
+                {
+                    title: { id: "Potret Studio — Seri Dua", en: "Studio Portraits — Series Two" },
+                    meta: { id: "Potret", en: "Portrait" },
+                    year: "2023",
+                    img: "https://images.pexels.com/photos/33273434/pexels-photo-33273434.jpeg?auto=compress&cs=tinysrgb&w=1000",
+                },
+                {
+                    title: { id: "Di Balik Panggung", en: "Behind the Stage" },
+                    meta: { id: "Dokumenter", en: "Documentary" },
+                    year: "2022",
+                    img: "https://images.unsplash.com/photo-1621024994326-91782bb4a5ba?q=80&w=1000&auto=format&fit=crop",
                 },
             ],
         },
@@ -827,6 +862,9 @@ export const PREVIEWS = {
 
     deploy: {
         cv: true,
+        cover: "terminal",
+        projectLayout: "list",
+        flow: ["exp", "works", "edu", "trust", "contact"],
         profile: {
             name: "Rizky Ananda",
             role: { id: "Web Developer", en: "Web Developer" },
@@ -955,6 +993,12 @@ export const PREVIEWS = {
                     year: "2024",
                     img: "https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?q=80&w=1200&auto=format&fit=crop",
                 },
+                {
+                    title: { id: "Bot Laporan Harian Telegram", en: "Telegram Daily Report Bot" },
+                    meta: { id: "Node.js · Cron · 40 subs", en: "Node.js · Cron · 40 subs" },
+                    year: "2022",
+                    img: "https://images.unsplash.com/photo-1599837565318-67429bde7162?q=80&w=1200&auto=format&fit=crop",
+                },
             ],
         },
         services: {
@@ -1032,6 +1076,9 @@ export const PREVIEWS = {
 
     etalase: {
         cv: false,
+        cover: "warm",
+        projectLayout: "menu",
+        flow: ["about", "works", "trust", "contact"],
         profile: {
             name: "Dapur Nusantara",
             role: {
@@ -1078,31 +1125,31 @@ export const PREVIEWS = {
         works: {
             label: { id: "Menu Andalan", en: "Signature Menu" },
             sub: {
-                id: "Yang paling sering dipesan pelanggan setia kami.",
-                en: "The most-ordered favorites from our regulars.",
+                id: "Yang paling sering dipesan pelanggan setia kami — pesan langsung dari sini.",
+                en: "The most-ordered favorites from our regulars — order straight from here.",
             },
             items: [
                 {
                     title: { id: "Gudeg Kendil 1 kg", en: "Gudeg Kendil 1 kg" },
                     meta: {
-                        id: "Best seller · 300 porsi/minggu",
-                        en: "Best seller · 300 portions/week",
+                        id: "Rp85.000 · Best seller",
+                        en: "Rp85.000 · Best seller",
                     },
                     year: "Frozen",
-                    img: "https://images.pexels.com/photos/36982086/pexels-photo-36982086.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                    img: "https://images.pexels.com/photos/36982086/pexels-photo-36982086.jpeg?auto=compress&cs=tinysrgb&w=1200",
                 },
                 {
                     title: { id: "Sate Ayam Bakar 20 tusuk", en: "Grilled Chicken Satay x20" },
                     meta: {
-                        id: "Fresh · Favorit katering kantor",
-                        en: "Fresh · Office catering favorite",
+                        id: "Rp120.000 · Fresh",
+                        en: "Rp120.000 · Fresh",
                     },
                     year: "Fresh",
                     img: "https://images.pexels.com/photos/30588841/pexels-photo-30588841.jpeg?auto=compress&cs=tinysrgb&w=1200",
                 },
                 {
                     title: { id: "Sambal Nusantara 5 botol", en: "Nusantara Sambal 5 jars" },
-                    meta: { id: "Oleh-oleh · 5 varian rasa", en: "Souvenir · 5 flavor variants" },
+                    meta: { id: "Rp150.000 · Paket", en: "Rp150.000 · Bundle" },
                     year: "Hampers",
                     img: "https://images.unsplash.com/photo-1568622998407-0084ebf482b0?q=80&w=1200&auto=format&fit=crop",
                 },

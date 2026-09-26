@@ -83,6 +83,7 @@ const TemplateSlider = () => {
                 <div
                     ref={trackRef}
                     data-testid="template-slider-track"
+                    data-lenis-prevent
                     className="no-scrollbar mt-12 flex gap-6 overflow-x-auto scroll-smooth px-6 pb-4 md:px-[max(1.5rem,calc((100vw-1280px)/2+1.5rem))]"
                     style={{ scrollSnapType: "x mandatory" }}
                 >
@@ -190,6 +191,7 @@ const TemplateSlider = () => {
 
                             <div
                                 ref={scrollRef}
+                                data-lenis-prevent
                                 className="flex-1 overflow-y-auto"
                                 data-testid="template-preview"
                             >

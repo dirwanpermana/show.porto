@@ -1,12 +1,17 @@
 import { motion } from "framer-motion";
 import { toast } from "sonner";
-import { ArrowDown, Download, MessageCircle, Send } from "lucide-react";
+import {
+    ArrowDown,
+    Download,
+    MessageCircle,
+    Send,
+} from "lucide-react";
 import { useLang, SITE } from "@/i18n";
 import { PREVIEWS } from "@/data/templatePreviews";
 
-/* Pratinjau multi-halaman ala dokumen PDF: Cover → Tentang → Pendidikan &
-   Kursus → Pengalaman → Proyek → Penghargaan & Testimoni → Kontak.
-   Template UMKM memakai alur bisnis tanpa CV. Setiap halaman dianimasikan. */
+/* Pratinjau desain template: satu halaman utuh seperti website sungguhan.
+   Tiap template punya varian cover, alur section, dan layout proyek sendiri
+   (masonry / slider / grid / galeri / list / menu) mengikuti referensi gaya. */
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -22,9 +27,11 @@ const PageReveal = ({ root, delay = 0, children, className = "" }) => (
     </motion.div>
 );
 
-const Eyebrow = ({ label, th }) => (
+const Eyebrow = ({ label, th, center }) => (
     <p
-        className="mb-5 flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.28em]"
+        className={`mb-5 flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.28em] ${
+            center ? "justify-center" : ""
+        }`}
         style={{ color: th.muted }}
     >
         <span
@@ -64,32 +71,487 @@ const heroTitle = (tpl, lang) => {
     }
 };
 
-const WorksGrid = ({ data, th }) => {
-    const { lang } = useLang();
-    const L = (o) => o[lang];
-    if (th.works === "stack") {
+const CtaRow = ({ p, th, S, lang, note, scrollToPage, tpl, center }) => (
+    <div
+        className={`flex flex-wrap items-center gap-3 ${center ? "justify-center" : ""}`}
+    >
+        {p.cv ? (
+            <button
+                data-testid={`preview-cv-button-${tpl.id}`}
+                onClick={note}
+                className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-medium transition-transform duration-300 hover:-translate-y-0.5"
+                style={{ background: th.accent, color: th.bg }}
+            >
+                <Download className="h-3.5 w-3.5" />
+                {S.cv[lang]}
+            </button>
+        ) : (
+            <button
+                data-testid={`preview-order-button-${tpl.id}`}
+                onClick={() => scrollToPage(`pv-contact-${tpl.id}`)}
+                className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-medium transition-transform duration-300 hover:-translate-y-0.5"
+                style={{ background: th.accent, color: th.bg }}
+            >
+                <MessageCircle className="h-3.5 w-3.5" />
+                {p.contact.heading[lang]}
+            </button>
+        )}
+        <button
+            onClick={() => scrollToPage(`pv-works-${tpl.id}`)}
+            className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-medium transition-all duration-300 hover:opacity-80"
+            style={{ border: `1px solid ${th.line}`, color: th.text }}
+        >
+            {p.cv ? S.seeWorks[lang] : S.seeMenu[lang]}
+            <ArrowDown className="h-3.5 w-3.5" />
+        </button>
+    </div>
+);
+
+const Cover = ({ tpl, p, th, S, lang, note, scrollToPage, scrollRef }) => {
+    const variant = p.cover;
+    const title = heroTitle(tpl, lang);
+
+    if (variant === "media") {
         return (
-            <div className="space-y-10">
+            <div className="relative flex min-h-[420px] flex-col justify-end overflow-hidden">
+                <motion.img
+                    src={p.works.items[0].img}
+                    alt=""
+                    initial={{ scale: 1.12, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 0.55 }}
+                    transition={{ duration: 1.6, ease: EASE }}
+                    className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        background: `linear-gradient(to top, ${th.bg} 8%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.05))`,
+                    }}
+                />
+                <div className="relative p-8 md:p-12">
+                    <PageReveal root={scrollRef} delay={0.1}>
+                        <Eyebrow label={p.profile.role[lang]} th={th} />
+                    </PageReveal>
+                    <PageReveal root={scrollRef} delay={0.22}>
+                        <h1 style={{ ...styles.disp(th), fontSize: "clamp(2.2rem,6vw,4rem)" }}>
+                            {title}
+                        </h1>
+                    </PageReveal>
+                    <PageReveal root={scrollRef} delay={0.34}>
+                        <div className="mt-7">
+                            <CtaRow
+                                p={p}
+                                th={th}
+                                S={S}
+                                lang={lang}
+                                note={note}
+                                scrollToPage={scrollToPage}
+                                tpl={tpl}
+                            />
+                        </div>
+                    </PageReveal>
+                </div>
+            </div>
+        );
+    }
+
+    if (variant === "editorial") {
+        return (
+            <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="p-8 md:p-12">
+                    <PageReveal root={scrollRef} delay={0.05}>
+                        <Eyebrow label={p.profile.role[lang]} th={th} />
+                    </PageReveal>
+                    <PageReveal root={scrollRef} delay={0.15}>
+                        <h1
+                            style={{
+                                ...styles.disp(th),
+                                fontSize: "clamp(2.2rem,5vw,3.6rem)",
+                            }}
+                        >
+                            {title}
+                        </h1>
+                    </PageReveal>
+                    <PageReveal root={scrollRef} delay={0.25}>
+                        <p
+                            className="mt-5 max-w-sm text-sm leading-relaxed"
+                            style={{ color: th.muted }}
+                        >
+                            {p.profile.quote[lang]}
+                        </p>
+                    </PageReveal>
+                    <PageReveal root={scrollRef} delay={0.35}>
+                        <div className="mt-8">
+                            <CtaRow
+                                p={p}
+                                th={th}
+                                S={S}
+                                lang={lang}
+                                note={note}
+                                scrollToPage={scrollToPage}
+                                tpl={tpl}
+                            />
+                        </div>
+                    </PageReveal>
+                    <PageReveal root={scrollRef} delay={0.45}>
+                        <p
+                            className="mt-10 border-t pt-4 text-xs tracking-wide"
+                            style={{ borderColor: th.line, color: th.muted }}
+                        >
+                            {p.profile.name} — {p.contact.address[lang]}
+                        </p>
+                    </PageReveal>
+                </div>
+                <div className="relative min-h-[280px] overflow-hidden md:min-h-[420px]">
+                    <motion.img
+                        src={p.profile.img}
+                        alt={p.profile.name}
+                        initial={{ scale: 1.1 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 1.4, ease: EASE }}
+                        className="absolute inset-0 h-full w-full object-cover"
+                    />
+                </div>
+            </div>
+        );
+    }
+
+    if (variant === "bento") {
+        return (
+            <div className="p-8 md:p-12">
+                <PageReveal root={scrollRef} delay={0.05}>
+                    <Eyebrow label={p.profile.role[lang]} th={th} />
+                </PageReveal>
+                <PageReveal root={scrollRef} delay={0.15}>
+                    <h1
+                        style={{
+                            ...styles.disp(th),
+                            fontSize: "clamp(2.2rem,6vw,4rem)",
+                            maxWidth: 620,
+                        }}
+                    >
+                        {title}
+                    </h1>
+                </PageReveal>
+                <PageReveal root={scrollRef} delay={0.25}>
+                    <div className="mt-8 grid grid-cols-3 gap-3">
+                        {p.profile.stats.map((s, i) => (
+                            <div
+                                key={i}
+                                className="p-4 text-center"
+                                style={{
+                                    background: th.panel,
+                                    borderRadius: th.radius,
+                                    border: `1px solid ${th.line}`,
+                                }}
+                            >
+                                <p style={{ ...styles.disp(th), fontSize: 24, color: th.accent }}>
+                                    {s.n}
+                                </p>
+                                <p
+                                    className="mt-1 text-[10px] uppercase tracking-wider"
+                                    style={{ color: th.muted }}
+                                >
+                                    {s.l[lang]}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </PageReveal>
+                <PageReveal root={scrollRef} delay={0.35}>
+                    <div className="mt-8">
+                        <CtaRow
+                            p={p}
+                            th={th}
+                            S={S}
+                            lang={lang}
+                            note={note}
+                            scrollToPage={scrollToPage}
+                            tpl={tpl}
+                        />
+                    </div>
+                </PageReveal>
+                <PageReveal root={scrollRef} delay={0.45}>
+                    <div
+                        className="mt-10 overflow-hidden"
+                        style={{ borderRadius: th.radius }}
+                    >
+                        <img
+                            src={p.works.items[0].img}
+                            alt=""
+                            loading="lazy"
+                            className="h-44 w-full object-cover md:h-56"
+                        />
+                    </div>
+                </PageReveal>
+            </div>
+        );
+    }
+
+    if (variant === "gallery") {
+        return (
+            <div className="pb-10 pt-14 text-center md:pt-20">
+                <PageReveal root={scrollRef} delay={0.05}>
+                    <Eyebrow label={p.profile.role[lang]} th={th} center />
+                </PageReveal>
+                <PageReveal root={scrollRef} delay={0.18}>
+                    <h1
+                        className="mx-auto px-6"
+                        style={{
+                            ...styles.disp(th),
+                            fontSize: "clamp(2.4rem,7vw,4.6rem)",
+                            textTransform: th.case === "upper" ? "uppercase" : "none",
+                            letterSpacing: th.tracking || "0",
+                        }}
+                    >
+                        {title}
+                    </h1>
+                </PageReveal>
+                <PageReveal root={scrollRef} delay={0.3}>
+                    <div className="mt-10 overflow-hidden">
+                        <img
+                            src={p.works.items[0].img}
+                            alt=""
+                            loading="lazy"
+                            className="h-56 w-full object-cover md:h-72"
+                        />
+                    </div>
+                </PageReveal>
+                <PageReveal root={scrollRef} delay={0.4}>
+                    <div className="mt-8">
+                        <CtaRow
+                            p={p}
+                            th={th}
+                            S={S}
+                            lang={lang}
+                            note={note}
+                            scrollToPage={scrollToPage}
+                            tpl={tpl}
+                            center
+                        />
+                    </div>
+                </PageReveal>
+            </div>
+        );
+    }
+
+    if (variant === "terminal") {
+        return (
+            <div className="p-8 md:p-12">
+                <PageReveal root={scrollRef} delay={0.05}>
+                    <Eyebrow label={p.profile.role[lang]} th={th} />
+                </PageReveal>
+                <PageReveal root={scrollRef} delay={0.15}>
+                    <div
+                        className="overflow-hidden"
+                        style={{
+                            background: th.panel,
+                            border: `1px solid ${th.line}`,
+                            borderRadius: th.radius,
+                        }}
+                    >
+                        <div
+                            className="flex items-center gap-1.5 px-4 py-2.5"
+                            style={{ borderBottom: `1px solid ${th.line}` }}
+                        >
+                            <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
+                            <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
+                            <span className="h-2 w-2 rounded-full bg-[#28c840]" />
+                            <span className="ml-2 text-[10px]" style={{ color: th.muted }}>
+                                rizky@deploy — zsh
+                            </span>
+                        </div>
+                        <div
+                            className="space-y-2 p-5 text-[12px] leading-relaxed"
+                            style={{ color: th.text }}
+                        >
+                            <p style={{ color: th.muted }}>
+                                {"// Halo, saya Rizky — web developer yang obsesi performa."}
+                            </p>
+                            <p>
+                                <span style={{ color: th.accent }}>$</span> siapa-saya --ringkas
+                            </p>
+                            <p style={{ color: th.muted }}>
+                                &gt; 9 produk diluncurkan · 24 repo publik · uptime 99,9%
+                            </p>
+                            <p>
+                                <span style={{ color: th.accent }}>$</span> buka --portofolio
+                            </p>
+                            <p style={{ color: th.accent }}>&gt; siap di bawah ↓</p>
+                        </div>
+                    </div>
+                </PageReveal>
+                <PageReveal root={scrollRef} delay={0.3}>
+                    <div className="mt-8">
+                        <CtaRow
+                            p={p}
+                            th={th}
+                            S={S}
+                            lang={lang}
+                            note={note}
+                            scrollToPage={scrollToPage}
+                            tpl={tpl}
+                        />
+                    </div>
+                </PageReveal>
+            </div>
+        );
+    }
+
+    // warm
+    return (
+        <div className="p-8 text-center md:p-14">
+            <PageReveal root={scrollRef} delay={0.05}>
+                <Eyebrow label={p.profile.role[lang]} th={th} center />
+            </PageReveal>
+            <PageReveal root={scrollRef} delay={0.15}>
+                <h1
+                    className="mx-auto"
+                    style={{ ...styles.disp(th), fontSize: "clamp(2.2rem,6vw,4rem)" }}
+                >
+                    {title}
+                </h1>
+            </PageReveal>
+            <PageReveal root={scrollRef} delay={0.25}>
+                <p
+                    className="mx-auto mt-4 max-w-md text-sm leading-relaxed"
+                    style={{ color: th.muted }}
+                >
+                    {p.profile.quote[lang]}
+                </p>
+            </PageReveal>
+            <PageReveal root={scrollRef} delay={0.35}>
+                <div
+                    className="mt-8 overflow-hidden"
+                    style={{ borderRadius: th.radius }}
+                >
+                    <img
+                        src={p.profile.img}
+                        alt=""
+                        loading="lazy"
+                        className="h-52 w-full object-cover md:h-64"
+                    />
+                </div>
+            </PageReveal>
+            <PageReveal root={scrollRef} delay={0.45}>
+                <div className="mt-8">
+                    <CtaRow
+                        p={p}
+                        th={th}
+                        S={S}
+                        lang={lang}
+                        note={note}
+                        scrollToPage={scrollToPage}
+                        tpl={tpl}
+                        center
+                    />
+                </div>
+            </PageReveal>
+        </div>
+    );
+};
+
+const styles = {
+    disp: (th) => ({
+        fontFamily: th.display,
+        fontWeight: th.displayWeight,
+        letterSpacing: th.tracking || "-0.01em",
+        lineHeight: 1.05,
+    }),
+};
+
+const WorksGrid = ({ data, layout, th, lang, note }) => {
+    const L = (o) => o[lang];
+
+    if (layout === "masonry") {
+        return (
+            <div className="columns-2 gap-4 [&>div]:mb-4">
                 {data.items.map((w, i) => (
-                    <div key={i} className="group">
+                    <div key={i} className="group break-inside-avoid">
                         <div className="overflow-hidden" style={{ borderRadius: th.radius }}>
                             <img
                                 src={w.img}
                                 alt={L(w.title)}
                                 loading="lazy"
-                                className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                                style={{ aspectRatio: "16/7" }}
+                                className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                                style={{ height: [260, 180, 210][i % 3] }}
                             />
                         </div>
+                        <p className="mt-2 text-sm" style={{ color: th.text }}>
+                            {L(w.title)}
+                        </p>
+                        <p className="text-[11px]" style={{ color: th.muted }}>
+                            {L(w.meta)} · {w.year}
+                        </p>
+                    </div>
+                ))}
+            </div>
+        );
+    }
+
+    if (layout === "slider") {
+        return (
+            <div
+                data-lenis-prevent
+                className="no-scrollbar -mx-2 flex gap-4 overflow-x-auto px-2 pb-2"
+                style={{ scrollSnapType: "x mandatory" }}
+            >
+                {data.items.map((w, i) => (
+                    <div
+                        key={i}
+                        className="group w-[230px] shrink-0 md:w-[260px]"
+                        style={{ scrollSnapAlign: "start" }}
+                    >
+                        <div className="overflow-hidden" style={{ borderRadius: th.radius }}>
+                            <img
+                                src={w.img}
+                                alt={L(w.title)}
+                                loading="lazy"
+                                className="h-36 w-full object-cover transition-transform duration-700 group-hover:scale-[1.05] md:h-40"
+                            />
+                        </div>
+                        <p className="mt-3 text-sm font-medium" style={{ color: th.text }}>
+                            {L(w.title)}
+                        </p>
+                        <p className="mt-0.5 text-[11px]" style={{ color: th.accent }}>
+                            {L(w.meta)}
+                        </p>
+                        <p className="text-[11px]" style={{ color: th.muted }}>
+                            {w.year}
+                        </p>
+                    </div>
+                ))}
+            </div>
+        );
+    }
+
+    if (layout === "gallery") {
+        return (
+            <div className="grid grid-cols-2 gap-1 md:grid-cols-3">
+                {data.items.map((w, i) => (
+                    <div
+                        key={i}
+                        className="group relative aspect-square overflow-hidden"
+                        style={{ borderRadius: th.radius }}
+                    >
+                        <img
+                            src={w.img}
+                            alt={L(w.title)}
+                            loading="lazy"
+                            className="h-full w-full object-cover transition-all duration-700 group-hover:scale-[1.06]"
+                        />
                         <div
-                            className="mt-3 flex items-baseline justify-between border-b pb-3"
-                            style={{ borderColor: th.line }}
+                            className="absolute inset-0 flex items-end opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                            style={{
+                                background:
+                                    "linear-gradient(to top, rgba(0,0,0,0.65), transparent 55%)",
+                            }}
                         >
-                            <p className="text-lg" style={{ color: th.text }}>
+                            <p className="p-3 text-left text-xs font-medium text-white">
                                 {L(w.title)}
-                            </p>
-                            <p className="text-xs" style={{ color: th.muted }}>
-                                {L(w.meta)} · {w.year}
+                                <span className="block text-[10px] font-light text-white/70">
+                                    {L(w.meta)} · {w.year}
+                                </span>
                             </p>
                         </div>
                     </div>
@@ -97,37 +559,86 @@ const WorksGrid = ({ data, th }) => {
             </div>
         );
     }
-    if (th.works === "bento") {
+
+    if (layout === "list") {
         return (
-            <div className="grid grid-cols-2 gap-4">
+            <div>
                 {data.items.map((w, i) => (
                     <div
                         key={i}
-                        className={`group overflow-hidden ${i === 0 ? "col-span-2" : ""}`}
-                        style={{ borderRadius: th.radius, background: th.panel }}
+                        className="group flex items-baseline gap-4 border-b py-4 transition-colors duration-300 hover:bg-white/[0.02] md:gap-6"
+                        style={{ borderColor: th.line }}
+                    >
+                        <span
+                            className="shrink-0 text-[11px]"
+                            style={{ color: th.accent }}
+                        >
+                            {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <div className="min-w-0 flex-1">
+                            <p
+                                className="truncate text-sm font-medium transition-colors"
+                                style={{ color: th.text }}
+                            >
+                                {L(w.title)}
+                            </p>
+                            <p className="truncate text-[11px]" style={{ color: th.muted }}>
+                                {L(w.meta)}
+                            </p>
+                        </div>
+                        <span className="shrink-0 text-[11px]" style={{ color: th.muted }}>
+                            {w.year}
+                        </span>
+                    </div>
+                ))}
+            </div>
+        );
+    }
+
+    if (layout === "menu") {
+        return (
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+                {data.items.map((w, i) => (
+                    <div
+                        key={i}
+                        className="group overflow-hidden"
+                        style={{
+                            borderRadius: th.radius,
+                            background: th.panel,
+                            border: `1px solid ${th.line}`,
+                        }}
                     >
                         <div className="overflow-hidden">
                             <img
                                 src={w.img}
                                 alt={L(w.title)}
                                 loading="lazy"
-                                className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                                style={{ aspectRatio: i === 0 ? "16/7" : "16/9" }}
+                                className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                             />
                         </div>
-                        <div className="flex items-baseline justify-between px-4 py-3">
-                            <p className="text-sm" style={{ color: th.text }}>
+                        <div className="p-3">
+                            <p className="truncate text-sm font-medium" style={{ color: th.text }}>
                                 {L(w.title)}
                             </p>
-                            <p className="text-[11px]" style={{ color: th.accent }}>
+                            <p className="mt-0.5 text-[11px]" style={{ color: th.muted }}>
                                 {L(w.meta)}
                             </p>
+                            <button
+                                onClick={note}
+                                className="mt-2.5 inline-flex w-full items-center justify-center gap-1.5 rounded-full px-3 py-2 text-[11px] font-medium transition-transform duration-300 hover:-translate-y-0.5"
+                                style={{ background: th.accent, color: th.bg }}
+                            >
+                                <MessageCircle className="h-3 w-3" />
+                                {SITE.demo.order[lang]}
+                            </button>
                         </div>
                     </div>
                 ))}
             </div>
         );
     }
+
+    // grid (featured 2 kolom)
     return (
         <div className="grid grid-cols-2 gap-5">
             {data.items.map((w, i) => (
@@ -162,12 +673,6 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
     const th = tpl.theme;
     const L = (o) => o[lang];
     const isUmkm = tpl.id === "etalase";
-    const disp = {
-        fontFamily: th.display,
-        fontWeight: th.displayWeight,
-        letterSpacing: th.tracking || "-0.01em",
-        lineHeight: 1.05,
-    };
     const note = () => toast.info(S.form.note[lang]);
     const scrollToPage = (id) => {
         const el = document.getElementById(id);
@@ -180,7 +685,7 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
             className="flex items-center justify-between px-6 py-4 md:px-10"
             style={{ borderBottom: `1px solid ${th.line}` }}
         >
-            <span style={{ ...disp, fontSize: 15 }}>{p.profile.name}</span>
+            <span style={{ ...styles.disp(th), fontSize: 15 }}>{p.profile.name}</span>
             <span
                 className="hidden gap-5 text-[11px] uppercase tracking-[0.18em] md:flex"
                 style={{ color: th.muted }}
@@ -200,126 +705,11 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
         </div>
     );
 
-    const coverCta = (
-        <div className="mt-8 flex flex-wrap items-center gap-3">
-            {p.cv ? (
-                <button
-                    data-testid="preview-cv-button"
-                    onClick={note}
-                    className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-medium transition-transform duration-300 hover:-translate-y-0.5"
-                    style={{ background: th.accent, color: th.bg }}
-                >
-                    <Download className="h-3.5 w-3.5" />
-                    {S.cv[lang]}
-                </button>
-            ) : (
-                <button
-                    data-testid="preview-order-button"
-                    onClick={() => scrollToPage(`page-contact-${tpl.id}`)}
-                    className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-medium transition-transform duration-300 hover:-translate-y-0.5"
-                    style={{ background: th.accent, color: th.bg }}
-                >
-                    <MessageCircle className="h-3.5 w-3.5" />
-                    {p.contact.heading[lang]}
-                </button>
-            )}
-            <button
-                onClick={() => scrollToPage(`page-works-${tpl.id}`)}
-                className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-medium transition-all duration-300"
-                style={{ border: `1px solid ${th.line}`, color: th.text }}
-            >
-                {p.cv ? S.seeWorks[lang] : S.seeMenu[lang]}
-                <ArrowDown className="h-3.5 w-3.5" />
-            </button>
-        </div>
-    );
-
-    const cover =
-        tpl.id === "blueprint" ? (
-            <div className="relative flex min-h-[400px] flex-col justify-end overflow-hidden">
-                <motion.img
-                    src={p.works.items[0].img}
-                    alt=""
-                    initial={{ scale: 1.12, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 0.55 }}
-                    transition={{ duration: 1.6, ease: EASE }}
-                    className="absolute inset-0 h-full w-full object-cover"
-                />
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        background: `linear-gradient(to top, ${th.bg} 8%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.05))`,
-                    }}
-                />
-                <div className="relative p-8 md:p-12">
-                    <PageReveal root={scrollRef} delay={0.1}>
-                        <Eyebrow label={p.profile.role[lang]} th={th} />
-                    </PageReveal>
-                    <PageReveal root={scrollRef} delay={0.22}>
-                        <h1 style={{ ...disp, fontSize: "clamp(2.2rem,6vw,4rem)" }}>
-                            {heroTitle(tpl, lang)}
-                        </h1>
-                    </PageReveal>
-                    <PageReveal root={scrollRef} delay={0.34}>
-                        {coverCta}
-                    </PageReveal>
-                </div>
-            </div>
-        ) : (
-            <div className="p-8 md:p-12">
-                <PageReveal root={scrollRef} delay={0.05}>
-                    <Eyebrow label={p.profile.role[lang]} th={th} />
-                </PageReveal>
-                <PageReveal root={scrollRef} delay={0.15}>
-                    <h1
-                        style={{
-                            ...disp,
-                            fontSize: "clamp(2.2rem,6vw,4rem)",
-                            textTransform: th.case === "upper" ? "uppercase" : "none",
-                            maxWidth: 680,
-                        }}
-                    >
-                        {tpl.id === "deploy" && (
-                            <span style={{ color: th.accent }}>$&nbsp;</span>
-                        )}
-                        {heroTitle(tpl, lang)}
-                    </h1>
-                </PageReveal>
-                <PageReveal root={scrollRef} delay={0.25}>
-                    <p
-                        className="mt-5 max-w-md text-sm leading-relaxed"
-                        style={{ color: th.muted }}
-                    >
-                        {p.profile.quote[lang]}
-                    </p>
-                </PageReveal>
-                <PageReveal root={scrollRef} delay={0.35}>
-                    <div
-                        className="mt-8 overflow-hidden"
-                        style={{ borderRadius: th.radius }}
-                    >
-                        <img
-                            src={p.works.items[0].img}
-                            alt=""
-                            loading="lazy"
-                            className="h-52 w-full object-cover md:h-72"
-                        />
-                    </div>
-                </PageReveal>
-                <PageReveal root={scrollRef} delay={0.45}>
-                    <div
-                        className="mt-8 flex flex-wrap items-center justify-between gap-4"
-                        style={{ color: th.muted }}
-                    >
-                        <span className="text-sm">{p.profile.name}</span>
-                        {coverCta}
-                    </div>
-                </PageReveal>
-            </div>
-        );
-
-    const about = (
-        <div className="p-8 md:p-12">
+    const aboutSec = (
+        <div
+            className="p-8 md:p-12"
+            style={{ borderTop: `1px solid ${th.line}` }}
+        >
             <PageReveal root={scrollRef}>
                 <Eyebrow label={p.profile.name} th={th} />
             </PageReveal>
@@ -339,7 +729,7 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
                 </PageReveal>
                 <div className="md:col-span-3">
                     <PageReveal root={scrollRef} delay={0.18}>
-                        <p style={{ ...disp, fontSize: "clamp(1.2rem,2.6vw,1.7rem)" }}>
+                        <p style={{ ...styles.disp(th), fontSize: "clamp(1.2rem,2.6vw,1.7rem)" }}>
                             "{p.profile.quote[lang]}"
                         </p>
                     </PageReveal>
@@ -347,7 +737,7 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
                         <div className="mt-8 grid grid-cols-3 gap-4">
                             {p.profile.stats.map((s, i) => (
                                 <div key={i}>
-                                    <p style={{ ...disp, fontSize: 26, color: th.accent }}>
+                                    <p style={{ ...styles.disp(th), fontSize: 26, color: th.accent }}>
                                         {s.n}
                                     </p>
                                     <p
@@ -383,8 +773,8 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
         </div>
     );
 
-    const eduAndCourses = p.education ? (
-        <div className="p-8 md:p-12">
+    const eduSec = p.education ? (
+        <div className="p-8 md:p-12" style={{ borderTop: `1px solid ${th.line}` }}>
             <PageReveal root={scrollRef}>
                 <Eyebrow label={S.pages.edu[lang]} th={th} />
             </PageReveal>
@@ -409,7 +799,10 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
                                 <p className="mt-1 text-[11px]" style={{ color: th.accent }}>
                                     {e.period}
                                 </p>
-                                <p className="mt-1.5 text-xs leading-relaxed" style={{ color: th.muted }}>
+                                <p
+                                    className="mt-1.5 text-xs leading-relaxed"
+                                    style={{ color: th.muted }}
+                                >
                                     {L(e.note)}
                                 </p>
                             </div>
@@ -420,7 +813,7 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
                     {p.courses.items.map((c, i) => (
                         <PageReveal key={i} root={scrollRef} delay={0.08 * i}>
                             <div
-                                className="mb-3 flex items-center justify-between rounded-lg px-4 py-3.5"
+                                className="mb-3 flex items-center justify-between px-4 py-3.5"
                                 style={{ background: th.panel, borderRadius: th.radius }}
                             >
                                 <div>
@@ -445,8 +838,8 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
         </div>
     ) : null;
 
-    const experience = p.experience ? (
-        <div className="p-8 md:p-12">
+    const expSec = p.experience ? (
+        <div className="p-8 md:p-12" style={{ borderTop: `1px solid ${th.line}` }}>
             <PageReveal root={scrollRef}>
                 <Eyebrow label={S.pages.exp[lang]} th={th} />
             </PageReveal>
@@ -457,10 +850,7 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
                             className="flex flex-col gap-1 border-b py-5 md:flex-row md:items-baseline md:gap-6"
                             style={{ borderColor: th.line }}
                         >
-                            <span
-                                className="w-8 shrink-0 text-[11px]"
-                                style={{ color: th.accent }}
-                            >
+                            <span className="w-8 shrink-0 text-[11px]" style={{ color: th.accent }}>
                                 {String(i + 1).padStart(2, "0")}
                             </span>
                             <div className="flex-1">
@@ -484,8 +874,8 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
         </div>
     ) : null;
 
-    const works = (
-        <div className="p-8 md:p-12">
+    const worksSec = (
+        <div id={`pv-works-${tpl.id}`} className="scroll-mt-4 p-8 md:p-12" style={{ borderTop: `1px solid ${th.line}` }}>
             <PageReveal root={scrollRef}>
                 <Eyebrow label={p.works.label[lang]} th={th} />
             </PageReveal>
@@ -495,13 +885,13 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
                 </p>
             </PageReveal>
             <PageReveal root={scrollRef} delay={0.15}>
-                <WorksGrid data={p.works} th={th} />
+                <WorksGrid data={p.works} layout={p.projectLayout} th={th} lang={lang} note={note} />
             </PageReveal>
         </div>
     );
 
-    const awardsPage = p.services ? (
-        <div className="p-8 md:p-12">
+    const trustSec = (
+        <div className="p-8 md:p-12" style={{ borderTop: `1px solid ${th.line}` }}>
             <PageReveal root={scrollRef}>
                 <Eyebrow label={p.services.label[lang]} th={th} />
             </PageReveal>
@@ -518,10 +908,7 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
                             <p className="text-sm font-medium" style={{ color: th.text }}>
                                 {L(s.t)}
                             </p>
-                            <p
-                                className="mt-1.5 text-xs leading-relaxed"
-                                style={{ color: th.muted }}
-                            >
+                            <p className="mt-1.5 text-xs leading-relaxed" style={{ color: th.muted }}>
                                 {L(s.d)}
                             </p>
                         </div>
@@ -555,21 +942,16 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
                         <div key={i}>
                             <p
                                 style={{
-                                    ...disp,
+                                    ...styles.disp(th),
                                     fontSize: 17,
-                                    fontStyle: th.display.includes("Fraunces")
-                                        ? "italic"
-                                        : "normal",
+                                    fontStyle: th.display.includes("Fraunces") ? "italic" : "normal",
                                 }}
                             >
                                 "{t.q[lang]}"
                             </p>
                             <p className="mt-4 text-xs font-medium" style={{ color: th.text }}>
                                 {t.who}
-                                <span
-                                    className="ml-2 font-normal"
-                                    style={{ color: th.muted }}
-                                >
+                                <span className="ml-2 font-normal" style={{ color: th.muted }}>
                                     {t.role[lang]}
                                 </span>
                             </p>
@@ -578,15 +960,19 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
                 </div>
             </PageReveal>
         </div>
-    ) : null;
+    );
 
-    const contact = (
-        <div className="p-8 md:p-12">
+    const contactSec = (
+        <div
+            id={`pv-contact-${tpl.id}`}
+            className="scroll-mt-4 p-8 md:p-12"
+            style={{ borderTop: `1px solid ${th.line}` }}
+        >
             <PageReveal root={scrollRef}>
                 <Eyebrow label={p.contact.label[lang]} th={th} />
             </PageReveal>
             <PageReveal root={scrollRef} delay={0.08}>
-                <p style={{ ...disp, fontSize: "clamp(1.6rem,4vw,2.6rem)" }}>
+                <p style={{ ...styles.disp(th), fontSize: "clamp(1.6rem,4vw,2.6rem)" }}>
                     {p.contact.heading[lang]}
                 </p>
             </PageReveal>
@@ -659,7 +1045,7 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
                     <p
                         className="whitespace-nowrap text-center uppercase"
                         style={{
-                            ...disp,
+                            ...styles.disp(th),
                             fontSize: "clamp(3rem,9vw,6rem)",
                             color: th.text,
                             opacity: 0.22,
@@ -673,54 +1059,23 @@ const TemplatePreview = ({ tpl, scrollRef }) => {
         </div>
     );
 
-    const pages = [
-        { id: `page-cover-${tpl.id}`, label: S.pages.cover[lang], node: cover },
-        { id: `page-about-${tpl.id}`, label: S.pages.about[lang], node: about },
-    ];
-    if (eduAndCourses)
-        pages.push({ id: `page-edu-${tpl.id}`, label: S.pages.edu[lang], node: eduAndCourses });
-    if (experience)
-        pages.push({ id: `page-exp-${tpl.id}`, label: S.pages.exp[lang], node: experience });
-    pages.push({ id: `page-works-${tpl.id}`, label: S.pages.works[lang], node: works });
-    pages.push({
-        id: `page-awards-${tpl.id}`,
-        label: isUmkm ? S.pages.trust[lang] : S.pages.awards[lang],
-        node: awardsPage,
-    });
-    pages.push({ id: `page-contact-${tpl.id}`, label: S.pages.contact[lang], node: contact });
+    const sections = { about: aboutSec, edu: eduSec, exp: expSec, works: worksSec, trust: trustSec, contact: contactSec };
 
     return (
-        <div className="px-3 py-8 md:px-8 md:py-10" style={{ background: "#0b0b0d" }}>
-            {pages.map((page, i) => (
-                <div key={page.id} id={page.id} className="mb-8 last:mb-0 scroll-mt-4">
-                    <p
-                        className="mb-3 flex items-center gap-2 px-1 text-[10px] font-medium uppercase tracking-[0.28em]"
-                        style={{ color: "#7a7a80" }}
-                    >
-                        <span style={{ color: tpl.theme.accent }}>
-                            {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <span style={{ opacity: 0.5 }}>/</span>
-                        <span>{page.label}</span>
-                        <span className="ml-auto normal-case tracking-normal" style={{ opacity: 0.6 }}>
-                            {String(i + 1).padStart(2, "0")} / {String(pages.length).padStart(2, "0")}
-                        </span>
-                    </p>
-                    <div
-                        style={{
-                            background: tpl.theme.bg,
-                            color: tpl.theme.text,
-                            fontFamily: tpl.theme.body,
-                            borderRadius: "6px",
-                            overflow: "hidden",
-                            border: `1px solid ${tpl.theme.line}`,
-                            boxShadow: "0 30px 70px rgba(0,0,0,0.45)",
-                        }}
-                    >
-                        {i === 0 && miniNav}
-                        {page.node}
-                    </div>
-                </div>
+        <div style={{ background: th.bg, color: th.text, fontFamily: th.body }}>
+            {miniNav}
+            <Cover
+                tpl={tpl}
+                p={p}
+                th={th}
+                S={S}
+                lang={lang}
+                note={note}
+                scrollToPage={scrollToPage}
+                scrollRef={scrollRef}
+            />
+            {p.flow.map((key) => (
+                <div key={key}>{sections[key]}</div>
             ))}
         </div>
     );
