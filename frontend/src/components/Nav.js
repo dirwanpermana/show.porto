@@ -27,6 +27,10 @@ const Nav = ({ links = [] }) => {
     };
 
     const key = (l) => `${l.path || "home"}-${l.id}`;
+    const tid = (l) => {
+        const p = l.path && l.path !== "/" ? l.path.replace(/\//g, "") : pathname !== "/" && !l.path ? "" : l.path ? "home" : "";
+        return `nav-link-${p ? p + "-" : ""}${l.id}`;
+    };
 
     return (
         <header
@@ -53,7 +57,7 @@ const Nav = ({ links = [] }) => {
                         <li key={key(l)}>
                             <a
                                 href={`#${l.id}`}
-                                data-testid={`nav-link-${l.path ? l.path.replace("/", "") + "-" : ""}${l.id}`}
+                                data-testid={tid(l)}
                                 onClick={(e) => {
                                     e.preventDefault();
                                     jump(l);
@@ -102,6 +106,7 @@ const Nav = ({ links = [] }) => {
                                 <li key={key(l)}>
                                     <a
                                         href={`#${l.id}`}
+                                        data-testid={`mobile-${tid(l)}`}
                                         onClick={(e) => {
                                             e.preventDefault();
                                             jump(l);

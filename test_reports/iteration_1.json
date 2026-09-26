@@ -1,0 +1,28 @@
+{
+  "summary": "Frontend-only regression for show.porto v-UMKM. Verified home layout (5 portfolio templates + UMKM teaser, no etalase in portfolio slider), audiences (Landing Page UMKM w/ 3 fabric images), live demo UMKM tab (Toko Kain Tenun Jaya + 4 fabric products with correct wa.me/6285591197624 hrefs), pricing (2 groups porto+umkm with Rp150rb/Rp500rb & Rp600rb/Rp1,5jt; manual-book only on source cards), lead form (opens window.open to https://wa.me/6285591197624?text=... encoded with name/contact/intent/message, toast shows, form resets, NO /api/leads XHR), footer (whatsapp 085591197624 -> wa.me/6285591197624, email mailto, no ©/hak cipta/'Dibuat dengan presisi', no lang-toggle inside footer), UMKM page (all 6 template cards & modals aurum/sanggar/kadr/tenun/etalase/bersih open, previews scroll without 'undefined'/broken images, aurum secondary cover CTA reads 'Lihat Project Nikahan'), lang toggle EN/ID works on both pages (badge 'SMALL BUSINESS LANDING PAGE'), mobile 390px has scrollWidth 390 on both pages, /api/health returns {status:ok}. All 6 UMKM detail modals render cleanly with fullscreen/close/order buttons.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "Nav (mobile menu)", "issue": "Mobile menu links inside data-testid=nav-mobile-menu do NOT expose per-link data-testid attributes (only nav-mobile-cta present). Cannot select nav-link-umkm-template inside mobile menu.", "selector": "[data-testid=\"nav-mobile-menu\"] a", "priority": "LOW"},
+      {"component": "Nav (UmkmPage LINKS)", "issue": "Testid template generates double-dash for links with path=\"/\". `path=\"/\".replace(\"/\", \"\")` -> \"\" then appends \"-\" -> testid `nav-link--template` and `nav-link--faq` on UMKM page. Expected `nav-link-template` (Portfolio→/) but that testid actually resolves to the self anchor Landing UMKM link because there are two links with id=template. Ambiguous / not spec-compliant.", "selector": "[data-testid=\"nav-link--template\"], [data-testid=\"nav-link--faq\"]", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Add data-testid to <a> elements inside nav-mobile-menu (mirror desktop testids) so mobile users' Landing UMKM link can be tested / analytics-tracked.",
+    "Fix Nav.js testid generator: sanitize path so path='/' produces empty prefix (e.g. use l.path && l.path!=='/' ? l.path.replace(/\\//g,'')+'-' : ''). This also removes the ambiguity where two links with the same id collide on `nav-link-template`."
+  ],
+  "critical_code_review_comments": [
+    "Nav.js:56 testid formula is fragile — collides when two links share the same section id (e.g. two `template` links on UMKM page) and produces double-dash IDs for root-path links.",
+    "Mobile menu items miss data-testid — reduces testability parity between desktop and mobile.",
+    "LeadSection window.open uses noopener,noreferrer which is fine; buildWaUrl correctly emits https://wa.me/6285591197624?text=... with 👋 emoji preserved (verified via monkey-patched window.open). Note: WhatsApp's own redirect to api.whatsapp.com may re-encode the emoji to U+FFFD — not a bug in our code."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "~95%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Frontend is fully static; do NOT expect /api/leads. Use window.open monkey-patch trick to verify wa.me URL (WhatsApp server rewrites to api.whatsapp.com after redirect). Lenis smooth-scroll requires ~1200ms wait after scroll_into_view. Modal preview scroll container = [data-testid=template-preview]. Two data-testid quirks to be aware of: `nav-link--template`/`nav-link--faq` (double dash) exist on UMKM page, and mobile menu <a> links currently lack testids."
+}

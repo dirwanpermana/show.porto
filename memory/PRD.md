@@ -46,9 +46,21 @@ Landing page satu halaman (bahasa Indonesia) untuk brand **show.porto** + backen
 - Harga paket, nomor WA (6281234567890), dan konten LiveDemo (Raka Pratama, Dapur Nusantara) tetap PLACEHOLDER/CONTOH.
 
 ## Backlog / Next
-- P0: Ganti harga & nomor WhatsApp asli; domain produksi
-- P1: Halaman admin sederhana untuk membaca leads; testimoni asli
-- P2: Mini-CMS update mandiri untuk klien; pembayaran (Stripe/Xendit)
+- P1: Halaman FAQ/Fitur khusus UMKM (saat ini nav UMKM → FAQ mengarah ke halaman home)
+- P2: Konten LiveDemo tab UMKM disesuaikan lebih lanjut (rating/ongkir masih copy generik)
+- P2: Mini-CMS/manual book nyata untuk klien paket Source Code; pembayaran (Stripe/Xendit) jika mau otomatis
+- Catatan: Harga sudah final dari user; nomor WA & email sudah asli. Persona template tetap contoh.
+
+## Iterasi 2026-09-26 (Logika Bisnis, Halaman UMKM, Frontend-Only) — DONE & tested (iteration_1.json)
+- [x] Kontak asli: WhatsApp 085591197624 (wa.me/6285591197624) & email showporto49@gmail.com (BRAND di data/templates.js) — tampil di lead section, footer, hero UMKM
+- [x] Label "UMKM" → "Landing Page UMKM" di seluruh copy; demo UMKM di home = Toko Kain Tenun Jaya (DEMO_STORE + DEMO_PRODUCTS kain)
+- [x] Routing HashRouter: `/` (landing gabungan) & `/#/umkm` (halaman Landing Page UMKM: UmkmHero, slider 6 template, "yang kamu dapat", harga UMKM, lead form, back-home). lib/nav.js (useGo + ScrollManager) untuk navigasi antar halaman + scroll ke section
+- [x] 6 template UMKM (data/umkmTemplates.js + data/umkmPreviews.js): Aurum (MUA, project nikahan), Sanggar (sewa kebaya), Kadr (fotografer wedding), Tenun (toko kain), Etalase (kuliner, dipindah dari home), Bersih (laundry). Home hanya 5 template portfolio + kartu teaser ke /umkm
+- [x] Paket harga 2 grup (PRICING_GROUPS): PORTO Rp150rb (web jadi) / PORTO + Source Code Rp500rb; LANDING Rp600rb / LANDING + Source Code Rp1,5jt. Manual book update mandiri hanya paket Source Code. Storytelling per grup + FAQ diperbarui
+- [x] Footer: copyright/"Dibuat dengan presisi"/lang toggle dihapus; kolom Kontak (WA + email) ditambah
+- [x] Backend DIHAPUS secara fungsional: frontend tidak memanggil API; backend/server.py hanya stub /api/health agar preview Emergent tetap sehat (boleh dihapus saat pindah GitHub Pages). Form konsultasi → window.open wa.me dengan pesan tersusun
+- [x] Siap GitHub Pages: package.json `homepage: "."`, script `yarn deploy` (gh-pages), README berisi langkah deploy; `yarn build` terverifikasi (asset path relatif)
+- [x] Archive baru /app/show-porto-project.zip (tanpa node_modules/.env/build)
 
 ## Iterasi 2026-09-26 (Rebrand & Copy)
 - [x] Logo menjadi wordmark murni "show.porto" (".porto" berwarna iris) — ikon spark dihapus dari nav & footer; favicon spark tetap dipakai di tab browser
