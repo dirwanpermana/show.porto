@@ -3,6 +3,7 @@ import { ArrowUpRight, Briefcase, Store } from "lucide-react";
 import { Reveal, SectionTag } from "@/components/Reveal";
 import { useLang, SITE } from "@/i18n";
 import { scrollToSection } from "@/lib/scroll";
+import { ROUTES, useGo } from "@/lib/nav";
 import { DEMO_PROJECTS, DEMO_PRODUCTS } from "@/data/templates";
 
 const SpecChip = ({ children }) => (
@@ -13,6 +14,7 @@ const SpecChip = ({ children }) => (
 
 const Audiences = () => {
     const { lang } = useLang();
+    const go = useGo();
     const S = SITE.aud;
 
     return (
@@ -134,7 +136,7 @@ const Audiences = () => {
                         </div>
                         <button
                             data-testid="audience-umkm-cta"
-                            onClick={() => scrollToSection("harga")}
+                            onClick={() => go({ id: "template", path: ROUTES.umkm })}
                             className="mt-8 inline-flex w-fit items-center gap-1.5 text-sm font-medium text-bone transition-colors group-hover:text-verdant"
                         >
                             {S.umkmCta[lang]}

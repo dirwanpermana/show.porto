@@ -4,6 +4,7 @@ import ParticleField from "@/components/ParticleField";
 import { useLang, SITE } from "@/i18n";
 import { scrollToSection } from "@/lib/scroll";
 import { TEMPLATES } from "@/data/templates";
+import { UMKM_TEMPLATES } from "@/data/umkmTemplates";
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -134,8 +135,8 @@ const Hero = () => {
                         delay={0.9}
                     />
                     <FloatCard
-                        img={TEMPLATES[5].img}
-                        label="etalase.show.porto"
+                        img={UMKM_TEMPLATES[3].img}
+                        label="tenun.show.porto"
                         className="left-0 top-44"
                         tilt={-3}
                         delay={1.15}

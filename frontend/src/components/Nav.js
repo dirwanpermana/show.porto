@@ -4,10 +4,13 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import Logo from "@/components/Logo";
 import LangToggle from "@/components/LangToggle";
 import { useLang, SITE } from "@/i18n";
-import { scrollToSection } from "@/lib/scroll";
+import { useLocation } from "react-router-dom";
+import { useGo } from "@/lib/nav";
 
-const Nav = () => {
+const Nav = ({ links = [] }) => {
     const { lang } = useLang();
+    const go = useGo();
+    const { pathname } = useLocation();
     const S = SITE.nav;
     const [scrolled, setScrolled] = useState(false);
     const [open, setOpen] = useState(false);
@@ -18,19 +21,12 @@ const Nav = () => {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    const LINKS = [
-        { id: "template", label: S.template },
-        { id: "pratinjau", label: S.pratinjau },
-        { id: "fitur", label: S.fitur },
-        { id: "proses", label: S.proses },
-        { id: "harga", label: S.harga },
-        { id: "faq", label: S.faq },
-    ];
-
-    const go = (id) => {
+    const jump = (link) => {
         setOpen(false);
-        setTimeout(() => scrollToSection(id), open ? 80 : 0);
+        go(link, open ? 80 : 0);
     };
+
+    const key = (l) => `${l.path || "home"}-${l.id}`;
 
     return (
         <header
@@ -42,25 +38,25 @@ const Nav = () => {
         >
             <nav className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between px-6">
                 <a
-                    href="#beranda"
+                    href="#/"
                     data-testid="nav-logo-link"
                     onClick={(e) => {
                         e.preventDefault();
-                        go("beranda");
+                        jump({ id: null, path: "/" });
                     }}
                 >
                     <Logo />
                 </a>
 
                 <ul className="hidden items-center gap-8 lg:flex">
-                    {LINKS.map((l) => (
-                        <li key={l.id}>
+                    {links.map((l) => (
+                        <li key={key(l)}>
                             <a
                                 href={`#${l.id}`}
-                                data-testid={`nav-link-${l.id}`}
+                                data-testid={`nav-link-${l.path ? l.path.replace("/", "") + "-" : ""}${l.id}`}
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    go(l.id);
+                                    jump(l);
                                 }}
                                 className="text-sm font-light text-ash transition-colors duration-300 hover:text-bone"
                             >
@@ -74,7 +70,7 @@ const Nav = () => {
                     <LangToggle />
                     <button
                         data-testid="nav-cta-button"
-                        onClick={() => go("kontak")}
+                        onClick={() => jump({ id: "kontak", path: pathname })}
                         className="hidden items-center gap-1.5 rounded-full bg-iris px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-[#9069ff] hover:shadow-[0_0_28px_rgba(128,82,255,0.45)] sm:inline-flex"
                     >
                         {S.cta[lang]}
@@ -102,13 +98,13 @@ const Nav = () => {
                         data-testid="nav-mobile-menu"
                     >
                         <ul className="flex flex-col gap-5">
-                            {LINKS.map((l) => (
-                                <li key={l.id}>
+                            {links.map((l) => (
+                                <li key={key(l)}>
                                     <a
                                         href={`#${l.id}`}
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            go(l.id);
+                                            jump(l);
                                         }}
                                         className="font-display text-2xl font-light text-bone"
                                     >
@@ -119,7 +115,7 @@ const Nav = () => {
                             <li>
                                 <button
                                     data-testid="nav-mobile-cta"
-                                    onClick={() => go("kontak")}
+                                    onClick={() => jump({ id: "kontak", path: pathname })}
                                     className="mt-2 w-full rounded-full bg-iris px-6 py-3.5 text-sm font-medium text-white"
                                 >
                                     {S.cta[lang]}

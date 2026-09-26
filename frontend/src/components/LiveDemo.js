@@ -17,6 +17,8 @@ import {
     DEMO_EXPERIENCE,
     DEMO_EDUCATION,
     DEMO_PRODUCTS,
+    DEMO_STORE,
+    BRAND,
     DEMO_PROFILE,
 } from "@/data/templates";
 
@@ -108,7 +110,7 @@ const DemoBrowser = () => {
                         <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
                     </div>
                     <span className="hidden rounded-full bg-white/5 px-4 py-1 text-[11px] font-light text-ash sm:block">
-                        rakapratama.show.porto.id / dapurnusantara.show.porto.id
+                        rakapratama.show.porto / {DEMO_STORE.domain}
                     </span>
                     <span className="flex items-center gap-1 text-[10px] font-light text-ash">
                         <Lock className="h-3 w-3" /> https
@@ -244,16 +246,14 @@ const DemoBrowser = () => {
                                 <div className="flex items-center justify-between gap-4">
                                     <div className="flex items-center gap-4">
                                         <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-verdant to-[#0e5a4b] font-display text-lg font-medium text-white">
-                                            DN
+                                            {DEMO_STORE.initials}
                                         </span>
                                         <div>
                                             <p className="font-display text-xl font-light text-bone">
-                                                Dapur Nusantara
+                                                {DEMO_STORE.name}
                                             </p>
                                             <p className="text-xs font-light text-ash">
-                                                {lang === "id"
-                                                    ? "Katering & frozen food"
-                                                    : "Catering & frozen food"}
+                                                {DEMO_STORE.tag[lang]}
                                             </p>
                                         </div>
                                     </div>
@@ -297,7 +297,7 @@ const DemoBrowser = () => {
                                                 {p.price}
                                             </p>
                                             <a
-                                                href="https://wa.me/6281234567890"
+                                                href={`${BRAND.wa}?text=${encodeURIComponent(`Halo ${DEMO_STORE.name}, saya mau pesan ${p.name[lang]} (${p.price}).`)}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 data-testid={`demo-order-button-${p.price.replace(/\D/g, "")}`}

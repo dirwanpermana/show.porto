@@ -1,27 +1,29 @@
+import { Mail, MessageCircle } from "lucide-react";
 import Logo from "@/components/Logo";
-import LangToggle from "@/components/LangToggle";
 import { useLang, SITE } from "@/i18n";
 import { BRAND } from "@/data/templates";
-import { scrollToSection } from "@/lib/scroll";
+import { ROUTES, useGo } from "@/lib/nav";
 
 const Footer = () => {
     const { lang } = useLang();
+    const go = useGo();
     const S = SITE.footer;
     const COLS = [
         {
             title: S.services,
             links: [
-                { id: "template", label: SITE.nav.template },
-                { id: "pratinjau", label: SITE.nav.pratinjau },
-                { id: "harga", label: SITE.nav.harga },
+                { id: "template", path: ROUTES.home, label: S.tplPorto },
+                { id: "template", path: ROUTES.umkm, label: S.tplUmkm },
+                { id: "pratinjau", path: ROUTES.home, label: SITE.nav.pratinjau },
+                { id: "harga", path: ROUTES.home, label: SITE.nav.harga },
             ],
         },
         {
             title: S.info,
             links: [
-                { id: "fitur", label: SITE.nav.fitur },
-                { id: "proses", label: SITE.nav.proses },
-                { id: "faq", label: SITE.nav.faq },
+                { id: "fitur", path: ROUTES.home, label: SITE.nav.fitur },
+                { id: "proses", path: ROUTES.home, label: SITE.nav.proses },
+                { id: "faq", path: ROUTES.home, label: SITE.nav.faq },
             ],
         },
     ];
@@ -35,9 +37,8 @@ const Footer = () => {
                         <p className="mt-4 text-sm font-light leading-relaxed text-ash">
                             {S.tagline[lang]}
                         </p>
-                        <LangToggle className="mt-5" />
                     </div>
-                    <div className="flex gap-16">
+                    <div className="flex flex-wrap gap-12 md:gap-16">
                         {COLS.map((c) => (
                             <div key={c.title.en}>
                                 <p className="text-xs font-medium uppercase tracking-[0.18em] text-mist">
@@ -45,13 +46,13 @@ const Footer = () => {
                                 </p>
                                 <ul className="mt-4 space-y-3">
                                     {c.links.map((l) => (
-                                        <li key={l.id}>
+                                        <li key={`${l.path}-${l.id}-${l.label.en}`}>
                                             <a
                                                 href={`#${l.id}`}
-                                                data-testid={`footer-link-${l.id}`}
+                                                data-testid={`footer-link-${l.path.replace("/", "") || "home"}-${l.id}`}
                                                 onClick={(e) => {
                                                     e.preventDefault();
-                                                    scrollToSection(l.id);
+                                                    go(l);
                                                 }}
                                                 className="text-sm font-light text-ash transition-colors duration-300 hover:text-bone"
                                             >
@@ -62,13 +63,36 @@ const Footer = () => {
                                 </ul>
                             </div>
                         ))}
+                        <div>
+                            <p className="text-xs font-medium uppercase tracking-[0.18em] text-mist">
+                                {S.contact[lang]}
+                            </p>
+                            <ul className="mt-4 space-y-3">
+                                <li>
+                                    <a
+                                        href={BRAND.wa}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        data-testid="footer-whatsapp"
+                                        className="inline-flex items-center gap-2 text-sm font-light text-ash transition-colors duration-300 hover:text-[#3fbfa4]"
+                                    >
+                                        <MessageCircle className="h-4 w-4" />
+                                        {BRAND.waNumber}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={`mailto:${BRAND.email}`}
+                                        data-testid="footer-email"
+                                        className="inline-flex items-center gap-2 text-sm font-light text-ash transition-colors duration-300 hover:text-bone"
+                                    >
+                                        <Mail className="h-4 w-4" />
+                                        {BRAND.email}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t hairline pt-8 text-xs font-light text-ash sm:flex-row sm:items-center">
-                    <p>
-                        © {new Date().getFullYear()} {BRAND.name}. {S.rights[lang]}
-                    </p>
-                    <p>{S.made[lang]}</p>
                 </div>
             </div>
         </footer>

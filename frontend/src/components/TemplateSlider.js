@@ -6,10 +6,44 @@ import TemplatePreview from "@/components/TemplatePreview";
 import { useLang, SITE } from "@/i18n";
 import { scrollToSection } from "@/lib/scroll";
 import { TEMPLATES } from "@/data/templates";
+import { ROUTES, useGo } from "@/lib/nav";
 
-const TemplateSlider = () => {
+const UmkmTeaser = ({ lang, S }) => {
+    const go = useGo();
+    return (
+        <article
+            data-card="true"
+            data-testid="template-card-umkm-teaser"
+            className="group flex w-[300px] shrink-0 flex-col justify-between overflow-hidden rounded-2xl border border-verdant/30 bg-gradient-to-b from-verdant/[0.12] to-ink p-6 transition-all duration-500 hover:border-verdant/60 md:w-[400px]"
+            style={{ scrollSnapAlign: "start" }}
+        >
+            <div>
+                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-verdant">
+                    Landing Page UMKM
+                </p>
+                <h3 className="mt-3 font-display text-3xl font-light text-bone">
+                    {S.moreUmkmT[lang]}
+                </h3>
+                <p className="mt-3 text-sm font-light leading-relaxed text-ash">
+                    {S.moreUmkmD[lang]}
+                </p>
+            </div>
+            <button
+                data-testid="template-umkm-teaser-cta"
+                onClick={() => go({ id: "template", path: ROUTES.umkm })}
+                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-verdant px-5 py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-[#1aa48a]"
+            >
+                {S.moreUmkmCta[lang]}
+                <ArrowUpRight className="h-4 w-4" />
+            </button>
+        </article>
+    );
+};
+
+const TemplateSlider = ({ templates = TEMPLATES, copy, testPrefix = "template", teaser = !copy }) => {
     const { lang } = useLang();
     const S = SITE.tpl;
+    const head = copy || { tag: S.tag[lang], title: S.title[lang], sub: S.sub[lang] };
     const trackRef = useRef(null);
     const scrollRef = useRef(null);
     const [active, setActive] = useState(null);
@@ -43,16 +77,16 @@ const TemplateSlider = () => {
                 <div className="flex flex-wrap items-end justify-between gap-6">
                     <div className="mb-0">
                         <Reveal>
-                            <SectionTag>{S.tag[lang]}</SectionTag>
+                            <SectionTag>{head.tag}</SectionTag>
                         </Reveal>
                         <Reveal delay={0.08}>
                             <h2 className="mt-4 font-display text-4xl font-light leading-[1.05] tracking-tight text-bone md:text-5xl">
-                                {S.title[lang]}
+                                {head.title}
                             </h2>
                         </Reveal>
                         <Reveal delay={0.16}>
                             <p className="mt-4 max-w-xl text-base font-light text-ash md:text-lg">
-                                {S.sub[lang]}
+                                {head.sub}
                             </p>
                         </Reveal>
                     </div>
@@ -87,11 +121,11 @@ const TemplateSlider = () => {
                     className="no-scrollbar mt-12 flex gap-6 overflow-x-auto scroll-smooth px-6 pb-4 md:px-[max(1.5rem,calc((100vw-1280px)/2+1.5rem))]"
                     style={{ scrollSnapType: "x mandatory" }}
                 >
-                    {TEMPLATES.map((t) => (
+                    {templates.map((t) => (
                         <article
                             key={t.id}
                             data-card="true"
-                            data-testid={`template-card-${t.id}`}
+                            data-testid={`${testPrefix}-card-${t.id}`}
                             className="group w-[300px] shrink-0 overflow-hidden rounded-2xl border hairline bg-ink transition-all duration-500 hover:border-iris/50 hover:shadow-[0_20px_50px_rgba(128,82,255,0.15)] md:w-[400px]"
                             style={{ scrollSnapAlign: "start" }}
                         >
@@ -117,7 +151,7 @@ const TemplateSlider = () => {
                                     {t.desc[lang]}
                                 </p>
                                 <button
-                                    data-testid={`template-detail-button-${t.id}`}
+                                    data-testid={`${testPrefix}-detail-button-${t.id}`}
                                     onClick={() => setActive(t)}
                                     className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full border hairline px-5 py-3 text-sm font-medium text-bone transition-all duration-300 hover:bg-iris hover:border-iris"
                                 >
@@ -127,6 +161,7 @@ const TemplateSlider = () => {
                             </div>
                         </article>
                     ))}
+                    {teaser && <UmkmTeaser lang={lang} S={S} />}
                 </div>
             </Reveal>
 

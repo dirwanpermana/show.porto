@@ -1,8 +1,12 @@
 import { useEffect, Component } from "react";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import Lenis from "lenis";
 import "@/App.css";
 import { Toaster } from "@/components/ui/sonner";
 import Landing from "@/pages/Landing";
+import UmkmPage from "@/pages/UmkmPage";
+import { LangProvider } from "@/i18n";
+import { ScrollManager } from "@/lib/nav";
 
 class ErrorBoundary extends Component {
     constructor(props) {
@@ -46,7 +50,16 @@ function App() {
 
     return (
         <ErrorBoundary>
-            <Landing />
+            <LangProvider>
+                <HashRouter>
+                    <ScrollManager />
+                    <Routes>
+                        <Route path="/" element={<Landing />} />
+                        <Route path="/umkm" element={<UmkmPage />} />
+                        <Route path="*" element={<Navigate to="/" replace />} />
+                    </Routes>
+                </HashRouter>
+            </LangProvider>
             <Toaster theme="dark" position="top-center" richColors closeButton />
         </ErrorBoundary>
     );

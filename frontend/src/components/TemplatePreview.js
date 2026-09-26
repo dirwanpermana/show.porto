@@ -8,6 +8,9 @@ import {
 } from "lucide-react";
 import { useLang, SITE } from "@/i18n";
 import { PREVIEWS } from "@/data/templatePreviews";
+import { UMKM_PREVIEWS } from "@/data/umkmPreviews";
+
+const ALL_PREVIEWS = { ...PREVIEWS, ...UMKM_PREVIEWS };
 
 /* Pratinjau desain template: satu halaman utuh seperti website sungguhan.
    Tiap template punya varian cover, alur section, dan layout proyek sendiri
@@ -43,6 +46,8 @@ const Eyebrow = ({ label, th, center }) => (
 );
 
 const heroTitle = (tpl, lang) => {
+    const custom = ALL_PREVIEWS[tpl.id]?.title;
+    if (custom) return custom[lang];
     switch (tpl.id) {
         case "lumina":
             return lang === "id"
@@ -101,7 +106,7 @@ const CtaRow = ({ p, th, S, lang, note, scrollToPage, tpl, center }) => (
             className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-medium transition-all duration-300 hover:opacity-80"
             style={{ border: `1px solid ${th.line}`, color: th.text }}
         >
-            {p.cv ? S.seeWorks[lang] : S.seeMenu[lang]}
+            {p.cv ? S.seeWorks[lang] : `${S.see[lang]} ${p.works.label[lang]}`}
             <ArrowDown className="h-3.5 w-3.5" />
         </button>
     </div>
@@ -669,10 +674,9 @@ const WorksGrid = ({ data, layout, th, lang, note }) => {
 const TemplatePreview = ({ tpl, scrollRef }) => {
     const { lang } = useLang();
     const S = SITE.tpl;
-    const p = PREVIEWS[tpl.id];
+    const p = ALL_PREVIEWS[tpl.id];
     const th = tpl.theme;
     const L = (o) => o[lang];
-    const isUmkm = tpl.id === "etalase";
     const note = () => toast.info(S.form.note[lang]);
     const scrollToPage = (id) => {
         const el = document.getElementById(id);

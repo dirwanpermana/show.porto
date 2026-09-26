@@ -1,43 +1,42 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import axios from "axios";
 import { toast } from "sonner";
-import { ArrowUpRight, Loader2, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Loader2, Mail, MessageCircle } from "lucide-react";
 import { Reveal, SectionTag } from "@/components/Reveal";
 import { useLang, SITE } from "@/i18n";
 import { BRAND, INTENTS } from "@/data/templates";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+export const buildWaUrl = (form, lang) => {
+    const S = SITE.lead;
+    const intent = INTENTS.find((i) => i.value === form.intent);
+    const lines = [
+        S.waPrefix[lang],
+        "",
+        `${S.waName[lang]}: ${form.name}`,
+        `${S.waContact[lang]}: ${form.contact}`,
+        `${S.waIntent[lang]}: ${intent ? intent.label[lang] : form.intent}`,
+    ];
+    if (form.message.trim()) lines.push(`${S.waMsg[lang]}: ${form.message.trim()}`);
+    lines.push("", S.waClosing[lang]);
+    return `${BRAND.wa}?text=${encodeURIComponent(lines.join("\n"))}`;
+};
 
-const LeadSection = () => {
+const LeadSection = ({ defaultIntent = "porto-web" }) => {
     const { lang } = useLang();
     const S = SITE.lead;
-    const [form, setForm] = useState({
-        name: "",
-        contact: "",
-        intent: "pencari-kerja",
-        message: "",
-    });
+    const empty = { name: "", contact: "", intent: defaultIntent, message: "" };
+    const [form, setForm] = useState(empty);
     const [sending, setSending] = useState(false);
 
     const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
 
-    const submit = async (e) => {
+    const submit = (e) => {
         e.preventDefault();
         setSending(true);
-        try {
-            await axios.post(`${API}/leads`, form);
-            toast.success(S.toastOk[lang], {
-                description: S.toastOkDesc[lang],
-            });
-            setForm({ name: "", contact: "", intent: "pencari-kerja", message: "" });
-        } catch (err) {
-            toast.error(S.toastErr[lang], {
-                description: S.toastErrDesc[lang],
-            });
-        } finally {
-            setSending(false);
-        }
+        window.open(buildWaUrl(form, lang), "_blank", "noopener,noreferrer");
+        toast.success(S.toastOk[lang], { description: S.toastOkDesc[lang] });
+        setForm(empty);
+        setTimeout(() => setSending(false), 600);
     };
 
     const inputCls =
@@ -66,31 +65,37 @@ const LeadSection = () => {
                         </p>
                     </Reveal>
                     <Reveal delay={0.22}>
-                        <a
-                            href={BRAND.wa}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            data-testid="lead-whatsapp-link"
-                            className="mt-8 inline-flex items-center gap-2 rounded-full border border-verdant/50 bg-verdant/10 px-6 py-3 text-sm font-medium text-[#3fbfa4] transition-all duration-300 hover:bg-verdant hover:text-white"
-                        >
-                            <MessageCircle className="h-4 w-4" />
-                            {S.wa[lang]}
-                        </a>
+                        <div className="mt-8 flex flex-wrap items-center gap-4">
+                            <a
+                                href={BRAND.wa}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                data-testid="lead-whatsapp-link"
+                                className="inline-flex items-center gap-2 rounded-full border border-verdant/50 bg-verdant/10 px-6 py-3 text-sm font-medium text-[#3fbfa4] transition-all duration-300 hover:bg-verdant hover:text-white"
+                            >
+                                <MessageCircle className="h-4 w-4" />
+                                {S.wa[lang]} · {BRAND.waNumber}
+                            </a>
+                        </div>
+                        <p className="mt-4 text-sm font-light text-ash">
+                            {S.emailCta[lang]}{" "}
+                            <a
+                                href={`mailto:${BRAND.email}`}
+                                data-testid="lead-email-link"
+                                className="inline-flex items-center gap-1.5 text-bone underline decoration-iris/60 underline-offset-4 transition-colors hover:text-iris"
+                            >
+                                <Mail className="h-3.5 w-3.5" />
+                                {BRAND.email}
+                            </a>
+                        </p>
                     </Reveal>
                 </div>
 
                 <Reveal delay={0.1}>
-                    <form
-                        onSubmit={submit}
-                        data-testid="lead-form"
-                        className="glass rounded-2xl p-7 md:p-9"
-                    >
+                    <form onSubmit={submit} data-testid="lead-form" className="glass rounded-2xl p-7 md:p-9">
                         <div className="space-y-4">
                             <div>
-                                <label
-                                    htmlFor="lead-name"
-                                    className="mb-2 block text-xs font-medium uppercase tracking-[0.16em] text-mist"
-                                >
+                                <label htmlFor="lead-name" className="mb-2 block text-xs font-medium uppercase tracking-[0.16em] text-mist">
                                     {S.name[lang]}
                                 </label>
                                 <input
@@ -104,10 +109,7 @@ const LeadSection = () => {
                                 />
                             </div>
                             <div>
-                                <label
-                                    htmlFor="lead-contact"
-                                    className="mb-2 block text-xs font-medium uppercase tracking-[0.16em] text-mist"
-                                >
+                                <label htmlFor="lead-contact" className="mb-2 block text-xs font-medium uppercase tracking-[0.16em] text-mist">
                                     {S.contact[lang]}
                                 </label>
                                 <input
@@ -121,10 +123,7 @@ const LeadSection = () => {
                                 />
                             </div>
                             <div>
-                                <label
-                                    htmlFor="lead-intent"
-                                    className="mb-2 block text-xs font-medium uppercase tracking-[0.16em] text-mist"
-                                >
+                                <label htmlFor="lead-intent" className="mb-2 block text-xs font-medium uppercase tracking-[0.16em] text-mist">
                                     {S.intent[lang]}
                                 </label>
                                 <select
@@ -142,10 +141,7 @@ const LeadSection = () => {
                                 </select>
                             </div>
                             <div>
-                                <label
-                                    htmlFor="lead-message"
-                                    className="mb-2 block text-xs font-medium uppercase tracking-[0.16em] text-mist"
-                                >
+                                <label htmlFor="lead-message" className="mb-2 block text-xs font-medium uppercase tracking-[0.16em] text-mist">
                                     {S.message[lang]}
                                 </label>
                                 <textarea
@@ -172,6 +168,9 @@ const LeadSection = () => {
                                 )}
                                 {sending ? S.sending[lang] : S.submit[lang]}
                             </motion.button>
+                            <p data-testid="lead-form-note" className="text-center text-[11px] font-light text-ash">
+                                {S.formNote[lang]}
+                            </p>
                         </div>
                     </form>
                 </Reveal>
