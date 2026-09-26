@@ -1,4 +1,4 @@
-const U = (id) => `https://images.unsplash.com/photo-${id}?q=80&w=1200&auto=format&fit=crop`;
+import { tplImg } from "@/data/img";
 
 export const UMKM_TEMPLATES = [
     {
@@ -11,7 +11,7 @@ export const UMKM_TEMPLATES = [
             id: "Nuansa blush & rose-gold dengan serif lembut: galeri project nikahan full-bleed, paket rias, dan tombol booking WhatsApp.",
             en: "Blush & rose-gold tones with a soft serif: full-bleed wedding project gallery, makeup packages, and a WhatsApp booking button.",
         },
-        img: U("1487412720507-e7ab37603c6f"),
+        img: tplImg("aurum_profile"),
         tags: [
             { id: "Project Nikahan", en: "Wedding Projects" },
             { id: "Paket Rias", en: "Makeup Packages" },
@@ -42,7 +42,7 @@ export const UMKM_TEMPLATES = [
             id: "Maroon pekat beraksen kuningan: katalog koleksi kebaya dengan harga sewa, ukuran tersedia, dan tombol pesan per koleksi.",
             en: "Deep maroon with brass accents: a kebaya collection catalog with rental prices, available sizes, and an order button per piece.",
         },
-        img: U("1566174053879-31528523f8ae"),
+        img: tplImg("sanggar_keluarga"),
         tags: [
             { id: "Katalog Koleksi", en: "Collection Catalog" },
             { id: "Harga Sewa", en: "Rental Prices" },
@@ -73,7 +73,7 @@ export const UMKM_TEMPLATES = [
             id: "Hitam pekat dan huruf tipis ber-tracking lebar: galeri masonry prewedding & hari-H, paket sesi, dan kalender booking.",
             en: "Pitch black with thin wide-tracked type: a masonry gallery of prewedding & wedding-day shots, session packages, and booking.",
         },
-        img: U("1519741497674-611481863552"),
+        img: tplImg("kadr_prewed_pantai"),
         tags: [
             { id: "Galeri Masonry", en: "Masonry Gallery" },
             { id: "Paket Sesi", en: "Session Packages" },
@@ -105,7 +105,7 @@ export const UMKM_TEMPLATES = [
             id: "Krem pasir dengan aksen indigo: statistik toko, katalog kain per meter dengan harga, dan tombol pesan langsung ke WhatsApp.",
             en: "Sandy cream with indigo accents: store stats, a per-meter fabric catalog with prices, and an order button straight to WhatsApp.",
         },
-        img: U("1558618666-fcd25c85cd64"),
+        img: tplImg("tenun_profile"),
         tags: [
             { id: "Katalog Kain", en: "Fabric Catalog" },
             { id: "Harga per Meter", en: "Price per Meter" },
@@ -136,7 +136,7 @@ export const UMKM_TEMPLATES = [
             id: "Perkamen hangat dengan serif ramah dan aksen terakota: katalog terasa seperti buku resep keluarga.",
             en: "Warm parchment with a friendly serif and terracotta accent: a catalog that feels like a family recipe book.",
         },
-        img: "https://images.pexels.com/photos/36982086/pexels-photo-36982086.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        img: tplImg("etalase_gudeg"),
         tags: [
             { id: "Katalog Produk", en: "Product Catalog" },
             { id: "Pesan WhatsApp", en: "WhatsApp Order" },
@@ -167,7 +167,7 @@ export const UMKM_TEMPLATES = [
             id: "Putih segar beraksen aqua: daftar layanan & harga per kilo dalam kartu slider, area antar-jemput, dan tombol jemput via WhatsApp.",
             en: "Fresh white with aqua accents: services & per-kilo prices in slider cards, pickup coverage area, and a WhatsApp pickup button.",
         },
-        img: U("1545173168-9f1947eebb7f"),
+        img: tplImg("bersih_profile"),
         tags: [
             { id: "Daftar Harga", en: "Price List" },
             { id: "Antar-Jemput", en: "Pickup & Delivery" },

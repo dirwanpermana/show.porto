@@ -1,9 +1,11 @@
+import { tplImg } from "@/data/img";
+
 export const BRAND = {
     name: "show.porto",
     tagline: "Don't just tell. Show it.",
     domain: "show.porto",
-    waNumber: "085591197624",
-    wa: "https://wa.me/6285591197624",
+    waNumber: "085893096273",
+    wa: "https://wa.me/6285893096273",
     email: "showporto49@gmail.com",
     repo: "https://github.com/show-porto/show-porto",
 };
@@ -324,22 +326,22 @@ export const DEMO_PRODUCTS = [
     {
         name: { id: "Katun Jepang Motif /m", en: "Japanese Printed Cotton /m" },
         price: "Rp45.000",
-        img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop",
+        img: tplImg("tenun_katun"),
     },
     {
         name: { id: "Linen Look Polos /m", en: "Plain Linen Look /m" },
         price: "Rp38.000",
-        img: "https://images.unsplash.com/photo-1528114039593-4366cc08227d?q=80&w=800&auto=format&fit=crop",
+        img: tplImg("tenun_linen"),
     },
     {
         name: { id: "Brokat Prancis Premium /m", en: "Premium French Brocade /m" },
         price: "Rp185.000",
-        img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800&auto=format&fit=crop",
+        img: tplImg("tenun_brokat"),
     },
     {
         name: { id: "Batik Cap Solo 2m", en: "Solo Stamped Batik 2m" },
         price: "Rp120.000",
-        img: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop",
+        img: tplImg("tenun_batik"),
     },
 ];
 
@@ -383,11 +385,11 @@ export const FEATURES = [
         },
     },
     {
-        icon: "TrendingUp",
-        title: { id: "SEO Dasar + Analytics", en: "Basic SEO + Analytics" },
+        icon: "MessageSquare",
+        title: { id: "Form Chat", en: "Chat Form" },
         desc: {
-            id: "Struktur yang Google suka + statistik pengunjung. Kamu tahu siapa aja yang lagi ngintip karyamu.",
-            en: "Google-friendly structure + visitor stats. You'll know who's checking out your work.",
+            id: "HRD bisa segera menghubungimu untuk pekerjaan terbaru — pesan dari form langsung masuk ke WhatsApp atau email kamu.",
+            en: "HR can reach you right away about new openings — form messages land straight in your WhatsApp or email.",
         },
     },
     {
@@ -525,7 +527,7 @@ export const PRICING_GROUPS = [
                     { id: "Full source code milik usahamu", en: "Full source code owned by your business" },
                     { id: "Manual book update mandiri: tambah produk, ganti harga & foto", en: "Self-update manual book: add products, change prices & photos" },
                     { id: "Bebas hosting + bantuan pasang domain sendiri", en: "Host anywhere + help with your own domain" },
-                    { id: "SEO dasar + Google Analytics", en: "Basic SEO + Google Analytics" },
+                    { id: "Form chat pelanggan langsung ke WhatsApp", en: "Customer chat form straight to WhatsApp" },
                     { id: "Revisi 5x · prioritas antrean", en: "5 revisions · priority queue" },
                 ],
                 highlight: true,
@@ -573,8 +575,8 @@ export const FAQS = [
     {
         q: { id: "Cara bayar dan konsultasinya gimana?", en: "How do payment and consultation work?" },
         a: {
-            id: "Konsultasi gratis via WhatsApp 0855-9119-7624 atau email showporto49@gmail.com. Sekali bayar, nggak ada biaya bulanan tersembunyi. DP 50% saat mulai, sisanya saat website tayang.",
-            en: "Free consultation via WhatsApp 0855-9119-7624 or email showporto49@gmail.com. Pay once, no hidden monthly fees. 50% deposit to start, the rest when the site goes live.",
+            id: "Konsultasi gratis via WhatsApp 0858-9309-6273 atau email showporto49@gmail.com. Sekali bayar, nggak ada biaya bulanan tersembunyi. DP 50% saat mulai, sisanya saat website tayang.",
+            en: "Free consultation via WhatsApp 0858-9309-6273 or email showporto49@gmail.com. Pay once, no hidden monthly fees. 50% deposit to start, the rest when the site goes live.",
         },
     },
 ];
@@ -597,7 +599,7 @@ export const INTENTS = [
         label: { id: "Landing Page UMKM — LANDING + Source Code Rp1,5jt", en: "UMKM Landing — LANDING + Source Code Rp1.5M" },
     },
     {
-        value: "lainnya",
-        label: { id: "Lainnya / belum pasti", en: "Other / not sure yet" },
+        value: "custom",
+        label: { id: "Custom Website — sesuai kebutuhanmu", en: "Custom Website — tailored to your needs" },
     },
 ];

@@ -1,5 +1,7 @@
 // Konten contoh per template (bilingual) — persona & karya realistis sesuai bidang.
 // Setiap template punya alur section (flow), varian cover, dan layout proyek sendiri.
+import { tplImg } from "@/data/img";
+
 export const PREVIEWS = {
     lumina: {
         cv: true,
@@ -117,25 +119,25 @@ export const PREVIEWS = {
                     title: { id: "Rebranding Kopi Senja", en: "Kopi Senja Rebranding" },
                     meta: { id: "Identitas Visual · 4 cabang", en: "Visual Identity · 4 branches" },
                     year: "2024",
-                    img: "https://images.unsplash.com/photo-1611241893603-3c359704e0ee?q=80&w=1400&auto=format&fit=crop",
+                    img: tplImg("lumina_kopi"),
                 },
                 {
                     title: { id: "Poster Jazz Pasar Ngasem", en: "Pasar Ngasem Jazz Posters" },
                     meta: { id: "Seri Poster · 12 karya", en: "Poster Series · 12 pieces" },
                     year: "2023",
-                    img: "https://images.pexels.com/photos/2582933/pexels-photo-2582933.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                    img: tplImg("lumina_poster"),
                 },
                 {
                     title: { id: "Kemasan Sambal Nusantara", en: "Nusantara Sambal Packaging" },
                     meta: { id: "Kemasan · 5 varian rasa", en: "Packaging · 5 flavor variants" },
                     year: "2024",
-                    img: "https://images.pexels.com/photos/30349399/pexels-photo-30349399.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                    img: tplImg("lumina_sambal"),
                 },
                 {
                     title: { id: "Annual Report Bank Nusa", en: "Bank Nusa Annual Report" },
                     meta: { id: "Editorial · 64 halaman", en: "Editorial · 64 pages" },
                     year: "2023",
-                    img: "https://images.unsplash.com/photo-1519217651866-847339e674d4?q=80&w=1200&auto=format&fit=crop",
+                    img: tplImg("lumina_report"),
                 },
             ],
         },
@@ -334,7 +336,7 @@ export const PREVIEWS = {
                     },
                     meta: { id: "Jangkauan 3x · CTR 2,4%", en: "Reach 3x · CTR 2.4%" },
                     year: "2025",
-                    img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1400&auto=format&fit=crop",
+                    img: tplImg("amplify_serum"),
                 },
                 {
                     title: { id: "Peluncuran Glowlab Serum", en: "Glowlab Serum Launch" },
@@ -759,31 +761,31 @@ export const PREVIEWS = {
                     title: { id: "Serial 'Tukang Kayu'", en: "'The Woodworkers' Series" },
                     meta: { id: "Potret Dokumenter", en: "Documentary Portrait" },
                     year: "2024",
-                    img: "https://images.pexels.com/photos/16135635/pexels-photo-16135635.jpeg?auto=compress&cs=tinysrgb&w=1000",
+                    img: tplImg("aperture_tukang_kayu"),
                 },
                 {
                     title: { id: "Editorial 'Pasar Buku'", en: "'Book Market' Editorial" },
                     meta: { id: "Editorial", en: "Editorial" },
                     year: "2023",
-                    img: "https://images.unsplash.com/photo-1621024994278-e409544f4085?q=80&w=1000&auto=format&fit=crop",
+                    img: tplImg("aperture_pasar_buku"),
                 },
                 {
                     title: { id: "Kampanye Hotel Anantara", en: "Anantara Hotel Campaign" },
                     meta: { id: "Komersial", en: "Commercial" },
                     year: "2024",
-                    img: "https://images.unsplash.com/photo-1648662199460-34b7597ba771?q=80&w=1000&auto=format&fit=crop",
+                    img: tplImg("aperture_hotel"),
                 },
                 {
                     title: { id: "Potret Studio — Seri Dua", en: "Studio Portraits — Series Two" },
                     meta: { id: "Potret", en: "Portrait" },
                     year: "2023",
-                    img: "https://images.pexels.com/photos/33273434/pexels-photo-33273434.jpeg?auto=compress&cs=tinysrgb&w=1000",
+                    img: tplImg("aperture_potret"),
                 },
                 {
                     title: { id: "Di Balik Panggung", en: "Behind the Stage" },
                     meta: { id: "Dokumenter", en: "Documentary" },
                     year: "2022",
-                    img: "https://images.unsplash.com/photo-1621024994326-91782bb4a5ba?q=80&w=1000&auto=format&fit=crop",
+                    img: tplImg("aperture_backstage"),
                 },
             ],
         },
@@ -1089,7 +1091,7 @@ export const PREVIEWS = {
                 id: "Setiap pesanan dimasak seperti untuk keluarga sendiri — karena pelanggan itu keluarga.",
                 en: "Every order is cooked like it's for our own family — because customers are family.",
             },
-            img: "https://images.pexels.com/photos/36982086/pexels-photo-36982086.jpeg?auto=compress&cs=tinysrgb&w=900",
+            img: tplImg("etalase_gudeg"),
             stats: [
                 { n: "5", l: { id: "Tahun Berdiri", en: "Years Running" } },
                 { n: "20+", l: { id: "Menu", en: "Menu Items" } },
@@ -1136,7 +1138,7 @@ export const PREVIEWS = {
                         en: "Rp85.000 · Best seller",
                     },
                     year: "Frozen",
-                    img: "https://images.pexels.com/photos/36982086/pexels-photo-36982086.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                    img: tplImg("etalase_gudeg"),
                 },
                 {
                     title: { id: "Sate Ayam Bakar 20 tusuk", en: "Grilled Chicken Satay x20" },
@@ -1145,13 +1147,13 @@ export const PREVIEWS = {
                         en: "Rp120.000 · Fresh",
                     },
                     year: "Fresh",
-                    img: "https://images.pexels.com/photos/30588841/pexels-photo-30588841.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                    img: tplImg("etalase_sate"),
                 },
                 {
                     title: { id: "Sambal Nusantara 5 botol", en: "Nusantara Sambal 5 jars" },
                     meta: { id: "Rp150.000 · Paket", en: "Rp150.000 · Bundle" },
                     year: "Hampers",
-                    img: "https://images.unsplash.com/photo-1568622998407-0084ebf482b0?q=80&w=1200&auto=format&fit=crop",
+                    img: tplImg("etalase_sambal"),
                 },
             ],
         },

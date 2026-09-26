@@ -51,6 +51,13 @@ Landing page satu halaman (bahasa Indonesia) untuk brand **show.porto** + backen
 - P2: Mini-CMS/manual book nyata untuk klien paket Source Code; pembayaran (Stripe/Xendit) jika mau otomatis
 - Catatan: Harga sudah final dari user; nomor WA & email sudah asli. Persona template tetap contoh.
 
+## Iterasi 2026-09-26 (Perbaikan konten) — DONE
+- [x] Fitur "SEO Dasar + Analytics" → "Form Chat" (HRD bisa segera menghubungimu); SEO dihapus dari benefit paket & chip audiences
+- [x] Nomor WhatsApp → 085893096273 (wa.me/6285893096273), termasuk FAQ
+- [x] 46 foto template dibuat ulang agar sesuai judul (kebaya keluarga, beskap, kain, laundry, MUA, wedding, kuliner, karya desain/foto) → disimpan lokal di frontend/public/img/tpl/*.jpg via helper data/img.js (tplImg) — aman untuk GitHub Pages
+- [x] Catatan "Bisa custom suka-suka" di bawah slider template (home & UMKM); opsi form "Lainnya" → "Custom Website"
+- [x] CTA navbar "Mulai Sekarang" → "Pesan Sekarang"
+
 ## Iterasi 2026-09-26 (Logika Bisnis, Halaman UMKM, Frontend-Only) — DONE & tested (iteration_1.json)
 - [x] Kontak asli: WhatsApp 085591197624 (wa.me/6285591197624) & email showporto49@gmail.com (BRAND di data/templates.js) — tampil di lead section, footer, hero UMKM
 - [x] Label "UMKM" → "Landing Page UMKM" di seluruh copy; demo UMKM di home = Toko Kain Tenun Jaya (DEMO_STORE + DEMO_PRODUCTS kain)

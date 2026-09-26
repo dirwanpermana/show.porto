@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight, Maximize2, Minimize2, X } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Maximize2, Minimize2, Sparkles, X } from "lucide-react";
 import { Reveal, SectionTag } from "@/components/Reveal";
 import TemplatePreview from "@/components/TemplatePreview";
 import { useLang, SITE } from "@/i18n";
@@ -162,6 +162,21 @@ const TemplateSlider = ({ templates = TEMPLATES, copy, testPrefix = "template", 
                         </article>
                     ))}
                     {teaser && <UmkmTeaser lang={lang} S={S} />}
+                </div>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+                <div className="mx-auto mt-8 max-w-[1280px] px-6">
+                    <p
+                        data-testid={`${testPrefix}-custom-note`}
+                        className="inline-flex flex-wrap items-center gap-3 rounded-full border border-saffron/30 bg-saffron/[0.06] px-5 py-3 text-sm font-light text-mist"
+                    >
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-void">
+                            <Sparkles className="h-3 w-3" />
+                            {S.customTag[lang]}
+                        </span>
+                        {S.custom[lang]}
+                    </p>
                 </div>
             </Reveal>
 

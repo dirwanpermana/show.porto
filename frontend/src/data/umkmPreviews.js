@@ -1,5 +1,4 @@
-const U = (id, w = 1200) =>
-    `https://images.unsplash.com/photo-${id}?q=80&w=${w}&auto=format&fit=crop`;
+import { tplImg } from "@/data/img";
 
 export const UMKM_PREVIEWS = {
     aurum: {
@@ -15,7 +14,7 @@ export const UMKM_PREVIEWS = {
                 id: "Riasan terbaik itu yang bikin kamu tetap kelihatan seperti dirimu — versi paling bercahaya.",
                 en: "The best makeup makes you look like yourself — the most radiant version.",
             },
-            img: U("1487412720507-e7ab37603c6f", 900),
+            img: tplImg("aurum_profile"),
             stats: [
                 { n: "180+", l: { id: "Pengantin", en: "Brides" } },
                 { n: "7", l: { id: "Tahun Berkarya", en: "Years Working" } },
@@ -46,12 +45,12 @@ export const UMKM_PREVIEWS = {
                 en: "A few brides we've accompanied — from Javanese traditional to intimate garden weddings.",
             },
             items: [
-                { title: { id: "Akad Adat Jawa — Dinda & Raka", en: "Javanese Vows — Dinda & Raka" }, meta: { id: "Paket Akad + Resepsi", en: "Vows + Reception" }, year: "2025", img: U("1519741497674-611481863552") },
-                { title: { id: "Garden Wedding — Kiara", en: "Garden Wedding — Kiara" }, meta: { id: "Soft glam", en: "Soft glam" }, year: "2025", img: U("1606800052052-a08af7148866") },
-                { title: { id: "Prewedding Studio — Alya", en: "Studio Prewedding — Alya" }, meta: { id: "Natural look", en: "Natural look" }, year: "2024", img: U("1583939003579-730e3918a45a") },
-                { title: { id: "Resepsi Ballroom — Tasya", en: "Ballroom Reception — Tasya" }, meta: { id: "Bold glam", en: "Bold glam" }, year: "2024", img: U("1512496015851-a90fb38ba796") },
-                { title: { id: "Engagement — Salma", en: "Engagement — Salma" }, meta: { id: "Dewy skin", en: "Dewy skin" }, year: "2024", img: U("1522337660859-02fbefca4702") },
-                { title: { id: "Wisuda & Graduation Party", en: "Graduation Party" }, meta: { id: "Paket wisuda", en: "Graduation package" }, year: "2023", img: U("1537633552985-df8429e8048b") },
+                { title: { id: "Akad Adat Jawa — Dinda & Raka", en: "Javanese Vows — Dinda & Raka" }, meta: { id: "Paket Akad + Resepsi", en: "Vows + Reception" }, year: "2025", img: tplImg("aurum_akad_jawa") },
+                { title: { id: "Garden Wedding — Kiara", en: "Garden Wedding — Kiara" }, meta: { id: "Soft glam", en: "Soft glam" }, year: "2025", img: tplImg("aurum_garden") },
+                { title: { id: "Prewedding Studio — Alya", en: "Studio Prewedding — Alya" }, meta: { id: "Natural look", en: "Natural look" }, year: "2024", img: tplImg("aurum_prewed_studio") },
+                { title: { id: "Resepsi Ballroom — Tasya", en: "Ballroom Reception — Tasya" }, meta: { id: "Bold glam", en: "Bold glam" }, year: "2024", img: tplImg("aurum_ballroom") },
+                { title: { id: "Engagement — Salma", en: "Engagement — Salma" }, meta: { id: "Dewy skin", en: "Dewy skin" }, year: "2024", img: tplImg("aurum_engagement") },
+                { title: { id: "Wisuda & Graduation Party", en: "Graduation Party" }, meta: { id: "Paket wisuda", en: "Graduation package" }, year: "2023", img: tplImg("aurum_wisuda") },
             ],
         },
         services: {
@@ -99,7 +98,7 @@ export const UMKM_PREVIEWS = {
                 id: "Setiap kebaya punya cerita. Kami rawat supaya ceritamu jadi yang paling indah.",
                 en: "Every kebaya carries a story. We care for them so yours becomes the most beautiful.",
             },
-            img: U("1566174053879-31528523f8ae", 900),
+            img: tplImg("sanggar_profile"),
             stats: [
                 { n: "120+", l: { id: "Koleksi", en: "Pieces" } },
                 { n: "XS–XXL", l: { id: "Ukuran", en: "Sizes" } },
@@ -121,12 +120,12 @@ export const UMKM_PREVIEWS = {
                 en: "3-day rental price, dry-clean included. Tap order to check date availability.",
             },
             items: [
-                { title: { id: "Kebaya Kutubaru Brokat Merah", en: "Red Brocade Kutubaru Kebaya" }, meta: { id: "Rp350.000 · size S-L", en: "Rp350.000 · size S-L" }, year: "3 hari", img: U("1566174053879-31528523f8ae") },
-                { title: { id: "Kebaya Modern Payet Ivory", en: "Ivory Sequin Modern Kebaya" }, meta: { id: "Rp450.000 · size M-XL", en: "Rp450.000 · size M-XL" }, year: "3 hari", img: U("1515372039744-b8f02a3ae446") },
-                { title: { id: "Set Wisuda Hijau Sage + Kain", en: "Sage Graduation Set + Cloth" }, meta: { id: "Rp275.000 · all size", en: "Rp275.000 · all size" }, year: "3 hari", img: U("1539109136881-3be0616acf4b") },
-                { title: { id: "Beskap Pengantin Pria", en: "Groom's Beskap" }, meta: { id: "Rp400.000 · size M-XXL", en: "Rp400.000 · size M-XXL" }, year: "3 hari", img: U("1490481651871-ab68de25d43d") },
-                { title: { id: "Kebaya Encim Bordir Pastel", en: "Pastel Embroidered Encim Kebaya" }, meta: { id: "Rp300.000 · size S-XL", en: "Rp300.000 · size S-XL" }, year: "3 hari", img: U("1522673607200-164d1b6ce486") },
-                { title: { id: "Paket Keluarga (4 set)", en: "Family Package (4 sets)" }, meta: { id: "Rp1.100.000 · seragam", en: "Rp1.100.000 · matching" }, year: "3 hari", img: U("1469334031218-e382a71b716b") },
+                { title: { id: "Kebaya Kutubaru Brokat Merah", en: "Red Brocade Kutubaru Kebaya" }, meta: { id: "Rp350.000 · size S-L", en: "Rp350.000 · size S-L" }, year: "3 hari", img: tplImg("sanggar_kutubaru") },
+                { title: { id: "Kebaya Modern Payet Ivory", en: "Ivory Sequin Modern Kebaya" }, meta: { id: "Rp450.000 · size M-XL", en: "Rp450.000 · size M-XL" }, year: "3 hari", img: tplImg("sanggar_ivory") },
+                { title: { id: "Set Wisuda Hijau Sage + Kain", en: "Sage Graduation Set + Cloth" }, meta: { id: "Rp275.000 · all size", en: "Rp275.000 · all size" }, year: "3 hari", img: tplImg("sanggar_wisuda") },
+                { title: { id: "Beskap Pengantin Pria", en: "Groom's Beskap" }, meta: { id: "Rp400.000 · size M-XXL", en: "Rp400.000 · size M-XXL" }, year: "3 hari", img: tplImg("sanggar_beskap") },
+                { title: { id: "Kebaya Encim Bordir Pastel", en: "Pastel Embroidered Encim Kebaya" }, meta: { id: "Rp300.000 · size S-XL", en: "Rp300.000 · size S-XL" }, year: "3 hari", img: tplImg("sanggar_encim") },
+                { title: { id: "Paket Keluarga (4 set)", en: "Family Package (4 sets)" }, meta: { id: "Rp1.100.000 · seragam", en: "Rp1.100.000 · matching" }, year: "3 hari", img: tplImg("sanggar_keluarga") },
             ],
         },
         services: {
@@ -174,7 +173,7 @@ export const UMKM_PREVIEWS = {
                 id: "Saya tidak mengarahkan pose. Saya menunggu momennya datang — lalu menekan tombol.",
                 en: "I don't direct poses. I wait for the moment to arrive — then press the shutter.",
             },
-            img: U("1502920917128-1aa500764cbd", 900),
+            img: tplImg("kadr_profile"),
             stats: [
                 { n: "240+", l: { id: "Pernikahan", en: "Weddings" } },
                 { n: "9", l: { id: "Kota", en: "Cities" } },
@@ -196,12 +195,12 @@ export const UMKM_PREVIEWS = {
                 en: "Prewedding, vows, to reception — pick the tone that feels most like you.",
             },
             items: [
-                { title: { id: "Dinda & Raka — Akad", en: "Dinda & Raka — Vows" }, meta: { id: "Yogyakarta", en: "Yogyakarta" }, year: "2025", img: U("1519741497674-611481863552") },
-                { title: { id: "Sesi Prewedding Pantai", en: "Beach Prewedding" }, meta: { id: "Gunungkidul", en: "Gunungkidul" }, year: "2025", img: U("1519225421980-715cb0215aed") },
-                { title: { id: "Detail Cincin", en: "Ring Details" }, meta: { id: "Studio", en: "Studio" }, year: "2024", img: U("1465495976277-4387d4b0b4c6") },
-                { title: { id: "Resepsi Outdoor", en: "Outdoor Reception" }, meta: { id: "Bandung", en: "Bandung" }, year: "2024", img: U("1511285560929-80b456fea0bc") },
-                { title: { id: "Alya & Dimas — Garden", en: "Alya & Dimas — Garden" }, meta: { id: "Bogor", en: "Bogor" }, year: "2024", img: U("1537633552985-df8429e8048b") },
-                { title: { id: "Salma — Engagement", en: "Salma — Engagement" }, meta: { id: "Jakarta", en: "Jakarta" }, year: "2023", img: U("1606800052052-a08af7148866") },
+                { title: { id: "Dinda & Raka — Akad", en: "Dinda & Raka — Vows" }, meta: { id: "Yogyakarta", en: "Yogyakarta" }, year: "2025", img: tplImg("kadr_akad") },
+                { title: { id: "Sesi Prewedding Pantai", en: "Beach Prewedding" }, meta: { id: "Gunungkidul", en: "Gunungkidul" }, year: "2025", img: tplImg("kadr_prewed_pantai") },
+                { title: { id: "Detail Cincin", en: "Ring Details" }, meta: { id: "Studio", en: "Studio" }, year: "2024", img: tplImg("kadr_cincin") },
+                { title: { id: "Resepsi Outdoor", en: "Outdoor Reception" }, meta: { id: "Bandung", en: "Bandung" }, year: "2024", img: tplImg("kadr_resepsi") },
+                { title: { id: "Alya & Dimas — Garden", en: "Alya & Dimas — Garden" }, meta: { id: "Bogor", en: "Bogor" }, year: "2024", img: tplImg("kadr_garden") },
+                { title: { id: "Salma — Engagement", en: "Salma — Engagement" }, meta: { id: "Jakarta", en: "Jakarta" }, year: "2023", img: tplImg("aurum_engagement") },
             ],
         },
         services: {
@@ -249,7 +248,7 @@ export const UMKM_PREVIEWS = {
                 id: "Tiga generasi jualan kain di pasar yang sama. Sekarang katalognya bisa dibuka dari HP.",
                 en: "Three generations selling fabric at the same market. Now the catalog opens from your phone.",
             },
-            img: U("1604176354204-9268737828e4", 900),
+            img: tplImg("tenun_profile"),
             stats: [
                 { n: "300+", l: { id: "Jenis Kain", en: "Fabric Types" } },
                 { n: "35", l: { id: "Tahun Berdiri", en: "Years Running" } },
@@ -271,12 +270,12 @@ export const UMKM_PREVIEWS = {
                 en: "Per-meter prices, stock updated every morning. Tap order — write the color & length you want.",
             },
             items: [
-                { title: { id: "Katun Jepang Motif", en: "Japanese Printed Cotton" }, meta: { id: "Rp45.000/m · 30 motif", en: "Rp45.000/m · 30 prints" }, year: "Ready", img: U("1558618666-fcd25c85cd64") },
-                { title: { id: "Linen Look Polos", en: "Plain Linen Look" }, meta: { id: "Rp38.000/m · 18 warna", en: "Rp38.000/m · 18 colors" }, year: "Ready", img: U("1528114039593-4366cc08227d") },
-                { title: { id: "Brokat Prancis Premium", en: "Premium French Brocade" }, meta: { id: "Rp185.000/m · kebaya", en: "Rp185.000/m · kebaya" }, year: "Ready", img: U("1620799140408-edc6dcb6d633") },
-                { title: { id: "Batik Cap Tulis Solo", en: "Solo Hand-Stamped Batik" }, meta: { id: "Rp120.000/2m · kain jadi", en: "Rp120.000/2m · finished cloth" }, year: "Ready", img: U("1610701596007-11502861dcfa") },
-                { title: { id: "Satin Silk Roll", en: "Satin Silk Roll" }, meta: { id: "Rp1.450.000/roll 50m", en: "Rp1.450.000/50m roll" }, year: "Grosir", img: U("1595777457583-95e059d581b8") },
-                { title: { id: "Kain Seragam Drill", en: "Drill Uniform Fabric" }, meta: { id: "Rp32.000/m · min. 20m", en: "Rp32.000/m · min. 20m" }, year: "Grosir", img: U("1594938298603-c8148c4dae35") },
+                { title: { id: "Katun Jepang Motif", en: "Japanese Printed Cotton" }, meta: { id: "Rp45.000/m · 30 motif", en: "Rp45.000/m · 30 prints" }, year: "Ready", img: tplImg("tenun_katun") },
+                { title: { id: "Linen Look Polos", en: "Plain Linen Look" }, meta: { id: "Rp38.000/m · 18 warna", en: "Rp38.000/m · 18 colors" }, year: "Ready", img: tplImg("tenun_linen") },
+                { title: { id: "Brokat Prancis Premium", en: "Premium French Brocade" }, meta: { id: "Rp185.000/m · kebaya", en: "Rp185.000/m · kebaya" }, year: "Ready", img: tplImg("tenun_brokat") },
+                { title: { id: "Batik Cap Tulis Solo", en: "Solo Hand-Stamped Batik" }, meta: { id: "Rp120.000/2m · kain jadi", en: "Rp120.000/2m · finished cloth" }, year: "Ready", img: tplImg("tenun_batik") },
+                { title: { id: "Satin Silk Roll", en: "Satin Silk Roll" }, meta: { id: "Rp1.450.000/roll 50m", en: "Rp1.450.000/50m roll" }, year: "Grosir", img: tplImg("tenun_satin") },
+                { title: { id: "Kain Seragam Drill", en: "Drill Uniform Fabric" }, meta: { id: "Rp32.000/m · min. 20m", en: "Rp32.000/m · min. 20m" }, year: "Grosir", img: tplImg("tenun_drill") },
             ],
         },
         services: {
@@ -324,7 +323,7 @@ export const UMKM_PREVIEWS = {
                 id: "Kamu fokus kerja dan kuliah. Cucian, setrikaan, sepatu — biar kami yang urus.",
                 en: "You focus on work and school. Laundry, ironing, shoes — we've got it.",
             },
-            img: U("1545173168-9f1947eebb7f", 900),
+            img: tplImg("bersih_profile"),
             stats: [
                 { n: "24 jam", l: { id: "Selesai Reguler", en: "Regular Turnaround" } },
                 { n: "3 km", l: { id: "Gratis Jemput", en: "Free Pickup" } },
@@ -346,11 +345,11 @@ export const UMKM_PREVIEWS = {
                 en: "Transparent per-kilo or per-item pricing. Request a pickup, courier arrives within the hour.",
             },
             items: [
-                { title: { id: "Cuci Kering Setrika", en: "Wash, Dry & Iron" }, meta: { id: "Rp7.000/kg · reguler 24 jam", en: "Rp7.000/kg · 24h regular" }, year: "Min. 3 kg", img: U("1517677208171-0bc6725a3e60") },
-                { title: { id: "Express 6 Jam", en: "6-Hour Express" }, meta: { id: "Rp12.000/kg", en: "Rp12.000/kg" }, year: "Min. 2 kg", img: U("1582735689369-4fe89db7114c") },
-                { title: { id: "Setrika Saja", en: "Iron Only" }, meta: { id: "Rp5.000/kg", en: "Rp5.000/kg" }, year: "Min. 3 kg", img: U("1604335399105-a0c585fd81a1") },
-                { title: { id: "Cuci Sepatu", en: "Shoe Cleaning" }, meta: { id: "Rp35.000/pasang", en: "Rp35.000/pair" }, year: "2-3 hari", img: U("1489274495757-95c7c837b101") },
-                { title: { id: "Bed Cover & Selimut", en: "Bed Cover & Blanket" }, meta: { id: "Rp25.000/item", en: "Rp25.000/item" }, year: "2 hari", img: U("1478146896981-b80fe463b330") },
+                { title: { id: "Cuci Kering Setrika", en: "Wash, Dry & Iron" }, meta: { id: "Rp7.000/kg · reguler 24 jam", en: "Rp7.000/kg · 24h regular" }, year: "Min. 3 kg", img: tplImg("bersih_cuci_setrika") },
+                { title: { id: "Express 6 Jam", en: "6-Hour Express" }, meta: { id: "Rp12.000/kg", en: "Rp12.000/kg" }, year: "Min. 2 kg", img: tplImg("bersih_express") },
+                { title: { id: "Setrika Saja", en: "Iron Only" }, meta: { id: "Rp5.000/kg", en: "Rp5.000/kg" }, year: "Min. 3 kg", img: tplImg("bersih_setrika") },
+                { title: { id: "Cuci Sepatu", en: "Shoe Cleaning" }, meta: { id: "Rp35.000/pasang", en: "Rp35.000/pair" }, year: "2-3 hari", img: tplImg("bersih_sepatu") },
+                { title: { id: "Bed Cover & Selimut", en: "Bed Cover & Blanket" }, meta: { id: "Rp25.000/item", en: "Rp25.000/item" }, year: "2 hari", img: tplImg("bersih_bedcover") },
             ],
         },
         services: {

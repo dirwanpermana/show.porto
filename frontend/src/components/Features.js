@@ -3,7 +3,7 @@ import {
     Layers,
     ShoppingBag,
     Smartphone,
-    TrendingUp,
+    MessageSquare,
     Globe,
 } from "lucide-react";
 import { Reveal, SectionHeading } from "@/components/Reveal";
@@ -15,7 +15,7 @@ const ICONS = {
     Layers,
     ShoppingBag,
     Smartphone,
-    TrendingUp,
+    MessageSquare,
     Globe,
 };
 
