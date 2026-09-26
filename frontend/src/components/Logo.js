@@ -19,7 +19,7 @@ export const Logo = ({ className = "h-8" }) => (
             <circle cx="24.5" cy="7.5" r="2.2" fill="#ffb829" />
         </svg>
         <span className="font-display text-lg font-medium tracking-tight text-bone">
-            Karyaloka
+            show<span className="text-iris">.porto</span>
         </span>
     </span>
 );

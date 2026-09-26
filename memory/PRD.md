@@ -1,10 +1,10 @@
-# PRD — Karyaloka
+# PRD — show.porto
 
 ## Problem Statement Asli
 Pemilik ide ingin membangun jasa pengerjaan website portfolio untuk membantu pencari kerja / UMKM agar memiliki website sendiri. Pencari kerja mendapat portfolio web berisi pengalaman bekerja, riwayat pendidikan, dan proyek dengan card slider (thumbnail + tombol detail yang membuka image/pdf/ppt/video/link GitHub). UMKM mendapat daftar produk seperti e-commerce. Situs jasa harus modern, menarik, dinamis, interaktif, dianimasi, menampilkan produk template (desainer, marketing, teknik sipil, dll + landing page UMKM), dengan gaya sesuai DESIGN.md (dark, Electric Iris #8052ff, Saffron #ffb829, Deep Verdant #15846e, tipografi display besar, partikel konstelasi, tombol pill).
 
 ## Solusi
-Landing page satu halaman (bahasa Indonesia) untuk brand **Karyaloka** + backend FastAPI/MongoDB untuk penerimaan lead.
+Landing page satu halaman (bahasa Indonesia) untuk brand **show.porto** + backend FastAPI/MongoDB untuk penerimaan lead.
 
 ## Arsitektur
 - Frontend: React (CRA) + Tailwind + framer-motion + lenis (smooth scroll) + sonner (toast). Font: Clash Display + Satoshi (Fontshare).

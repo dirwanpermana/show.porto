@@ -5,7 +5,7 @@ const LangCtx = createContext({ lang: "id", setLang: () => {} });
 export const LangProvider = ({ children }) => {
     const [lang, setLang] = useState(() => {
         try {
-            return localStorage.getItem("karyaloka-lang") || "id";
+            return localStorage.getItem("show.porto-lang") || "id";
         } catch {
             return "id";
         }
@@ -13,7 +13,7 @@ export const LangProvider = ({ children }) => {
 
     useEffect(() => {
         try {
-            localStorage.setItem("karyaloka-lang", lang);
+            localStorage.setItem("show.porto-lang", lang);
         } catch {}
         document.documentElement.lang = lang === "en" ? "en" : "id";
     }, [lang]);
@@ -237,8 +237,8 @@ export const SITE = {
         sending: { id: "Mengirim…", en: "Sending…" },
         toastOk: { id: "Pesan terkirim!", en: "Message sent!" },
         toastOkDesc: {
-            id: "Terima kasih! Tim Karyaloka akan menghubungimu maksimal 1x24 jam.",
-            en: "Thank you! The Karyaloka team will reach out within 24 hours.",
+            id: "Terima kasih! Tim show.porto akan menghubungimu maksimal 1x24 jam.",
+            en: "Thank you! The show.porto team will reach out within 24 hours.",
         },
         toastErr: { id: "Gagal mengirim", en: "Failed to send" },
         toastErrDesc: {
@@ -248,8 +248,8 @@ export const SITE = {
     },
     footer: {
         tagline: {
-            id: "Rumah karya digitalmu. Website portofolio untuk pencari kerja & etalase digital untuk UMKM Indonesia.",
-            en: "Your digital home for work. Portfolio websites for job seekers & digital storefronts for Indonesian small businesses.",
+            id: "Don't just tell. Show it. — Website portofolio untuk pencari kerja & etalase digital untuk UMKM Indonesia.",
+            en: "Don't just tell. Show it. — Portfolio websites for job seekers & digital storefronts for Indonesian small businesses.",
         },
         services: { id: "Layanan", en: "Services" },
         info: { id: "Informasi", en: "Information" },

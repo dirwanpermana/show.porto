@@ -108,7 +108,7 @@ const DemoBrowser = () => {
                         <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
                     </div>
                     <span className="hidden rounded-full bg-white/5 px-4 py-1 text-[11px] font-light text-ash sm:block">
-                        rakapratama.karyaloka.id / dapurnusantara.karyaloka.id
+                        rakapratama.show.porto.id / dapurnusantara.show.porto.id
                     </span>
                     <span className="flex items-center gap-1 text-[10px] font-light text-ash">
                         <Lock className="h-3 w-3" /> https

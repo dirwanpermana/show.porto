@@ -1,7 +1,7 @@
 export const BRAND = {
-    name: "Karyaloka",
+    name: "show.porto",
     tagline: "Rumah karya digitalmu",
-    domain: "karyaloka.id",
+    domain: "show.porto.id",
     wa: "https://wa.me/6281234567890",
 };
 
@@ -20,7 +20,7 @@ export const TEMPLATES = [
     {
         id: "lumina",
         name: "Lumina",
-        domain: "lumina.karyaloka.id",
+        domain: "lumina.show.porto.id",
         field: { id: "Desainer Grafis", en: "Graphic Designer" },
         styleName: { id: "Warm cream editorial", en: "Warm cream editorial" },
         desc: {
@@ -51,7 +51,7 @@ export const TEMPLATES = [
     {
         id: "amplify",
         name: "Amplify",
-        domain: "amplify.karyaloka.id",
+        domain: "amplify.show.porto.id",
         field: { id: "Marketing", en: "Marketing" },
         styleName: { id: "Deep moss with lime voltage", en: "Deep moss with lime voltage" },
         desc: {
@@ -82,7 +82,7 @@ export const TEMPLATES = [
     {
         id: "blueprint",
         name: "Blueprint",
-        domain: "blueprint.karyaloka.id",
+        domain: "blueprint.show.porto.id",
         field: { id: "Teknik Sipil", en: "Civil Engineering" },
         styleName: { id: "Midnight atelier serif", en: "Midnight atelier serif" },
         desc: {
@@ -113,7 +113,7 @@ export const TEMPLATES = [
     {
         id: "aperture",
         name: "Aperture",
-        domain: "aperture.karyaloka.id",
+        domain: "aperture.show.porto.id",
         field: { id: "Fotografer", en: "Photographer" },
         styleName: { id: "White gallery wall", en: "White gallery wall" },
         desc: {
@@ -145,7 +145,7 @@ export const TEMPLATES = [
     {
         id: "deploy",
         name: "Deploy",
-        domain: "deploy.karyaloka.id",
+        domain: "deploy.show.porto.id",
         field: { id: "Web Developer", en: "Web Developer" },
         styleName: { id: "Typeset terminal on black paper", en: "Typeset terminal on black paper" },
         desc: {
@@ -176,7 +176,7 @@ export const TEMPLATES = [
     {
         id: "etalase",
         name: "Etalase",
-        domain: "etalase.karyaloka.id",
+        domain: "etalase.show.porto.id",
         field: { id: "UMKM Kuliner", en: "Food Business" },
         styleName: { id: "Warm parchment atelier", en: "Warm parchment atelier" },
         desc: {
@@ -473,7 +473,7 @@ export const PRICING = [
                 id: "Galeri 6 proyek + tombol detail",
                 en: "6-project gallery + details button",
             },
-            { id: "Subdomain karyaloka.id", en: "karyaloka.id subdomain" },
+            { id: "Subdomain show.porto.id", en: "show.porto.id subdomain" },
             { id: "Mobile responsive", en: "Mobile responsive" },
             { id: "Revisi 2x · selesai 5-7 hari", en: "2 revisions · done in 5-7 days" },
         ],
@@ -504,7 +504,7 @@ export const PRICING = [
                 id: "Google Maps + jam operasional",
                 en: "Google Maps + opening hours",
             },
-            { id: "Subdomain karyaloka.id", en: "karyaloka.id subdomain" },
+            { id: "Subdomain show.porto.id", en: "show.porto.id subdomain" },
             { id: "Revisi 3x · selesai 7-10 hari", en: "3 revisions · done in 7-10 days" },
         ],
         highlight: false,
@@ -585,8 +585,8 @@ export const FAQS = [
             en: "Does the price include hosting & domain?",
         },
         a: {
-            id: "Semua paket sudah termasuk hosting. Paket PORTO dan UMKM memakai subdomain karyaloka.id; domain custom tersedia di paket PRO dengan biaya domain terpisah sesuai harga resmi registrar.",
-            en: "All plans include hosting. PORTO and UMKM use a karyaloka.id subdomain; a custom domain is available on PRO with the domain fee charged at the registrar's official price.",
+            id: "Semua paket sudah termasuk hosting. Paket PORTO dan UMKM memakai subdomain show.porto.id; domain custom tersedia di paket PRO dengan biaya domain terpisah sesuai harga resmi registrar.",
+            en: "All plans include hosting. PORTO and UMKM use a show.porto.id subdomain; a custom domain is available on PRO with the domain fee charged at the registrar's official price.",
         },
     },
 ];
