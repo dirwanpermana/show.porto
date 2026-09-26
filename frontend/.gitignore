@@ -4,6 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
+memory
+tests
+test_reports
+test_result.md
 
 # testing
 /coverage
